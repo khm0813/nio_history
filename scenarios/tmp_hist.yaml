@@ -1,0 +1,7 @@
+id: tmp_hist
+name: 이력 점검
+version: 0.1.0
+start: hello
+nodes:
+  hello: { type: play, label: 인사, prompts: [ { tts: 안녕하세요 } ], next: bye }
+  bye: { type: hangup, label: 끝 }
