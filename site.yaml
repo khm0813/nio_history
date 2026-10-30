@@ -9,6 +9,8 @@ console:
   port: 7003                # nio-console (web console + management API) -> browser
   engines:                  # engines the console deploys to / reloads; A/B = two entries
     - http://127.0.0.1:7002
+  history_remote:
+    url: /tmp/nio-history-backup.git
   # Management DB for call traces (optional). The console ships logs/calls-*.jsonl here asynchronously; the engine never
   # touches it. Password is read from the environment variable named in password_env.
   # db:
