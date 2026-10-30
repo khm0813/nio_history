@@ -6,8 +6,3 @@ services:
     numbers:
     - "*"
     main: "kiwoom-ars-9900"
-  tmp_rev_svc:
-    name: "검토 점검"
-    numbers:
-    - "0000999"
-    main: "tmp_rev"
