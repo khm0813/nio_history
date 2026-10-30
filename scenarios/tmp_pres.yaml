@@ -1,7 +1,0 @@
-id: tmp_pres
-name: 동시 편집 점검
-version: 0.1.0
-start: hello
-nodes:
-  hello: { type: play, label: 인사, prompts: [ { tts: 안녕 } ], next: bye }
-  bye: { type: hangup, label: 끝 }
