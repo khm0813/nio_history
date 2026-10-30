@@ -1,0 +1,4 @@
+# DNIS -> scenario. Written by the console (services); overrides site.yaml entry.
+---
+entry:
+  '*': "kiwoom-ars-9900"

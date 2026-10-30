@@ -1,0 +1,8 @@
+# Shared request header for the demo fixed-length host. Referenced by connectors with  header: { $ref: ../demo-header/send.yaml }
+# Files without a top-level `connector:` key are layouts, not connectors; the registry skips them.
+length: 64
+fields:
+  - { name: trcode,  offset: 0,  len: 10, value: "${in.trcode}" }   # filled per call from the scenario's `in`
+  - { name: channel, offset: 10, len: 2,  value: "IV" }             # constant
+  - { name: callerId, offset: 12, len: 11, value: "${in.ani}" }
+  # bytes 23..63 are reserved; left as spaces

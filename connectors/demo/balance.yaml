@@ -1,0 +1,35 @@
+# A tcp-fixed connector: one legacy transaction as DATA. Scenario usage:
+#
+#   lookup:
+#     type: call_backend
+#     connector: demo/balance
+#     in:  { trcode: TRX10020, ani: "${session.ani}", acctNo: "${vars.acct}", pwd: "${vars.pwd}" }
+#     out: { bal: balance, host_msg: respMsg }
+#     next: route
+#     on_timeout: slow
+#     on_error: host_err
+#
+connector: demo/balance
+kind: tcp-fixed
+description: account balance inquiry (demo layout)
+host: demo_host
+timeout_ms: 1500
+retry: 1
+charset: EUC-KR
+
+request:
+  header: { $ref: ../demo-header/send.yaml }
+  body:                                   # offsets omitted = cumulative from body start
+    - { name: acctNo, len: 11 }
+    - { name: pwd,    len: 8, pad: left, fill: "0" }
+
+response:
+  header: { $ref: ../demo-header/recv.yaml }
+  body:
+    - { name: acctName, len: 20 }
+    - { name: balance,  len: 15, type: number }
+
+# frame: { kind: fixed }  is the default: read header.length + body length bytes.
+# For hosts that send a length field:  frame: { kind: length-field, header_length: 64, offset: 20, len: 6 }
+
+ok_when: resp.respGubun == '0'

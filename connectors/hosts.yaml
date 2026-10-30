@@ -1,0 +1,11 @@
+# Backend hosts referenced by connector files (host: <name>). Site-specific; the platform never ships real addresses.
+hosts:
+  demo_host:                 # a fixed-length TCP host (legacy core / gateway)
+    host: 127.0.0.1
+    port: 9100
+  demo_api:                  # a JSON REST service
+    url: http://127.0.0.1:8081
+  ivrbridge:                 # ecs-ivrbridge (헬스체크)
+    url: http://10.0.6.101:18080
+  shell:                     # this node's vendor shell (agent state, /cti/*)
+    url: http://127.0.0.1:7080/nio-shell

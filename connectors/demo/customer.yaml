@@ -1,0 +1,15 @@
+# A rest-json connector. ${in.x} works in path, headers and body_template; response_map flattens the JSON.
+connector: demo/customer
+kind: rest-json
+description: customer grade lookup (demo)
+host: ${hosts.demo_api}
+timeout_ms: 1000
+rest:
+  method: POST
+  path: /v1/customer/${in.ani}
+  headers: { X-Channel: ivr }
+  body_template: { ani: "${in.ani}", purpose: "ivr-greeting" }
+  response_map:
+    grade: data.grade
+    name: data.name
+ok_when: resp.grade != ''

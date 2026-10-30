@@ -1,0 +1,7 @@
+# Site-wide common flows (before / on_error / after). Written by the console; overrides site.yaml common.
+---
+common:
+  before: "common_before"
+  on_error: "common_error"
+  after: "common_after"
+  after_timeout_ms: 3000

@@ -1,0 +1,60 @@
+# Site profile for the PoC. Lives in the SITE workspace, not in the platform.
+site: demo
+vendor: avaya-ep            # avaya-ep | cisco-cvp | bright-pattern
+engine:
+  admin_token: 5oWFabNXQvG7RFfiF6yP2U5UmkCWwd   # console -> engine admin HTTP (X-Nio-Token)
+  grpc_port: 7001           # shell(driver) -> engine
+  admin_port: 7002          # engine introspection + reload (HTTP); nio-console calls this
+console:
+  port: 7003                # nio-console (web console + management API) -> browser
+  engines:                  # engines the console deploys to / reloads; A/B = two entries
+    - http://127.0.0.1:7002
+  # Management DB for call traces (optional). The console ships logs/calls-*.jsonl here asynchronously; the engine never
+  # touches it. Password is read from the environment variable named in password_env.
+  # db:
+  #   url: jdbc:postgresql://127.0.0.1:5432/nio
+  #   user: nio
+  #   password_env: NIO_DB_PASSWORD
+  # ship_interval_ms: 2000
+  # ship_batch: 200
+entry:
+  # DNIS -> scenario id. "*" = any
+  "*": demo_main
+  "39000": health_check     # 2026-10-29 ivrbridge 헬스체크 (원래대로: 이 줄 삭제 -> 39000 은 demo_main)
+  "15449903": health_check
+  "15449901": demo_script   # script-node sample (simulator: --dnis 15449901)
+  "15449902": demo_java     # same flow, script in Java syntax (lang: java)
+transfer:
+  agent_number: "1000"      # ${site.transfer.agent_number}
+  fallback_number: "1000"   # used by the shell when the engine is unreachable
+prompts:
+  # prompt id -> audio file relative to the shell's /prompts/ folder (8 kHz mu-law wav for Avaya EP)
+  welcome: welcome.wav
+  menu_main: menu_main.wav
+  info: info.wav
+  to_agent: to_agent.wav
+  bye: bye.wav
+  noinput: noinput.wav
+  nomatch: nomatch.wav
+  error: error.wav
+  transfer_failed: transfer_failed.wav
+  too_many_errors: too_many_errors.wav
+  record_intro: record_intro.wav
+  record_saved: record_saved.wav
+
+# Engine restart / A-B switch mid-call: what a caller with an unknown session hears, then blind transfer to dest
+# (dest defaults to transfer.fallback_number, then transfer.agent_number). Omit dest and numbers to hang up instead.
+resync:
+  prompt_id: error
+  tts: 일시적인 문제로 상담원을 연결해 드리겠습니다.
+
+# lab Avaya EP has no TTS engine: the console refuses prompts without an audio file
+tts: false
+
+# 음원 생성용 TTS 서버 (콘솔 음원 탭의 TTS로 만들기). 통화 경로에서는 쓰지 않음
+tts_server:
+  url: http://10.0.9.237:8080
+  engine: ecs
+  speaker: 14
+  volume: 100
+  speed: 95

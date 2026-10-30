@@ -1,0 +1,6 @@
+# Shared response header for the demo fixed-length host.
+length: 64
+fields:
+  - { name: respGubun, offset: 40, len: 1 }     # "0" = ok, otherwise business error
+  - { name: respCode,  offset: 41, len: 6 }
+  - { name: respMsg,   offset: 47, len: 17 }    # EUC-KR text the scenario may play back

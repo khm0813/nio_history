@@ -1,0 +1,27 @@
+id: common_before
+version: 0.1.0
+name: 공통 진입 (인사·점검)
+start: mark
+defaults:
+  timeout_sec: 5
+  max_retry: 1
+  on_max_retry: go
+  on_error: go
+nodes:
+  mark:
+    type: set
+    label: 진입 표시
+    vars:
+      entered_via: common_before
+      entry_dnis: "${session.dnis}"
+    next: go
+  go:
+    type: return
+    label: 메인으로
+    exit: ok
+sections:
+  main:
+    title: common_before_메인
+    nodes:
+      - mark
+      - go

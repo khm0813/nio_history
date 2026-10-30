@@ -1,0 +1,16 @@
+# managed by the NIO console: only what people author is versioned
+/*
+!/.gitignore
+!/site.yaml
+!/services.yaml
+!/entry.yaml
+!/common.yaml
+!/scenarios/
+!/connectors/
+!/sets/
+!/prompts/
+/prompts/*
+!/prompts/map.properties
+!/prompts/folders.json
+!/prompts/texts.json
+!/prompts/audio.sha256

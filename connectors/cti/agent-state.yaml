@@ -1,0 +1,14 @@
+# Agent state from the vendor shell (Avaya: AES/TSAPI inside nio-shell; other vendors answer the same shape from their shell).
+# Response: {agent, state: READY|BUSY|NOT_READY|WORK_NOT_READY|WORK_READY|LOGGED_OFF|UNKNOWN, ready: true|false}
+connector: cti/agent-state
+kind: rest-json
+description: 상담원 상태 조회 (READY 면 전환)
+host: ${hosts.shell}
+timeout_ms: 800
+rest:
+  method: GET
+  path: /cti/agent?id=${in.agent}
+  response_map:
+    state: state
+    ready: ready
+ok_when: resp.state != '' and resp.state != 'UNKNOWN'

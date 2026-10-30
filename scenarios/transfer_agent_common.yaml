@@ -1,0 +1,77 @@
+id: transfer_agent_common
+version: 0.1.0
+name: 상담원연결(공통)
+start: call_subflow
+defaults:
+  timeout_sec: 5
+  max_retry: 3
+nodes:
+  transfer:
+    type: transfer
+    label: transfer
+    mode: blind
+    dest: ${site.transfer.agent_number}
+    prompts:
+      - id: to_agent
+        tts: 상담원을 연결해드리겠습니다. 잠시만 기다려주세요.
+        bargein: false
+    on_error: return_2
+    on_fail: return_2
+    next: return
+  call_subflow:
+    type: call_subflow
+    label: 산업안전보건법_멘트_서브
+    scenario: sub_Industrial_info
+    exits: {}
+    next: call_backend_2
+  call_backend_2:
+    type: call_backend
+    label: 상담원 호출
+    connector: cti/agent-state
+    in:
+      agent: ${vars.agent_num}
+    out:
+      state: state
+    next: transfer
+    on_error: return_2
+    on_timeout: return_2
+  return_2:
+    type: return
+    label: return
+    exit: error
+  return:
+    type: return
+    label: return_ok
+    exit: ok
+sections:
+  main:
+    title: 상담원연결(공통)
+    nodes:
+      - transfer
+      - call_subflow
+      - call_backend_2
+      - return_2
+      - return
+layout:
+  sections:
+    main:
+      x: -30
+      y: -58
+      w: 640
+      h: 549
+  nodes:
+    transfer:
+      x: 800
+      y: 380
+    call_subflow:
+      x: 20
+      y: 360
+    call_backend_2:
+      x: 420
+      y: 360
+    return_2:
+      x: 1120
+      y: 520
+    return:
+      x: 1120
+      y: 360

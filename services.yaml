@@ -1,0 +1,8 @@
+# Services: representative numbers -> main scenario. Edited in the console (편집 › 서비스).
+---
+services:
+  kiwoom-ars-9900:
+    name: "키움증권 9900 시나리오"
+    numbers:
+    - "*"
+    main: "kiwoom-ars-9900"
