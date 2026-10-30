@@ -5,7 +5,7 @@ start: hello
 nodes:
   hello:
     type: play
-    label: 첫 인사(A)
+    label: 인사(B)
     prompts:
       - tts: 안녕하세요
     next: bye
