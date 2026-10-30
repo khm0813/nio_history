@@ -4,4 +4,10 @@ version: 0.1.0
 start: hello
 nodes:
   hello: { type: play, label: 인사, prompts: [ { tts: 안녕하세요 } ], next: bye }
-  bye: { type: hangup, label: 끝 }
+  bye: { type: hangup, label: 통화 끝(B) }
+sections:
+  main:
+    title: tmp_merge_메인
+    nodes:
+      - hello
+      - bye
