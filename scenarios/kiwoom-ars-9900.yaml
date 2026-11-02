@@ -194,7 +194,7 @@ nodes:
     type: call_subflow
     scenario: "transfer_agent_common"
     exits:
-      error: hangup
+      error: play_3
       ok: hangup
       play: hangup
     label: "시세및 시황 서비스-상담원연결"
@@ -205,6 +205,12 @@ nodes:
     type: hangup
     label: hangup
     reason: normal
+  play_3:
+    type: play
+    label: play_3
+    prompts:
+      - tts: 상담원을 연결할 수 없습니다. 다시 걸어주세요.
+        id: err_transfer
 sections:
   main:
     title: 키움증권 9900 시나리오
@@ -220,6 +226,7 @@ sections:
       - branch
       - call_subflow_2
       - hangup
+      - play_3
     title: "03 : 시세및 시황 서비스"
   sec_2:
     title: "03 > 01 : 현재가 및 호가 안내"
@@ -317,3 +324,6 @@ layout:
     hangup:
       x: -900
       y: 460
+    play_3:
+      x: -900
+      y: 320
