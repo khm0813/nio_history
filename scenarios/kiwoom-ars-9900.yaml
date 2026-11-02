@@ -251,14 +251,14 @@ layout:
       h: 556
   nodes:
     welcome:
-      x: -500
-      y: -20
-    bye:
-      x: 260
-      y: -60
-    menu:
-      x: -200
+      x: -660
       y: -40
+    bye:
+      x: 240
+      y: -120
+    menu:
+      x: -240
+      y: -80
     play:
       x: -2320
       y: 180
