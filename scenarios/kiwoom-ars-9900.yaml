@@ -252,10 +252,10 @@ layout:
   nodes:
     welcome:
       x: -620
-      y: 0
+      y: -60
     bye:
-      x: 200
-      y: -120
+      x: 220
+      y: -60
     menu:
       x: -240
       y: -40
