@@ -6,8 +6,3 @@ services:
     numbers:
     - "*"
     main: "kiwoom-ars-9900"
-  tmp_rel_svc:
-    name: "릴리스 창 점검"
-    numbers:
-    - "0000998"
-    main: "tmp_rel"
