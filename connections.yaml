@@ -5,7 +5,7 @@ connections:
   vendor: "avaya-ep"
   name: "Avaya EP (lab)"
   url: "http://10.0.6.101:7080/nio-shell"
-  pbx: ""
+  pbx: "10.0.7.91:443"
   state: "active"
 - id: "bp"
   vendor: "bright-pattern"
