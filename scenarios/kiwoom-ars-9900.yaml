@@ -176,7 +176,7 @@ nodes:
     in: {}
     out:
       status: status
-    next: ask_code
+    next: play_4
   set:
     type: set
     vars:
@@ -212,6 +212,13 @@ nodes:
       - tts: 상담원을 연결할 수 없습니다. 다시 걸어주세요.
         id: err_transfer
     next: hangup
+  play_4:
+    type: play
+    label: play_4
+    prompts:
+      - tts: 매수하시려는 종목코드 6자리를 눌러주십시오.
+        id: C1000034
+    next: ask_code
 sections:
   main:
     title: 키움증권 9900 시나리오
@@ -241,6 +248,7 @@ sections:
       - end_menu
       - not_ready
       - call_backend
+      - play_4
 layout:
   sections:
     main:
@@ -252,12 +260,12 @@ layout:
       x: -490
       y: -58
       w: 340
-      h: 754
+      h: 1082
     sec_2:
       x: 0
       y: 0
       w: 360
-      h: 556
+      h: 690
   nodes:
     welcome:
       x: -600
@@ -285,7 +293,7 @@ layout:
       y: -200
     ask_code:
       x: -200
-      y: -200
+      y: -180
     lookup_quote:
       x: 100
       y: -420
@@ -328,3 +336,6 @@ layout:
     play_3:
       x: -960
       y: 240
+    play_4:
+      x: -320
+      y: -360
