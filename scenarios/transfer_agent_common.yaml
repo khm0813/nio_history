@@ -33,8 +33,8 @@ nodes:
     out:
       state: state
     next: transfer
-    on_error: return_2
-    on_timeout: return_2
+    on_error: transfer
+    on_timeout: transfer
   return_2:
     type: return
     label: return
