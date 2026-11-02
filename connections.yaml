@@ -9,7 +9,7 @@ connections:
   state: "active"
 - id: "bp"
   vendor: "bright-pattern"
-  name: "Bright Pattern (lab 245)"
+  name: "Bright Pattern (lab)"
   url: "http://10.0.6.101:7006"
   pbx: "10.0.22.245:443"
   state: "active"
