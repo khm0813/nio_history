@@ -19,7 +19,7 @@ nodes:
   done:
     type: return
     label: 돌아가기
-    exit: ok
+    exit: play
 sections:
   main:
     title: 서브_산업안전보건법_멘트플레이
