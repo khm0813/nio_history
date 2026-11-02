@@ -29,7 +29,7 @@ nodes:
       - id: M00001
         tts: 빠른주문은 1번, 일반주문은 2번 , 현재가,호가안내는 3번을 눌러주세요.
     choices:
-      "1": bye
+      "1": call_subflow_2
       "2": bye
       "3": play
     noinput_prompts:
