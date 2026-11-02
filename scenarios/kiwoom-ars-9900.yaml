@@ -20,7 +20,7 @@ nodes:
     type: hangup
     label: 종료
     prompts:
-      - tts: 감사합니다.
+      - tts: "감사합니다. 다음에 다시 이용해주세요. "
         id: bye
   menu:
     type: menu
