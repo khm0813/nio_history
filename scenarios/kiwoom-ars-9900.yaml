@@ -12,7 +12,7 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: 안녕하세요. 키움증권입니다.
+      - tts: 안녕하세요. 키움증권입니다만, 이것은 BP교환기로 받은 콜입니다.
         id: M00000
     next: menu
     service_code: N00000000
@@ -251,8 +251,8 @@ layout:
       h: 556
   nodes:
     welcome:
-      x: -820
-      y: 100
+      x: -600
+      y: -60
     bye:
       x: 220
       y: -60
