@@ -12,4 +12,4 @@ connections:
   name: "Bright Pattern (lab)"
   url: "http://10.0.6.101:7006"
   pbx: "10.0.22.245:5060"
-  state: "active"
+  state: "standby"
