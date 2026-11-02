@@ -5,6 +5,7 @@
 !/services.yaml
 !/entry.yaml
 !/common.yaml
+!/connections.yaml
 !/review.yaml
 !/scenarios/
 !/connectors/
