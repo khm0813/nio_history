@@ -20,7 +20,7 @@ nodes:
     type: hangup
     label: 종료
     prompts:
-      - tts: "감사합니다. 다음에 다시 이용해주세요. "
+      - tts: 감사합니다.
         id: bye
   menu:
     type: menu
@@ -186,7 +186,7 @@ nodes:
     type: branch
     label: branch
     cases:
-      - when: vars.name == "kim2"
+      - when: vars.name == "kim"
         next: menu_2
     default: call_subflow_2
   call_subflow_2:
