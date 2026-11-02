@@ -22,7 +22,7 @@ nodes:
     type: call_subflow
     label: 산업안전보건법_멘트_서브
     scenario: sub_Industrial_info
-    exits: {}
+    exits: { play: call_backend_2 }
     next: call_backend_2
   call_backend_2:
     type: call_backend
