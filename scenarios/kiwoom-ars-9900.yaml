@@ -193,8 +193,9 @@ nodes:
     type: call_subflow
     scenario: "transfer_agent_common"
     exits:
-      error: "hangup"
-      ok: "hangup"
+      error: hangup
+      ok: hangup
+      play: hangup
     label: "시세및 시황 서비스-상담원연결"
     in:
       agent_num: ${site.transfer.agent_number}
