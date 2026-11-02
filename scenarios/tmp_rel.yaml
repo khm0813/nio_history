@@ -1,0 +1,7 @@
+id: tmp_rel
+name: x
+version: 0.1.0
+start: bye
+defaults: { on_error: bye, on_max_retry: bye }
+nodes:
+  bye: { type: hangup, label: 끝, prompts: [ { id: bye } ] }
