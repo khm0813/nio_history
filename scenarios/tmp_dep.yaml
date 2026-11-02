@@ -1,0 +1,9 @@
+id: tmp_dep
+name: 릴리스 창 점검
+version: 0.1.0
+start: bye
+defaults: { on_error: bye, on_max_retry: bye }
+nodes:
+  bye: { type: hangup, label: 끝, prompts: [ { id: bye } ] }
+sections:
+  main: { title: 메인, nodes: [bye] }
