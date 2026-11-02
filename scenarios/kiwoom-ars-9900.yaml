@@ -211,6 +211,7 @@ nodes:
     prompts:
       - tts: 상담원을 연결할 수 없습니다. 다시 걸어주세요.
         id: err_transfer
+    next: hangup
 sections:
   main:
     title: 키움증권 9900 시나리오
@@ -322,8 +323,8 @@ layout:
       x: -1280
       y: 400
     hangup:
-      x: -900
-      y: 460
+      x: -840
+      y: 480
     play_3:
-      x: -900
-      y: 260
+      x: -960
+      y: 240
