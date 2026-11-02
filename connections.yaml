@@ -7,7 +7,9 @@ connections:
   url: "http://10.0.6.101:7080/nio-shell"
   pbx: "10.0.7.91:443"
   state: "active"
-  queues: {}
+  queues:
+    service:Customer Service: "D0CE5344-261C-47A1-80C0-26520602E7F3"
+    service:Maintenance Renewal: "A6ED540A-C7E8-44A7-9783-61DCF21D5D65"
 - id: "bp"
   vendor: "bright-pattern"
   name: "Bright Pattern (lab 245)"
