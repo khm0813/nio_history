@@ -179,7 +179,7 @@ nodes:
   set:
     type: set
     vars:
-      name: kim2
+      name: kim
     next: branch
     label: 이름설정
   branch:
