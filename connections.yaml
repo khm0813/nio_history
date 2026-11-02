@@ -1,0 +1,9 @@
+# Switch connections (shells/drivers that send calls here) and whether each accepts new calls. Written by the console.
+---
+connections:
+- id: "avaya"
+  vendor: "avaya-ep"
+  name: "Avaya EP (lab)"
+  url: "http://10.0.6.101:7080/nio-shell"
+  pbx: ""
+  state: "active"
