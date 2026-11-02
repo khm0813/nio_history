@@ -25,7 +25,7 @@ entry:
   "15449901": demo_script   # script-node sample (simulator: --dnis 15449901)
   "15449902": demo_java     # same flow, script in Java syntax (lang: java)
 transfer:
-  agent_number: "service:Customer Service"      # ${site.transfer.agent_number}
+  agent_number: "service:D0CE5344-261C-47A1-80C0-26520602E7F3"      # ${site.transfer.agent_number}
   fallback_number: "1000"   # used by the shell when the engine is unreachable
 prompts:
   # prompt id -> audio file relative to the shell's /prompts/ folder (8 kHz mu-law wav for Avaya EP)
