@@ -6,3 +6,8 @@ services:
     numbers:
     - "*"
     main: "kiwoom-ars-9900"
+  nio_tts_probe:
+    name: "TTS 시험"
+    numbers:
+    - "39777"
+    main: "nio_tts_probe"

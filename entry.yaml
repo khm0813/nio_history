@@ -2,3 +2,4 @@
 ---
 entry:
   '*': "kiwoom-ars-9900"
+  "39777": "nio_tts_probe"
