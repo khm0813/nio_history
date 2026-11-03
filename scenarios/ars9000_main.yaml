@@ -53,7 +53,7 @@ nodes:
         next: play
       - when: vars.peaktime == "true"
         next: play_2
-      - when: vars.peakday == "false" & vars.peaktime == "false"
+      - when: vars.peakday == "false" && vars.peaktime == "false"
         next: welcome
   play:
     type: play
