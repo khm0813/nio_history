@@ -11,3 +11,8 @@ services:
     numbers:
     - "39001"
     main: "ars9000_main"
+  hangook_15882288:
+    name: "한국GM_15882288"
+    numbers:
+    - "39002"
+    main: "hangook_15882288"
