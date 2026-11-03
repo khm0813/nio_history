@@ -1,0 +1,29 @@
+# Business hours and holidays (isOpen / isHoliday / holidayName in scenarios). Written by the console.
+---
+timezone: "Asia/Seoul"
+calendars:
+  center:
+    name: "상담센터"
+    hours:
+      mon: "09:00-12:00, 13:00-18:00"
+      tue: "09:00-18:00"
+      wed: "09:00-18:00"
+      thu: "09:00-18:00"
+      fri: "09:00-18:00"
+      sat: "09:00-13:00"
+    holidays: true
+holidays:
+- date: "2026-09-24"
+  name: "추석 연휴"
+- date: "2026-09-25"
+  name: "추석"
+- date: "2026-09-26"
+  name: "추석 연휴"
+- date: "2026-10-09"
+  name: "한글날"
+overrides:
+- date: "2026-12-31"
+  calendars:
+  - "center"
+  hours: "09:00-15:00"
+  name: "단축 근무"
