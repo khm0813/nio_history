@@ -53,8 +53,9 @@ tts: false
 
 # 음원 생성용 TTS 서버 (콘솔 음원 탭의 TTS로 만들기). 통화 경로에서는 쓰지 않음
 tts_server:
-  url: http://10.0.9.237:8080
-  engine: ecs
+  engine: voicetext          # VoiceText 서버에 직접 (7000). HTTP 미리듣기 서버는 url: http://10.0.9.237:8080 + engine: ecs
+  host: 10.0.9.237
+  port: 7000
   speaker: 14
   volume: 100
   speed: 95
