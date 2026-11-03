@@ -22,4 +22,12 @@ nodes:
 sections:
   main:
     title: 키움증권 9000 시나리오
-    nodes: [welcome, bye]
+    nodes: [ welcome, bye ]
+layout:
+  nodes:
+    welcome:
+      x: -100
+      y: 0
+    bye:
+      x: 300
+      y: 0
