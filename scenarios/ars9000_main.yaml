@@ -28,7 +28,19 @@ nodes:
     label: script
     lang: java
     code: |-
-      
+      LocalDateTime dt = LocalDateTime.now();
+
+      // 월요일(주말 다음날) 여부
+      boolean isPeakDay = dt.getDayOfWeek() == DayOfWeek.MONDAY;
+
+      // 10:00 이상 ~ 11:00 미만 여부
+      boolean isPeakTime = dt.getHour() == 10;
+
+      vars.put("peakday", String.valueOf(isPeakDay));
+      vars.put("peaktime", String.valueOf(isPeakTime));
+
+      log("피크타임/데이 체크");
+      log("peakday: " + isPeakDay + ", peaktime: " + isPeakTime);
 
       return "ok";
     exits: { ok: branch }
