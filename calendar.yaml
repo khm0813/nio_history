@@ -3,7 +3,16 @@
 timezone: "Asia/Seoul"
 calendars:
   center:
-    name: "center"
+    name: "메인상담센터"
+    hours:
+      mon: "09:00-18:00"
+      tue: "09:00-18:00"
+      wed: "09:00-18:00"
+      thu: "09:00-18:00"
+      fri: "09:00-18:00"
+    holidays: true
+  night_center:
+    name: "야간상담"
     hours:
       mon: "09:00-18:00"
       tue: "09:00-18:00"
