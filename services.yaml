@@ -14,5 +14,5 @@ services:
   hangook_15882288:
     name: "한국GM_15882288"
     numbers:
-    - "39002"
+    - "39000"
     main: "hangook_15882288"
