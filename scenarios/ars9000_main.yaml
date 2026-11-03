@@ -1,6 +1,5 @@
 id: ars9000_main
 version: 0.1.0
-name: 키움증권 9000 시나리오
 start: welcome
 defaults:
   timeout_sec: 5
@@ -31,3 +30,10 @@ layout:
     bye:
       x: 300
       y: 0
+  sections:
+    main:
+      x: -130
+      y: -58
+      w: 740
+      h: 433
+name: 흥국생명_1588-2288_콜센터대표번호
