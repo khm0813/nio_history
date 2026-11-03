@@ -1,0 +1,14 @@
+id: nio_tts_probe
+version: 0.0.1
+name: TTS 시험
+start: hello
+nodes:
+  hello:
+    type: play
+    label: 문구만 있는 멘트
+    prompts:
+      - tts: 안녕하세요. 통화 중 티티에스 시험입니다. 잔액은 삼만 이천오백 원입니다.
+    next: bye
+  bye:
+    type: hangup
+    reason: done
