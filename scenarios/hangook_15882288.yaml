@@ -12,7 +12,7 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: 안녕하세요.
+      - tts: 안녕하십니까. 한국GM 입니다.
     next: bye
   bye:
     type: hangup
@@ -22,4 +22,4 @@ nodes:
 sections:
   main:
     title: 한국GM_15882288
-    nodes: [welcome, bye]
+    nodes: [ welcome, bye ]
