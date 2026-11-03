@@ -21,7 +21,7 @@ calendars:
       fri: "18:00-24:00"
       sat: "18:00-24:00"
       sun: "18:00-24:00"
-    holidays: true
+    holidays: false
 holidays:
 - date: "2026-01-01"
   name: "신정"
