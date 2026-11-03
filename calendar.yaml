@@ -1,0 +1,8 @@
+# Business hours and holidays (isOpen / isHoliday / holidayName in scenarios). Written by the console.
+---
+timezone: "Asia/Seoul"
+calendars: {}
+holidays:
+- date: "2026-12-25"
+  name: "크리스마스"
+overrides: []
