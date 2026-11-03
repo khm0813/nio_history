@@ -1,6 +1,6 @@
 id: ars9000_main
 version: 0.1.0
-start: welcome
+start: goto
 defaults:
   timeout_sec: 5
   max_retry: 3
@@ -18,18 +18,72 @@ nodes:
     label: 종료
     prompts:
       - tts: 감사합니다.
+  goto:
+    type: goto
+    label: goto
+    next: script
+    note: 인입
+  script:
+    type: script
+    label: script
+    lang: java
+    code: |-
+      LocalDateTime dt = LocalDateTime.now();
+
+
+
+      // 월요일(주말 다음날) 여부
+      boolean isPeakDay = dt.getDayOfWeek() == DayOfWeek.MONDAY;
+
+      // 10:00 이상 ~ 11:00 미만 여부
+      boolean isPeakTime = dt.getHour() == 10;
+
+      vars.put("peakday", String.valueOf(isPeakDay));
+      vars.put("peaktime", String.valueOf(isPeakTime));
+
+      log("피크타임/데이 체크");
+      log("peakday: " + isPeakDay + ", peaktime: " + isPeakTime);
+
+
+      return "ok";
+    exits: { ok: branch }
+    next: branch
+  branch:
+    type: branch
+    label: branch
+    cases:
+      - when: vars.peakday == "true"
+        next: welcome
+      - when: vars.peaktime == "true"
+        next: welcome
+      - when: vars.peakday == "false" && vars.peaktime == "false"
+        next: welcome
 sections:
   main:
     title: 키움증권 9000 시나리오
-    nodes: [ welcome, bye ]
+    nodes:
+      - welcome
+      - bye
+      - goto
+      - script
+      - branch
 layout:
   nodes:
     welcome:
-      x: -100
-      y: 0
+      x: -120
+      y: 120
     bye:
-      x: 300
-      y: 0
+      x: 240
+      y: 140
+    goto:
+      x: -160
+      y: -180
+    script:
+      x: -140
+      y: -40
+    branch:
+      x: 160
+      y: -40
   sections:
     main:
       x: -130
