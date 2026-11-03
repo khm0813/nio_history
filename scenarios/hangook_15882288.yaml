@@ -1,0 +1,25 @@
+id: hangook_15882288
+version: 0.1.0
+name: 한국GM_15882288
+start: welcome
+defaults:
+  timeout_sec: 5
+  max_retry: 3
+  on_max_retry: bye
+  on_error: bye
+nodes:
+  welcome:
+    type: play
+    label: 인사
+    prompts:
+      - tts: 안녕하세요.
+    next: bye
+  bye:
+    type: hangup
+    label: 종료
+    prompts:
+      - tts: 감사합니다.
+sections:
+  main:
+    title: 한국GM_15882288
+    nodes: [welcome, bye]
