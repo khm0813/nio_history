@@ -139,5 +139,7 @@ holidays:
   name: "성탄절"
 overrides:
 - date: "2026-12-25"
+  calendars:
+  - "center"
   hours: "08:00-12:00"
   name: "크리스마스근무"
