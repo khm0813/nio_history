@@ -31,10 +31,10 @@ nodes:
       LocalDateTime dt = LocalDateTime.now();
 
       // 월요일(주말 다음날) 여부
-      boolean isPeakDay = dt.getDayOfWeek() == DayOfWeek.MONDAY;
+      boolean isPeakDay = dt.getDayOfWeek() != DayOfWeek.MONDAY;
 
       // 10:00 이상 ~ 11:00 미만 여부
-      boolean isPeakTime = dt.getHour() == 10;
+      boolean isPeakTime = dt.getHour() != 10;
 
       vars.put("peakday", String.valueOf(isPeakDay));
       vars.put("peaktime", String.valueOf(isPeakTime));
