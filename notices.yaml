@@ -1,24 +1,6 @@
 # Notices played by notice nodes (period / weekdays / hours / calendar). Written by the console.
 ---
 notices:
-- id: "n-20261104-1"
-  title: "시스템 점검 안내"
-  enabled: true
-  point: "_ENTRY"
-  from: "2026-11-04 13:50"
-  to: "2026-11-04 13:55"
-  days:
-  - "mon"
-  - "tue"
-  - "wed"
-  - "thu"
-  - "fri"
-  hours:
-    from: "09:00"
-    until: "18:00"
-  text: "시스템 점검으로 현재 통화가 어렵습니다. 잠시후 다시 이용해주세요."
-  action: "end"
-  order: 0
 - id: "n-20261104-2"
   title: "테스트공지"
   enabled: true
