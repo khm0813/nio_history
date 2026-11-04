@@ -34,3 +34,22 @@ notices:
   text: "이것은 테스트공지입니다."
   action: "continue"
   order: 1
+- id: "tst-card"
+  title: "[시험] 카드 점검"
+  enabled: true
+  text: "카드 결제 시스템 점검 중입니다"
+  action: "continue"
+  order: 0
+- id: "tst-loan"
+  title: "[시험] 대출 안내"
+  enabled: true
+  text: "대출 상담은 평일에만 됩니다"
+  action: "continue"
+  order: 0
+- id: "tst-urgent"
+  title: "[시험] 긴급 장애"
+  enabled: true
+  everywhere: true
+  text: "현재 일부 서비스에 장애가 있습니다"
+  action: "continue"
+  order: 0
