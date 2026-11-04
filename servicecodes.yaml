@@ -1,0 +1,29 @@
+# Service-code table agreed with the statistics service (service_code nodes pick from it). Written by the console.
+---
+groups:
+- id: "901"
+  name: "ARS 시험 A"
+  codes:
+  - code: "T00000000"
+    name: "ARS 시험 A"
+    parent: ""
+    dtmf: ""
+  - code: "T90000000"
+    name: "개인고객"
+    parent: "T00000000"
+    dtmf: "1"
+  - code: "T90000001"
+    name: "개인 - 이체"
+    parent: "T90000000"
+    dtmf: "1"
+  - code: "T90000009"
+    name: "상담원 연결"
+    parent: "T00000000"
+    dtmf: "0"
+- id: "902"
+  name: "ARS 시험 B"
+  codes:
+  - code: "U00000000"
+    name: "ARS 시험 B"
+    parent: ""
+    dtmf: ""
