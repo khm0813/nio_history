@@ -9,6 +9,7 @@
 !/calendar.yaml
 !/servicecodes.yaml
 !/notices.yaml
+!/alerts.yaml
 !/review.yaml
 !/scenarios/
 !/connectors/
