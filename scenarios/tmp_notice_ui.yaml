@@ -1,0 +1,7 @@
+id: tmp_notice_ui
+version: 0.0.1
+start: entry
+nodes:
+  entry: { type: notice, label: 공지, point: _ENTRY, next: hello, exits: { end: bye } }
+  hello: { type: play, label: 인사, prompts: [{ tts: 안녕하세요 }], next: bye }
+  bye: { type: hangup, reason: done }
