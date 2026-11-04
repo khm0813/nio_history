@@ -13,23 +13,82 @@ nodes:
     label: 인사
     prompts:
       - tts: 안녕하십니까. 한국GM 입니다.
-    next: bye
+    next: branch-jkwl74
   bye:
     type: hangup
     label: 종료
+  branch-jkwl74:
+    type: branch
+    label: 분기
+    cases:
+      - when: isOpen('center')
+        next: play-yfz753
+    default: branch-fxp2az
+  play-yfz753:
+    type: play
+    label: "멘트 재생_잠시만멘트"
     prompts:
-      - tts: 감사합니다.
+      - tts: 잠시만 기다려 주십시오.
+    next: hangup-2at4ok
+  hangup-2at4ok:
+    type: hangup
+    label: 종료
+    reason: normal
+  branch-fxp2az:
+    type: branch
+    label: 분기
+    cases:
+      - when: vars.x == "1"isHoliday()
+        next: play-lj2xgt
+    default: play-7kpcrm
+  play-lj2xgt:
+    type: play
+    label: 멘트 재생_휴무안내
+    prompts:
+      - tts: 죄송합니다. 금일은 한국 GM의 휴무일입니다.
+    next: play-695xwp
+  play-7kpcrm:
+    type: play
+    label: 멘트 재생_업무외안내
+    prompts:
+      - tts: 죄송합니다. 지금은 대표번호 운영시간이 아닙니다.
+    next: play-695xwp
+  play-695xwp:
+    type: play
+    label: 멘트 재생_운영시간안내
+    prompts:
+      - tts: 대표번호 운영시간은 평일 오전 9시부터 저녁 6시까지 입니다.
+    next: menu-4w8960
+  menu-4w8960:
+    type: menu
+    label: 메뉴_긴급용무메뉴
+    prompts:
+      - tts: 긴급한 용무가 있으신 분은 0번을 눌러주십시오.
+    choices:
+      "0": bye
+    noinput_prompts:
+      - tts: 입력이 되지않았습니다. 다시 입력해주세요.
+    nomatch_prompts:
+      - tts: 잘못된 번호가 입력되었습니다. 확인 후 다시 입력해주시기 바랍니다.
 sections:
   main:
     title: 한국GM_15882288
     nodes:
       - welcome
       - bye
+      - branch-jkwl74
+      - play-yfz753
+      - hangup-2at4ok
+      - branch-fxp2az
+      - play-lj2xgt
+      - play-7kpcrm
+      - play-695xwp
+      - menu-4w8960
 layout:
   sections:
     main:
       x: -30
       y: -58
       w: 640
-      h: 380
-  nodes: { welcome: { x: -80, y: 300 }, bye: { x: 300, y: 320 } }
+      h: 541
+  nodes: { welcome: { x: -240, y: 180 }, bye: { x: 1640, y: 640 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 540, y: 500 }, play-7kpcrm: { x: 540, y: 700 }, play-695xwp: { x: 880, y: 620 }, menu-4w8960: { x: 1260, y: 620 } }
