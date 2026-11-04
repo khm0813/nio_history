@@ -53,7 +53,7 @@ nodes:
     label: 멘트 재생_운영시간안내
     prompts:
       - tts: 대표번호 운영시간은 평일 오전 9시부터 저녁 6시까지 입니다.
-    next: menu-4w8960
+    next: collect-7sb7j0
   menu-4w8960:
     type: menu
     label: 메뉴_긴급용무메뉴
@@ -107,6 +107,15 @@ nodes:
     type: hangup
     label: 종료
     reason: normal
+  collect-7sb7j0:
+    type: collect
+    label: 숫자 입력
+    prompts:
+      - tts: 아무숫자를 입력해주세요.
+    var: input
+    min_digits: 1
+    max_digits: 10
+    next: menu-4w8960
 sections:
   main:
     title: 한국GM_15882288
@@ -127,6 +136,7 @@ sections:
       - hangup-4tpzqr
       - play-l6j7xa
       - hangup-cw5xwc
+      - collect-7sb7j0
 layout:
   sections:
     main:
@@ -134,4 +144,4 @@ layout:
       y: -58
       w: 640
       h: 541
-  nodes: { welcome: { x: -100, y: 60 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 200, y: 60 }, call_subflow-fx3od9: { x: 2040, y: 600 }, hangup-4tpzqr: { x: 2400, y: 620 }, play-l6j7xa: { x: 2040, y: 820 }, hangup-cw5xwc: { x: 2420, y: 840 } }
+  nodes: { welcome: { x: -100, y: 60 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 200, y: 60 }, call_subflow-fx3od9: { x: 2040, y: 600 }, hangup-4tpzqr: { x: 2400, y: 620 }, play-l6j7xa: { x: 2040, y: 820 }, hangup-cw5xwc: { x: 2420, y: 840 }, collect-7sb7j0: { x: 1380, y: 780 } }
