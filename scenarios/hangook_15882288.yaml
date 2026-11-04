@@ -38,7 +38,7 @@ nodes:
     type: branch
     label: 분기
     cases:
-      - when: vars.x == "1"isHoliday()
+      - when: isHoliday()
         next: play-lj2xgt
     default: play-7kpcrm
   play-lj2xgt:
