@@ -74,7 +74,7 @@ nodes:
     type: set
     label: 변수 설정
     vars:
-      holydayNm: " holidayName()"
+      holydayNm: holidayName()
     next: play-lj2xgt
 sections:
   main:
