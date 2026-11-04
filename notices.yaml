@@ -17,5 +17,5 @@ notices:
     from: "09:00"
     until: "18:00"
   text: "시스템 점검으로 현재 통화가 어렵습니다. 잠시후 다시 이용해주세요."
-  action: "continue"
+  action: "end"
   order: 0
