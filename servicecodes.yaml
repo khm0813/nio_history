@@ -1,21 +1,2 @@
 # Service-code table agreed with the statistics service (service_code nodes pick from it). Written by the console.
----
-groups:
-- id: "900"
-  name: "ARS 시험"
-  codes:
-  - code: "T00000000"
-    name: "ARS 시험"
-    parent: ""
-    dtmf: ""
-  - code: "T90000001"
-    name: "시험 안내"
-    parent: "T00000000"
-    dtmf: "1"
-  - code: "T90000002"
-    name: "시험 상담원"
-    parent: "T00000000"
-    dtmf: "0"
-sender:
-  connector: "tmp_stats/service-code"
-  enabled: true
+--- {}
