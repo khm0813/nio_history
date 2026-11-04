@@ -1,0 +1,26 @@
+# Notices played by notice nodes (period / weekdays / hours / calendar). Written by the console.
+---
+notices:
+- id: "imp-20260702-1"
+  dnis:
+  - "15880001"
+  - "15880002"
+  title: "시스템 점검으로 오후 여섯 시까지 상담이 어렵습니다"
+  enabled: true
+  point: "_ENTRY"
+  from: "2026-07-02 09:00"
+  to: "2026-07-02 18:00"
+  text: "시스템 점검으로 오후 여섯 시까지 상담이 어렵습니다"
+  action: "end"
+  order: 0
+- id: "imp-20261101-2"
+  dnis:
+  - "15880003"
+  title: "연말 이벤트 안내입니다"
+  enabled: true
+  point: "_ENTRY"
+  from: "2026-11-01 09:00"
+  to: "2026-12-31 18:00"
+  text: "연말 이벤트 안내입니다"
+  action: "continue"
+  order: 1
