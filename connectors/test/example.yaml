@@ -1,16 +1,17 @@
 connector: test/example
 kind: rest-json
 description: what this API does
-host: demo_api                 # name in hosts.yaml (url)
+host: test_host # name in hosts.yaml (url)
 timeout_ms: 1500
 retry: 0
 
 rest:
   method: POST
-  path: /v1/customer/${in.custId}
+  path: /avatar/info
   headers: { X-Channel: IVR }
   body_template: { custId: "${in.custId}", ani: "${in.ani}" }
-  response_map:                # out field <- dotted path in the JSON response
+  response_map:
+    # out field <- dotted path in the JSON response
     grade: data.grade
     name: data.name
 
