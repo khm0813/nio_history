@@ -5,8 +5,6 @@ start: service_code-tg815r
 defaults:
   timeout_sec: 10
   max_retry: 3
-  on_max_retry: bye
-  on_error: bye
 nodes:
   welcome:
     type: play
@@ -14,9 +12,6 @@ nodes:
     prompts:
       - tts: 안녕하십니까. 한국GM 입니다.
     next: notice-fwgvje
-  bye:
-    type: hangup
-    label: 종료
   branch-jkwl74:
     type: branch
     label: 분기
@@ -65,7 +60,7 @@ nodes:
     prompts:
       - tts: 긴급한 용무가 있으신 분은 0번을 눌러주십시오.
     choices:
-      "0": bye
+      "0": call_subflow-fx3od9
     noinput_prompts:
       - tts: 입력이 되지않았습니다. 다시 입력해주세요.
     nomatch_prompts:
@@ -90,12 +85,21 @@ nodes:
     next: branch-jkwl74
     notices:
       - n-20261104-2
+  call_subflow-fx3od9:
+    type: call_subflow
+    label: 서브플로우
+    scenario: "transfer_agent_common"
+    exits: { error: hangup-4tpzqr, ok: hangup-4tpzqr }
+    next: hangup-4tpzqr
+  hangup-4tpzqr:
+    type: hangup
+    label: 종료
+    reason: normal
 sections:
   main:
     title: 한국GM_15882288
     nodes:
       - welcome
-      - bye
       - branch-jkwl74
       - play-yfz753
       - hangup-2at4ok
@@ -107,6 +111,8 @@ sections:
       - set-b96z72
       - service_code-tg815r
       - notice-fwgvje
+      - call_subflow-fx3od9
+      - hangup-4tpzqr
 layout:
   sections:
     main:
@@ -114,4 +120,4 @@ layout:
       y: -58
       w: 640
       h: 541
-  nodes: { welcome: { x: -100, y: 60 }, bye: { x: 2040, y: 660 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 200, y: 60 } }
+  nodes: { welcome: { x: -100, y: 60 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 200, y: 60 }, call_subflow-fx3od9: { x: 2040, y: 600 }, hangup-4tpzqr: { x: 2400, y: 620 } }
