@@ -264,6 +264,8 @@ rules:
   - 2
   - 9
   - 10
+  - 12
+  - 11
   kinds:
   - "public"
   name: "명절 전날 단축"
