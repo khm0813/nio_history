@@ -1,8 +1,0 @@
-id: tmp_notice_pick
-version: 0.0.1
-start: entry
-nodes:
-  entry: { type: notice, label: 진입 공지, notices: [tst-loan, tst-card], next: menu }
-  menu: { type: play, label: 카드 메뉴, prompts: [{ tts: 카드 메뉴입니다 }], next: card }
-  card: { type: notice, label: 카드 공지, notices: [tst-card], next: bye }
-  bye: { type: hangup, reason: done }
