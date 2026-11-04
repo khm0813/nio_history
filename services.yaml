@@ -16,8 +16,3 @@ services:
     numbers:
     - "39000"
     main: "hangook_15882288"
-  tmp_svc_probe:
-    name: "서비스코드 시험"
-    numbers:
-    - "39778"
-    main: "tmp_svc_probe"
