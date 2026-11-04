@@ -1,0 +1,19 @@
+connector: tmp_stats/service-code
+kind: rest-json
+description: 시험용 통계 전송 (lab 시험 뒤 삭제)
+host: demo_api
+timeout_ms: 1500
+rest:
+  method: POST
+  path: /svc
+  body_template:
+    serviceCode: ${in.code}
+    serviceName: ${in.name}
+    parentCode: ${in.parent}
+    path: ${in.path}
+    callId: ${in.call_id}
+    ani: ${in.ani}
+    dnis: ${in.dnis}
+    node: ${in.node}
+    occurredAt: ${in.at}
+ok_when: "true"
