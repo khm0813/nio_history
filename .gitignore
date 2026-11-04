@@ -8,6 +8,7 @@
 !/connections.yaml
 !/calendar.yaml
 !/servicecodes.yaml
+!/notices.yaml
 !/review.yaml
 !/scenarios/
 !/connectors/
