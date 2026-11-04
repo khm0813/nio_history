@@ -40,3 +40,18 @@ notices:
   text: "연말 이벤트 안내입니다"
   action: "continue"
   order: 1
+- id: "n-20261104-2"
+  title: "야간 안내"
+  enabled: true
+  days:
+  - "mon"
+  - "tue"
+  - "wed"
+  - "thu"
+  - "fri"
+  hours:
+    from: "18:00"
+    until: "09:00"
+  text: "지금은 상담 시간이 아닙니다. 내일 오전 아홉 시에 다시 걸어 주세요."
+  action: "continue"
+  order: 0
