@@ -4,3 +4,4 @@ entry:
   '*': "kiwoom-ars-9900"
   "39001": "ars9000_main"
   "39000": "hangook_15882288"
+  "39778": "tmp_svc_probe"
