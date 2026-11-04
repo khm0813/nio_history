@@ -86,6 +86,8 @@ nodes:
     label: 공지사항
     point: _ENTRY
     next: welcome
+    notices:
+      - n-20261104-2
 sections:
   main:
     title: 한국GM_15882288
