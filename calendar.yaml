@@ -22,6 +22,11 @@ calendars:
       sat: "18:00-07:00"
       sun: "18:00-07:00"
     holidays: false
+  japan_center:
+    name: "japan_center"
+    hours: {}
+    holidays: true
+    base: "center"
 holidays:
 - date: "2026-01-01"
   name: "신정"
