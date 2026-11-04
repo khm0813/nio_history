@@ -1,7 +1,0 @@
-id: tmp_svc_ui
-version: 0.0.1
-start: hello
-nodes:
-  hello: { type: play, label: 인사, prompts: [{ id: welcome, tts: 안녕하세요 }], service_code: T90000009, next: svc }
-  svc: { type: service_code, label: 서비스코드, service_code: '', next: bye }
-  bye: { type: hangup, reason: done }
