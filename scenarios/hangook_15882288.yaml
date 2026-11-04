@@ -116,6 +116,8 @@ nodes:
     min_digits: 1
     max_digits: 10
     next: menu-4w8960
+    on_max_retry: play-l6j7xa
+    on_error: play-l6j7xa
 sections:
   main:
     title: 한국GM_15882288
