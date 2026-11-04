@@ -270,3 +270,5 @@ rules:
   - "public"
   name: "명절 전날 단축"
   before_holiday: true
+  calendars:
+  - "center"
