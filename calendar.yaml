@@ -257,4 +257,14 @@ overrides:
   - "center"
   hours: "08:00-12:00"
   name: "크리스마스근무"
-rules: []
+rules:
+- hours: "09:00-15:00"
+  months:
+  - 1
+  - 2
+  - 9
+  - 10
+  kinds:
+  - "public"
+  name: "명절 전날 단축"
+  before_holiday: true
