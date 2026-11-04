@@ -13,7 +13,7 @@ nodes:
     label: 인사
     prompts:
       - tts: 안녕하십니까. 한국GM 입니다.
-    next: branch-jkwl74
+    next: notice-fwgvje
   bye:
     type: hangup
     label: 종료
@@ -80,12 +80,12 @@ nodes:
     type: service_code
     label: ARS 시험 A 통계
     service_code: "T00000000"
-    next: notice-fwgvje
+    next: welcome
   notice-fwgvje:
     type: notice
     label: 공지사항
     point: _ENTRY
-    next: welcome
+    next: branch-jkwl74
     notices:
       - n-20261104-2
 sections:
@@ -112,4 +112,4 @@ layout:
       y: -58
       w: 640
       h: 541
-  nodes: { welcome: { x: 80, y: 80 }, bye: { x: 2040, y: 660 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: -240, y: 60 } }
+  nodes: { welcome: { x: -100, y: 60 }, bye: { x: 2040, y: 660 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 200, y: 60 } }
