@@ -58,7 +58,7 @@ nodes:
     type: menu
     label: 메뉴_긴급용무메뉴
     prompts:
-      - tts: 긴급한 용무가 있으신 분은 0번을 눌러주십시오.
+      - tts: 입력하신 숫자는 ${vars.input} 입니다. 긴급한 용무가 있으신 분은 0번을 눌러주십시오.
     choices:
       "0": call_subflow-fx3od9
     noinput_prompts:
@@ -145,5 +145,5 @@ layout:
       x: -30
       y: -58
       w: 640
-      h: 541
+      h: 857
   nodes: { welcome: { x: -100, y: 60 }, branch-jkwl74: { x: -100, y: 360 }, play-yfz753: { x: 280, y: 280 }, hangup-2at4ok: { x: 620, y: 280 }, branch-fxp2az: { x: 240, y: 560 }, play-lj2xgt: { x: 940, y: 460 }, play-7kpcrm: { x: 660, y: 780 }, play-695xwp: { x: 1280, y: 640 }, menu-4w8960: { x: 1660, y: 640 }, set-b96z72: { x: 560, y: 460 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 200, y: 60 }, call_subflow-fx3od9: { x: 2040, y: 600 }, hangup-4tpzqr: { x: 2400, y: 620 }, play-l6j7xa: { x: 2040, y: 820 }, hangup-cw5xwc: { x: 2420, y: 840 }, collect-7sb7j0: { x: 1380, y: 780 } }
