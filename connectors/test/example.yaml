@@ -3,7 +3,7 @@ kind: rest-json
 description: what this API does
 host: test_host # name in hosts.yaml (url)
 timeout_ms: 1500
-retry: 0
+retry: 2
 
 rest:
   method: GET
