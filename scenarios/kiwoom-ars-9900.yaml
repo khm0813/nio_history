@@ -1,7 +1,6 @@
 id: kiwoom-ars-9900
 version: 0.1.1
 name: 키움증권 9900 시나리오
-start: welcome
 defaults:
   timeout_sec: 5
   max_retry: 3
@@ -15,7 +14,6 @@ nodes:
       - tts: 안녕하세요. 키움증권입니다만, 이것은 BP교환기로 받은 콜입니다.
         id: M00000
     next: menu
-    service_code: N00000000
   bye:
     type: hangup
     label: 종료
@@ -57,7 +55,6 @@ nodes:
       "1": play_2
       "2": menu
       "3": menu
-      "#": welcome
       "*": menu_2
     nomatch_prompts:
       - id: nomatch
@@ -219,6 +216,11 @@ nodes:
       - tts: 매수하시려는 종목코드 6자리를 눌러주십시오.
         id: C1000034
     next: ask_code
+  service_code-glv0ls:
+    type: service_code
+    label: 인사 통계
+    service_code: U00000000
+    next: welcome
 sections:
   main:
     title: 키움증권 9900 시나리오
@@ -226,6 +228,7 @@ sections:
       - welcome
       - bye
       - menu
+      - service_code-glv0ls
   sec:
     nodes:
       - play
@@ -339,3 +342,7 @@ layout:
     play_4:
       x: -320
       y: -360
+    service_code-glv0ls:
+      x: -900
+      y: -80
+start: service_code-glv0ls
