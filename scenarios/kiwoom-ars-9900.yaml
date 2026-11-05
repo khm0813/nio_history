@@ -27,10 +27,9 @@ nodes:
       - id: M00001
         tts: 빠른주문은 1번, 일반주문은 2번 , 현재가,호가안내는 3번,  상담원연결은 0번을 눌러주세요.
     choices:
-      "0": call_subflow_2
-      "1": call_subflow_2
+      "0": service_code-0n49o9
+      "1": service_code-0n49o9
       "2": bye
-      "3": play
     noinput_prompts:
       - id: noinput
         tts: 입력이 없습니다. 다시 시도해주세요.
@@ -43,7 +42,6 @@ nodes:
     prompts:
       - tts: 시세 및 시황 서비스입니다.
         id: M00002
-    service_code: N20000001
     next: set
   menu_2:
     type: menu
@@ -221,6 +219,11 @@ nodes:
     label: 인사 통계
     service_code: U00000000
     next: welcome
+  service_code-0n49o9:
+    type: service_code
+    label: 시세및시황 진입 멘트 통계
+    service_code: N20000001
+    next: play
 sections:
   main:
     title: 키움증권 9900 시나리오
@@ -238,6 +241,7 @@ sections:
       - call_subflow_2
       - hangup
       - play_3
+      - service_code-0n49o9
     title: "03 : 시세및 시황 서비스"
   sec_2:
     title: "03 > 01 : 현재가 및 호가 안내"
@@ -345,4 +349,7 @@ layout:
     service_code-glv0ls:
       x: -900
       y: -80
+    service_code-0n49o9:
+      x: -2320
+      y: -40
 start: service_code-glv0ls
