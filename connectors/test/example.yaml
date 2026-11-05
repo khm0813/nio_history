@@ -6,7 +6,7 @@ timeout_ms: 1500
 retry: 0
 
 rest:
-  method: POST
+  method: GET
   path: /avatar/info
   headers: { X-Channel: IVR }
   body_template: { custId: "${in.custId}", ani: "${in.ani}" }
