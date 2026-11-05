@@ -222,7 +222,7 @@ nodes:
   service_code-0n49o9:
     type: service_code
     label: 시세및시황 진입 멘트 통계
-    service_code: N20000001
+    service_code: U00000000
     next: play
 sections:
   main:
