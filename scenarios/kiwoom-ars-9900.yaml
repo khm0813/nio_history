@@ -50,7 +50,6 @@ nodes:
       - tts: 현재가 및 호가 안내는 1번, 관심 종목 또는 보유 종목 현재가 조회 및  주문은 2번, 지수 정보 안내는 3번, 직원 연결은 0번, 이전 서비스 우물 정자, 다시 듣기는 별표를 눌러 주십시오
         id: V130001
     choices:
-      "1": play_2
       "2": menu
       "3": menu
       "*": menu_2
@@ -66,7 +65,6 @@ nodes:
     prompts:
       - tts: 현재가 및 호가 안내 서비스입니다.
         id: V1030002
-    service_code: N20000002
     next: notice
   notice:
     type: play
