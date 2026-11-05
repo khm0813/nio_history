@@ -262,4 +262,9 @@ overrides:
   - "center"
   hours: "08:00-12:00"
   name: "크리스마스근무"
+- from: "2026-11-05T20:11"
+  until: "2026-11-05T20:41"
+  calendars:
+  - "center"
+  name: "즉시 닫기"
 rules: []
