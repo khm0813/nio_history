@@ -13,4 +13,4 @@ hosts:
   shell:
     # this node's vendor shell (agent state, /cti/*)
     url: http://127.0.0.1:7080/nio-shell
-  test_host: { url: https://104.21.68.161 }
+  test_host: { url: http://104.21.68.161 }
