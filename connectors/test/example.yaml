@@ -8,7 +8,7 @@ retry: 2
 rest:
   method: GET
   path: /avatar/info
-  headers: { X-Channel: IVR }
+  headers: { X-Channel: IVR, Content-Type: application/json }
   body_template: { custId: "${in.custId}", ani: "${in.ani}" }
   response_map:
     # out field <- dotted path in the JSON response
