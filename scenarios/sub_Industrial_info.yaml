@@ -27,7 +27,7 @@ sections:
 layout:
   nodes:
     step:
-      x: -160
+      x: -240
       y: 0
     done:
       x: 320
