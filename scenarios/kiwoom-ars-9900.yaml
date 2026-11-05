@@ -30,6 +30,7 @@ nodes:
       "0": service_code-0n49o9
       "1": service_code-0n49o9
       "2": bye
+      "3": play_2
     noinput_prompts:
       - id: noinput
         tts: 입력이 없습니다. 다시 시도해주세요.
