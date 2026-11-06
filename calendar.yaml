@@ -11,6 +11,7 @@ calendars:
       thu: "09:00-18:00"
       fri: "09:00-18:00"
     holidays: true
+    site_holidays: false
   night_center:
     name: "야간상담"
     hours:
