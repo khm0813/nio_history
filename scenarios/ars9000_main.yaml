@@ -55,6 +55,7 @@ nodes:
         next: play_2
       - when: vars.peakday == "false" and vars.peaktime == "false"
         next: welcome
+    default: welcome
   play:
     type: play
     label: "피크 데이 멘트"
@@ -85,30 +86,30 @@ sections:
 layout:
   nodes:
     welcome:
-      x: 200
-      y: 380
+      x: 1180
+      y: -300
     bye:
-      x: 560
-      y: 420
+      x: 1480
+      y: -280
     goto:
       x: -160
       y: -180
     script:
-      x: -140
-      y: -40
+      x: 140
+      y: -180
     branch:
-      x: 340
-      y: -40
+      x: 440
+      y: -200
     play:
-      x: -140
-      y: 300
+      x: 880
+      y: -300
     play_2:
-      x: -140
-      y: 440
+      x: 880
+      y: -100
   sections:
     main:
-      x: -130
-      y: -58
-      w: 740
-      h: 533
+      x: -190
+      y: -358
+      w: 2200
+      h: 807
 name: 흥국생명_1588-2288_콜센터대표번호
