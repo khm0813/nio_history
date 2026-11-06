@@ -22,7 +22,6 @@ nodes:
         id: bye
   menu:
     type: menu
-    label: menu
     prompts:
       - id: M00001
         tts: 빠른주문은 1번, 일반주문은 2번 , 현재가,호가안내는 3번,  상담원연결은 0번을 눌러주세요.
@@ -37,6 +36,7 @@ nodes:
     nomatch_prompts:
       - id: nomatch
         tts: 잘못 누르셨습니다. 다시 시도해주세요.
+    label: 첫진입메뉴
   play:
     type: play
     label: 시세및시황 진입 멘트
