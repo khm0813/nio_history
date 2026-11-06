@@ -11,7 +11,7 @@ nodes:
     type: play
     label: 첫진입인사
     prompts:
-      - tts: 안녕하세요. 키움증권입니다만, 이것은 BP교환기로 받은 콜입니다.
+      - tts: 안녕하세요. 키움증권입니다. 만나서 반갑습니다.
         id: M00000
     next: menu
   bye:
