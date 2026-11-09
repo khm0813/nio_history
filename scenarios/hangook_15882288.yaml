@@ -131,7 +131,7 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: 안녕하십니까. 키움증권 입니다.
+      - tts: 안녕하십니까. 브라이트패턴 교환기에서 인입된 콜 입니다.
     next: notice-fwgvje
   welcome-hlwnpk:
     type: play
