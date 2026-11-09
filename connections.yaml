@@ -6,15 +6,15 @@ connections:
   name: "Avaya EP (lab)"
   url: "http://10.0.6.101:7080/nio-shell"
   pbx: "10.0.7.91:443"
+  state: "active"
+  queues:
+    service:Customer Service: "1000"
   verified:
     ok: true
     at: "2026-11-09T05:31:17.136890321Z"
     by: "admin"
     build: "0.1.0-SNAPSHOT+2026-11-09T05:26:52Z"
     detail: "nio-shell.war · http://127.0.0.1:7002"
-  state: "active"
-  queues:
-    service:Customer Service: "1000"
 - id: "bp"
   vendor: "bright-pattern"
   name: "Bright Pattern (lab 245)"
@@ -33,14 +33,15 @@ connections:
 - id: "cvp"
   vendor: "cisco-cvp"
   name: "Cisco CVP"
-  url: "http://10.0.6.101:7080/CVP"
+  url: "http://10.0.6.100:7080/CVP"
   pbx: "10.0.6.246:5060"
-  state: "standby"
-  queues:
-    service:Customer Service: "1000"
   verified:
     ok: true
     at: "2026-11-09T05:31:17.349566071Z"
     by: "admin"
     build: "0.1.0-SNAPSHOT+2026-11-09T05:26:52Z"
     detail: "CVP.war · http://127.0.0.1:7002"
+  state: "standby"
+  queues:
+    service:Customer Service: "1000"
+  mode: "standalone"
