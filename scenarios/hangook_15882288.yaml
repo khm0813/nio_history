@@ -58,7 +58,7 @@ nodes:
     type: menu
     label: 메뉴_긴급용무메뉴
     prompts:
-      - tts: 긴급한 용무가 있으신 분은 0번을 눌러주십시오.
+      - tts: ${vars.input} 을 눌렀습니다. 긴급한 용무가 있으신 분은 0번을 눌러주십시오.
     choices:
       "0": call_subflow-fx3od9
     noinput_prompts:
