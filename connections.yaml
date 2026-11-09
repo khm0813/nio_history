@@ -10,11 +10,13 @@ connections:
   queues:
     service:Customer Service: "1000"
   verified:
-    ok: true
-    at: "2026-11-09T11:46:08.844073777Z"
+    ok: false
+    at: "2026-11-09T23:46:35.858052821Z"
     by: "admin"
-    build: "0.1.0-20261109.3"
-    detail: "nio-shell.war · http://127.0.0.1:7002"
+    build: ""
+    detail: "엔진 http://127.0.0.1:7002 에 셸 배치 폴더가 없습니다(site.yaml engine.shell_webapps\
+      \ 또는 NIO_SHELL_WEBAPPS 로 Tomcat webapps 경로를 주세요): java.net.ConnectException"
+    stage: "engine"
 - id: "bp"
   vendor: "bright-pattern"
   name: "Bright Pattern (lab 245)"
