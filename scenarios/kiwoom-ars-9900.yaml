@@ -26,7 +26,7 @@ nodes:
       - id: M00001
         tts: 빠른주문은 1번, 일반주문은 2번 , 현재가,호가안내는 3번,  상담원연결은 0번을 눌러주세요.
     choices:
-      "0": service_code-0n49o9
+      "0": call_subflow_2
       "1": service_code-0n49o9
       "2": bye
       "3": play_2
