@@ -1,0 +1,22 @@
+id: niotest_emergency
+name: "시험용 엔진 장애 흐름"
+version: 0.1.0
+start: sorry
+defaults: { timeout_sec: 4, max_retry: 1, on_max_retry: bye, on_error: bye }
+nodes:
+  sorry:
+    type: play
+    prompts: [ { tts: "지금은 시스템 점검 중입니다. 잠시 후 다시 걸어 주세요" } ]
+    next: pick
+  pick:
+    type: menu
+    prompts: [ { tts: "상담원 연결은 1번, 종료는 2번을 눌러 주세요" } ]
+    choices: { "1": agent, "2": bye }
+  agent:
+    type: transfer
+    dest: "service:Customer Service"
+    prompts: [ { tts: "상담원을 연결합니다" } ]
+    on_fail: bye
+  bye:
+    type: hangup
+    prompts: [ { tts: "이용해 주셔서 감사합니다" } ]
