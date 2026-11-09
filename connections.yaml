@@ -26,3 +26,6 @@ connections:
   state: "active"
   queues:
     service:Customer Service: "1000"
+  mode: "icm"
+  data_vars:
+    var2: "customer_id"
