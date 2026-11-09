@@ -4,4 +4,5 @@ common:
   before: "common_before"
   on_error: "common_error"
   after: "common_after"
+  emergency: "niotest_emergency"
   after_timeout_ms: 3000
