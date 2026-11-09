@@ -9,6 +9,11 @@ connections:
   state: "active"
   queues:
     service:Customer Service: "1000"
+  numbers:
+  - number: "77001"
+    dnis: "39000"
+    type: "P"
+    note: "nio-test"
   verified:
     ok: true
     at: "2026-11-09T05:31:17.136890321Z"
