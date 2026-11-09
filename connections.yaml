@@ -26,3 +26,9 @@ connections:
   state: "active"
   queues:
     service:Customer Service: "1000"
+  verified:
+    ok: true
+    at: "2026-11-09T03:17:24.011406976Z"
+    by: "admin"
+    build: "0.1.0-SNAPSHOT+2026-11-09T03:13:54Z"
+    detail: "CVP.war · http://127.0.0.1:7002"
