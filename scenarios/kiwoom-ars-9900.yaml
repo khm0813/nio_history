@@ -11,8 +11,8 @@ nodes:
     type: play
     label: 첫진입인사
     prompts:
-      - tts: 안녕하세요. 키움증권입니다. 만나서 반갑습니다.
-        id: M00000
+      - tts: 안녕하세요. 키움증권입니다. 멘트가 변경되었습니다.
+        id: welcome
     next: menu
   bye:
     type: hangup
@@ -231,7 +231,6 @@ sections:
       - bye
       - menu
       - service_code-glv0ls
-    collapsed: true
     note: "키움증권 9900 대표 시나리오 시작 플로우입니다. 해당 섹션에서부터 모든메뉴가 분기되어 처리됩니다."
   sec:
     nodes:
