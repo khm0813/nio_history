@@ -42,8 +42,10 @@ connections:
     service:Customer Service: "1000"
   mode: "standalone"
   verified:
-    ok: true
-    at: "2026-11-09T06:46:22.336534335Z"
+    ok: false
+    at: "2026-11-09T10:53:37.115183208Z"
     by: "admin"
-    build: "0.1.0-SNAPSHOT+2026-11-09T06:30:38Z"
-    detail: "CVP.war · http://127.0.0.1:7002"
+    build: ""
+    detail: "이 셸이 어느 엔진 서버에 있는지 모릅니다. 연결 편집에서 \"설치 엔진\"을 고르세요(셸 주소와 같은 호스트의 엔진이 없음\
+      )"
+    stage: "engine"
