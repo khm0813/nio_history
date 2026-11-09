@@ -9,6 +9,11 @@ connections:
   state: "active"
   queues:
     service:Customer Service: "1000"
+  numbers:
+  - number: "77001"
+    dnis: "39000"
+    type: "P"
+    note: "nio-test"
   verified:
     ok: true
     at: "2026-11-09T05:31:17.136890321Z"
@@ -35,13 +40,13 @@ connections:
   name: "Cisco CVP"
   url: "http://10.0.6.101:7080/CVP"
   pbx: "10.0.6.246:5060"
+  state: "standby"
+  queues:
+    service:Customer Service: "1000"
+  mode: "standalone"
   verified:
     ok: true
     at: "2026-11-09T05:31:17.349566071Z"
     by: "admin"
     build: "0.1.0-SNAPSHOT+2026-11-09T05:26:52Z"
     detail: "CVP.war · http://127.0.0.1:7002"
-  state: "standby"
-  queues:
-    service:Customer Service: "1000"
-  mode: "standalone"
