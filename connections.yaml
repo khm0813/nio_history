@@ -25,13 +25,11 @@ connections:
     service:Customer Service: "D0CE5344-261C-47A1-80C0-26520602E7F3"
     service:Maintenance Renewal: "A6ED540A-C7E8-44A7-9783-61DCF21D5D65"
   verified:
-    ok: false
-    at: "2026-11-09T03:20:44.808025709Z"
+    ok: true
+    at: "2026-11-09T03:22:00.126144900Z"
     by: "admin"
-    build: ""
-    detail: "Bright Pattern 에서 온 통화가 아직 없습니다. 셸 패키지를 내려받아 Bright Pattern 에 가져오고 Dial-in\
-      \ 번호에 묶은 뒤 시험 통화를 한 번 걸고 다시 검증하세요"
-    stage: "bp-call"
+    build: "0.1.0-SNAPSHOT+2026-11-09T03:11:54Z"
+    detail: "package app_nio-shell.zip"
 - id: "cvp"
   vendor: "cisco-cvp"
   name: "Cisco CVP"
