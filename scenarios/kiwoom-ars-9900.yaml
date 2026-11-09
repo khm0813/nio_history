@@ -232,6 +232,7 @@ sections:
       - menu
       - service_code-glv0ls
     collapsed: true
+    note: "키움증권 9900 대표 시나리오 시작 플로우입니다. 해당 섹션에서부터 모든메뉴가 분기되어 처리됩니다."
   sec:
     nodes:
       - play
@@ -244,6 +245,7 @@ sections:
       - service_code-0n49o9
     title: "03 : 시세및 시황 서비스"
     collapsed: true
+    note: "키움증권의 시세 및 시황 서비스를 안내하는 메뉴 플로우 섹션입니다. "
   sec_2:
     title: "03 > 01 : 현재가 및 호가 안내"
     nodes:
@@ -258,7 +260,7 @@ sections:
       - call_backend
       - play_4
     collapsed: true
-    note: "키움증권 현재가 및 호가를 안내하는 메뉴 상세 플로우 섹션입니다."
+    note: "키움증권 현재가 및 호가를 안내하는 메뉴 상세 플로우 섹션입니다. 기간계와 통신을 하는 부분을 포함합니다."
 layout:
   sections:
     main:
