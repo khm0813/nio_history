@@ -35,7 +35,7 @@ connections:
   name: "Cisco CVP"
   url: "http://10.0.6.101:7080/CVP"
   pbx: "10.0.6.246:5060"
-  state: "standby"
+  state: "active"
   queues:
     service:Customer Service: "1000"
   verified:
