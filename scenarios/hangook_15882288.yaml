@@ -79,7 +79,7 @@ nodes:
     type: service_code
     label: ARS 시험 A 통계
     service_code: "T00000000"
-    next: welcome
+    next: branch-5eu8ov
   notice-fwgvje:
     type: notice
     label: 공지사항
@@ -118,6 +118,27 @@ nodes:
     next: menu-4w8960
     on_max_retry: play-l6j7xa
     on_error: play-l6j7xa
+  branch-5eu8ov:
+    type: branch
+    label: 분기
+    cases:
+      - when: session.dnis == '39000'
+        next: welcome
+      - when: session.dnis == '8003'
+        next: welcome-j1dalt
+    default: welcome-hlwnpk
+  welcome-j1dalt:
+    type: play
+    label: 인사
+    prompts:
+      - tts: 안녕하십니까. 키움증권 입니다.
+    next: notice-fwgvje
+  welcome-hlwnpk:
+    type: play
+    label: 인사
+    prompts:
+      - tts: 안녕하십니까. 잘못된 DNIS 값입니다.
+    next: notice-fwgvje
 sections:
   main:
     title: 한국GM_15882288
@@ -139,11 +160,14 @@ sections:
       - play-l6j7xa
       - hangup-cw5xwc
       - collect-7sb7j0
+      - branch-5eu8ov
+      - welcome-j1dalt
+      - welcome-hlwnpk
 layout:
   sections:
     main:
-      x: -30
+      x: -1070
       y: -58
-      w: 640
-      h: 857
-  nodes: { welcome: { x: -280, y: 180 }, branch-jkwl74: { x: 320, y: 160 }, play-yfz753: { x: 620, y: 60 }, hangup-2at4ok: { x: 920, y: 60 }, branch-fxp2az: { x: 620, y: 240 }, play-lj2xgt: { x: 1220, y: 180 }, play-7kpcrm: { x: 1220, y: 300 }, play-695xwp: { x: 1520, y: 240 }, menu-4w8960: { x: 2120, y: 180 }, set-b96z72: { x: 920, y: 180 }, service_code-tg815r: { x: -580, y: 180 }, notice-fwgvje: { x: 20, y: 180 }, call_subflow-fx3od9: { x: 2420, y: 160 }, hangup-4tpzqr: { x: 2720, y: 180 }, play-l6j7xa: { x: 2420, y: 320 }, hangup-cw5xwc: { x: 2720, y: 320 }, collect-7sb7j0: { x: 1820, y: 240 }, ref:collect-7sb7j0:on_max_retry: { x: 2080, y: 300 }, ref:collect-7sb7j0:on_error: { x: 2080, y: 320 } }
+      w: 4100
+      h: 569
+  nodes: { welcome: { x: -280, y: 180 }, branch-jkwl74: { x: 320, y: 160 }, play-yfz753: { x: 620, y: 60 }, hangup-2at4ok: { x: 920, y: 60 }, branch-fxp2az: { x: 620, y: 240 }, play-lj2xgt: { x: 1220, y: 180 }, play-7kpcrm: { x: 1220, y: 300 }, play-695xwp: { x: 1520, y: 240 }, menu-4w8960: { x: 2120, y: 180 }, set-b96z72: { x: 920, y: 180 }, service_code-tg815r: { x: -1040, y: 180 }, notice-fwgvje: { x: 20, y: 180 }, call_subflow-fx3od9: { x: 2420, y: 160 }, hangup-4tpzqr: { x: 2720, y: 180 }, play-l6j7xa: { x: 2420, y: 320 }, hangup-cw5xwc: { x: 2720, y: 320 }, collect-7sb7j0: { x: 1820, y: 240 }, ref:collect-7sb7j0:on_max_retry: { x: 2080, y: 300 }, ref:collect-7sb7j0:on_error: { x: 2080, y: 320 }, branch-5eu8ov: { x: -680, y: 220 }, welcome-j1dalt: { x: -280, y: 360 }, welcome-hlwnpk: { x: -280, y: 540 } }
