@@ -243,7 +243,6 @@ sections:
       - play_3
       - service_code-0n49o9
     title: "03 : 시세및 시황 서비스"
-    collapsed: true
     note: "키움증권의 시세 및 시황 서비스를 안내하는 메뉴 플로우 섹션입니다. "
   sec_2:
     title: "03 > 01 : 현재가 및 호가 안내"
@@ -258,15 +257,14 @@ sections:
       - not_ready
       - call_backend
       - play_4
-    collapsed: true
     note: "키움증권 현재가 및 호가를 안내하는 메뉴 상세 플로우 섹션입니다. 기간계와 통신을 하는 부분을 포함합니다."
 layout:
   sections:
     main:
-      x: -30
-      y: -58
-      w: 640
-      h: 351
+      x: -930
+      y: -218
+      w: 1540
+      h: 406
     sec:
       x: -490
       y: -58
