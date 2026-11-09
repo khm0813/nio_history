@@ -9,6 +9,7 @@ connections:
   state: "active"
   queues:
     service:Customer Service: "1000"
+    service:주문: "52111"
   verified:
     ok: true
     at: "2026-11-09T05:31:17.136890321Z"
