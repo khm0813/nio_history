@@ -33,7 +33,7 @@ connections:
 - id: "cvp"
   vendor: "cisco-cvp"
   name: "Cisco CVP"
-  url: "http://10.0.6.100:7080/CVP"
+  url: "http://10.0.6.101:7080/CVP"
   pbx: "10.0.6.246:5060"
   verified:
     ok: true
