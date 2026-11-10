@@ -6,7 +6,7 @@ connections:
   name: "Avaya EP (lab)"
   url: "http://10.0.6.101:7080/nio-shell"
   pbx: "10.0.7.91:443"
-  state: "standby"
+  state: "active"
   queues:
     service:Customer Service: "1000"
     service:테스트큐: "569900"
