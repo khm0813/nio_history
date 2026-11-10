@@ -17,3 +17,7 @@ services:
     numbers:
     - "queue:wait"
     main: "cisco_queue_wait"
+  test_main:
+    numbers:
+    - "*"
+    main: "test_main"
