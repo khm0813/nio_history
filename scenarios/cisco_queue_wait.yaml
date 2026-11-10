@@ -1,0 +1,16 @@
+id: cisco_queue_wait
+version: 0.1.0
+name: Cisco 큐 대기 안내
+start: wait
+nodes:
+  wait:
+    type: play
+    label: 대기 안내
+    prompts:
+      - id: queue_wait
+        tts: 지금은 모든 상담원이 통화 중입니다. 잠시만 기다려 주시면 곧 연결해 드리겠습니다.
+    next: done
+  done:
+    type: hangup
+    label: 대기 안내 끝
+    reason: normal
