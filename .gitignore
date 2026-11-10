@@ -10,6 +10,7 @@
 !/servicecodes.yaml
 !/notices.yaml
 !/alerts.yaml
+!/queues.yaml
 !/review.yaml
 !/scenarios/
 !/connectors/
