@@ -14,3 +14,9 @@ nodes:
     type: hangup
     label: 대기 안내 끝
     reason: normal
+sections:
+  main:
+    title: cisco_queue_wait_메인
+    nodes:
+      - wait
+      - done
