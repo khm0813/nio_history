@@ -8,9 +8,9 @@ connections:
   pbx: "10.0.7.91:443"
   verified:
     ok: true
-    at: "2026-11-09T23:49:30.133147594Z"
+    at: "2026-11-10T05:52:42.549781940Z"
     by: "admin"
-    build: "0.1.0-20261109.3"
+    build: "0.1.0-20261110.1"
     detail: "nio-shell.war · http://127.0.0.1:7002"
   state: "standby"
   queues:
