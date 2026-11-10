@@ -81,25 +81,25 @@ layout:
   nodes:
     welcome:
       x: -160
-      y: -160
+      y: -100
     bye:
       x: 740
-      y: -220
+      y: -80
     service_code-toc51k:
       x: -760
-      y: -140
+      y: -80
     branch-q3c9rm:
       x: 140
-      y: -180
+      y: -120
     play-hg3b8v:
       x: 440
       y: -220
     play-7hx4gt:
-      x: 460
-      y: 0
+      x: 440
+      y: -100
     notice-x32arn:
       x: -460
-      y: -160
+      y: -100
     play-ofp42y:
-      x: 480
-      y: 200
+      x: 440
+      y: 20
