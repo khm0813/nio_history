@@ -23,7 +23,13 @@ nodes:
     type: service_code
     label: 통합테스트 메인시나리오 시작 통계
     service_code: "TEST0000"
-    next: welcome
+    next: branch-q3c9rm
+  branch-q3c9rm:
+    type: branch
+    label: 분기
+    cases:
+      - when: session.dnis == '68001'
+        next: welcome
 sections:
   main:
     title: 통합테스트시나리오-메인분기
@@ -31,20 +37,24 @@ sections:
       - welcome
       - bye
       - service_code-toc51k
+      - branch-q3c9rm
 layout:
   sections:
     main:
-      x: -30
+      x: -630
       y: -58
-      w: 640
-      h: 609
+      w: 1240
+      h: 500
   nodes:
     welcome:
-      x: -180
-      y: 100
+      x: 60
+      y: 40
     bye:
-      x: 260
-      y: 120
-    service_code-toc51k:
-      x: -600
+      x: 400
       y: 100
+    service_code-toc51k:
+      x: -680
+      y: 80
+    branch-q3c9rm:
+      x: -300
+      y: 40
