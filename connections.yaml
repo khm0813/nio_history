@@ -36,13 +36,11 @@ connections:
   url: "http://10.0.6.101:7080/CVP"
   pbx: "10.0.6.246:5060"
   verified:
-    ok: false
-    at: "2026-11-10T09:05:34.774365748Z"
+    ok: true
+    at: "2026-11-10T09:14:20.245937052Z"
     by: "admin"
-    build: ""
-    detail: "셸 자체 시험 실패: engine did not answer the warm-up session (engine down, or\
-      \ no default entry * in entry.yaml)"
-    stage: "selftest"
+    build: "0.1.0-20261110.2"
+    detail: "CVP.war · http://127.0.0.1:7002"
   state: "active"
   queues:
     service:Customer Service: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
