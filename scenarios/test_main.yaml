@@ -23,7 +23,7 @@ nodes:
     type: service_code
     label: 통합테스트 메인시나리오 시작 통계
     service_code: "TEST0000"
-    next: welcome
+    next: notice-x32arn
   branch-q3c9rm:
     type: branch
     label: 분기
@@ -45,6 +45,12 @@ nodes:
     label: 통합테스트시나리오_멘트 재생(BP인입)
     prompts:
       - tts: "${session.vendor} 으로부터 연결되었습니다. "
+  notice-x32arn:
+    type: notice
+    label: 공지사항
+    next: welcome
+    notices:
+      - n-20261110-1
 sections:
   main:
     title: 통합테스트시나리오-메인분기
@@ -55,6 +61,7 @@ sections:
       - branch-q3c9rm
       - play-hg3b8v
       - play-7hx4gt
+      - notice-x32arn
 layout:
   sections:
     main:
@@ -64,20 +71,23 @@ layout:
       h: 835
   nodes:
     welcome:
-      x: -440
-      y: -20
+      x: -160
+      y: -160
     bye:
-      x: 540
-      y: -100
+      x: 740
+      y: -220
     service_code-toc51k:
       x: -760
-      y: -40
+      y: -140
     branch-q3c9rm:
-      x: -140
-      y: -100
+      x: 140
+      y: -180
     play-hg3b8v:
-      x: 220
-      y: -160
+      x: 440
+      y: -220
     play-7hx4gt:
-      x: 220
-      y: 40
+      x: 440
+      y: -100
+    notice-x32arn:
+      x: -460
+      y: -160
