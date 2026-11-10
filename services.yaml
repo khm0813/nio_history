@@ -3,7 +3,7 @@
 services:
   kiwoom-ars-9900:
     numbers:
-    - "*"
+    - "9900"
     main: "kiwoom-ars-9900"
   ars9000_main:
     numbers:
