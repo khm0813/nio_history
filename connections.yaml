@@ -45,8 +45,6 @@ connections:
   queues:
     service:Customer Service: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
   mode: "icm"
-  data_vars:
-    skillgroup: "nio_test_queue"
   returns:
     caller_input: "Y"
     FromExtVXML0: "EndType=${end_type};CTNm=${queue.CTNm};PQNm=${queue.PQNm};TrnNo=${number};"
