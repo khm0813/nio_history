@@ -22,4 +22,11 @@ nodes:
 sections:
   main:
     title: 통합테스트시나리오
-    nodes: [welcome, bye]
+    nodes: [ welcome, bye ]
+layout:
+  sections:
+    main:
+      x: -30
+      y: -58
+      w: 640
+      h: 524
