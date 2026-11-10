@@ -8,7 +8,7 @@ connections:
   pbx: "10.0.7.91:443"
   verified:
     ok: false
-    at: "2026-11-10T09:06:43.677736044Z"
+    at: "2026-11-10T09:12:24.012527819Z"
     by: "admin"
     build: ""
     detail: "셸 자체 시험 실패: engine did not answer the warm-up session (engine down, or\
