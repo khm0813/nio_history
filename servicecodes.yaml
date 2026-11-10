@@ -27,3 +27,10 @@ groups:
     name: "ARS 시험 B"
     parent: ""
     dtmf: ""
+- id: "903"
+  name: "통합테스트"
+  codes:
+  - code: "TEST0000"
+    name: "통합테스트 메인시나리오 시작"
+    parent: ""
+    dtmf: ""
