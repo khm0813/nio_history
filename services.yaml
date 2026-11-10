@@ -15,3 +15,7 @@ services:
     - "8003"
     - "68001"
     main: "hangook_15882288"
+  cisco_queue_wait:
+    numbers:
+    - "queue:wait"
+    main: "cisco_queue_wait"

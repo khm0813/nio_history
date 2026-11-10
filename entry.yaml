@@ -6,3 +6,4 @@ entry:
   "39000": "hangook_15882288"
   "8003": "hangook_15882288"
   "68001": "hangook_15882288"
+  queue:wait: "cisco_queue_wait"
