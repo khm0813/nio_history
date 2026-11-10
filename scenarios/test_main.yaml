@@ -44,7 +44,7 @@ nodes:
     type: play
     label: 통합테스트시나리오_멘트 재생(BP인입)
     prompts:
-      - tts: "BP로부터 인입되었습니다. 교환기로부터 전달 받은값은 "
+      - tts: "${session.vendor} 으로부터 연결되었습니다. "
 sections:
   main:
     title: 통합테스트시나리오-메인분기
@@ -58,10 +58,10 @@ sections:
 layout:
   sections:
     main:
-      x: -630
-      y: -58
-      w: 1240
-      h: 500
+      x: -790
+      y: -218
+      w: 1640
+      h: 835
   nodes:
     welcome:
       x: -440
@@ -77,7 +77,7 @@ layout:
       y: -100
     play-hg3b8v:
       x: 220
-      y: -140
+      y: -160
     play-7hx4gt:
       x: 220
-      y: 0
+      y: 40
