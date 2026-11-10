@@ -32,6 +32,7 @@ nodes:
         next: play-hg3b8v
       - when: session.dnis == '8003'
         next: play-7hx4gt
+    default: play-ofp42y
   play-hg3b8v:
     type: play
     label: 통합테스트시나리오_멘트 재생(CVP인입)
@@ -52,6 +53,12 @@ nodes:
     next: welcome
     notices:
       - n-20261110-1
+  play-ofp42y:
+    type: play
+    label: 통합테스트시나리오_멘트 재생(BP인입)
+    prompts:
+      - tts: "${session.vendor} 으로부터 연결되었습니다. "
+    next: bye
 sections:
   main:
     title: 통합테스트시나리오-메인분기
@@ -63,6 +70,7 @@ sections:
       - play-hg3b8v
       - play-7hx4gt
       - notice-x32arn
+      - play-ofp42y
 layout:
   sections:
     main:
@@ -87,8 +95,11 @@ layout:
       x: 440
       y: -220
     play-7hx4gt:
-      x: 480
+      x: 460
       y: 0
     notice-x32arn:
       x: -460
       y: -160
+    play-ofp42y:
+      x: 480
+      y: 200
