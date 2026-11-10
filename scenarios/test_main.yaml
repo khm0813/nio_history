@@ -19,14 +19,32 @@ nodes:
     label: 종료
     prompts:
       - tts: 감사합니다.
+  service_code-toc51k:
+    type: service_code
+    label: 서비스코드
+    service_code: ""
+    next: welcome
 sections:
   main:
     title: 통합테스트시나리오
-    nodes: [ welcome, bye ]
+    nodes:
+      - welcome
+      - bye
+      - service_code-toc51k
 layout:
   sections:
     main:
       x: -30
       y: -58
       w: 640
-      h: 524
+      h: 609
+  nodes:
+    welcome:
+      x: -140
+      y: 100
+    bye:
+      x: 200
+      y: 120
+    service_code-toc51k:
+      x: -460
+      y: 100
