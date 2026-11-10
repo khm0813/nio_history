@@ -34,7 +34,9 @@ nodes:
     type: play
     label: 멘트 재생
     prompts:
-      - tts: "시스코 ICM 으로부터 연결되었습니다. 전달받은값은 "
+      - tts: |-
+          시스코 ICM 으로부터 연결되었습니다. 전달받은값은 Application  : ${session.cvp_application}, ani : ${session.cvp__ani}, callKey : ${session.cvp_callkey}
+          으로 전달받았습니다.
     next: bye
 sections:
   main:
