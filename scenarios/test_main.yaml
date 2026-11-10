@@ -56,17 +56,17 @@ layout:
       h: 500
   nodes:
     welcome:
-      x: -320
+      x: -380
       y: 0
     bye:
-      x: 400
-      y: 100
+      x: 520
+      y: 20
     service_code-toc51k:
       x: -680
-      y: 80
+      y: 20
     branch-q3c9rm:
-      x: -220
-      y: 160
+      x: -80
+      y: 0
     play-hg3b8v:
-      x: 100
-      y: 100
+      x: 220
+      y: 0
