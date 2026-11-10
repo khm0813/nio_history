@@ -51,6 +51,8 @@ nodes:
     next: welcome
     notices:
       - n-20261110-1
+    exits:
+      end: welcome
 sections:
   main:
     title: 통합테스트시나리오-메인분기
