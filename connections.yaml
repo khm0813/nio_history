@@ -7,13 +7,11 @@ connections:
   url: "http://10.0.6.101:7080/nio-shell"
   pbx: "10.0.7.91:443"
   verified:
-    ok: false
-    at: "2026-11-10T09:13:05.055804179Z"
+    ok: true
+    at: "2026-11-10T09:14:16.673200451Z"
     by: "admin"
-    build: ""
-    detail: "셸 자체 시험 실패: engine did not answer the warm-up session (engine down, or\
-      \ no default entry * in entry.yaml)"
-    stage: "selftest"
+    build: "0.1.0-20261110.2"
+    detail: "nio-shell.war · http://127.0.0.1:7002"
   state: "standby"
   queues:
     service:Customer Service: "1000"
