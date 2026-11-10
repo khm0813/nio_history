@@ -13,7 +13,6 @@ services:
     numbers:
     - "39000"
     - "8003"
-    - "68001"
     main: "hangook_15882288"
   cisco_queue_wait:
     numbers:
