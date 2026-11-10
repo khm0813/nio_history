@@ -1,0 +1,7 @@
+# Agent queues scenarios transfer to (name + note). Each switch's value is in connections.yaml. Written by the console.
+---
+queues:
+- name: "service:Customer Service"
+- name: "service:Maintenance Renewal"
+- name: "service:테스트큐"
+  note: "통합테스트에서 사용하는 큐"
