@@ -1,0 +1,540 @@
+id: it_c_menu
+version: 0.1.0
+name: 통합테스트 C. 메뉴
+description: '통합테스트 묶음 C(메뉴): test_main 이 시험 번호 03xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '0301'
+      next: c1
+    - when: vars.it_case == '0302'
+      next: c2
+    - when: vars.it_case == '0303'
+      next: c3
+    - when: vars.it_case == '0304'
+      next: c4
+    - when: vars.it_case == '0305'
+      next: c5
+    - when: vars.it_case == '0306'
+      next: c6
+    - when: vars.it_case == '0307'
+      next: c7
+    - when: vars.it_case == '0308'
+      next: c8
+    - when: vars.it_case == '0309'
+      next: c9
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: branch
+    label: 기본 재시도 초과 경로
+    cases:
+    - when: vars.it_id == 'C6'
+      next: pass
+    default: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  c1:
+    type: set
+    label: '[C1] 시작'
+    vars:
+      it_id: C1
+    next: c1_code
+  c1_code:
+    type: service_code
+    label: '[C1] 통계'
+    service_code: IT_C1
+    next: c1_say
+  c1_say:
+    type: play
+    label: '[C1] 안내'
+    prompts:
+    - tts: 시험 C1. 메뉴 숫자 키. 들리는 번호를 하나씩 누르세요. 영부터 구까지입니다
+      bargein: false
+    next: c1_k0
+  c1_k0:
+    type: menu
+    label: 0 키
+    prompts:
+    - tts: 영 번
+    choices:
+      '0': c1_k1
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k1:
+    type: menu
+    label: 1 키
+    prompts:
+    - tts: 일 번
+    choices:
+      '1': c1_k2
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k2:
+    type: menu
+    label: 2 키
+    prompts:
+    - tts: 이 번
+    choices:
+      '2': c1_k3
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k3:
+    type: menu
+    label: 3 키
+    prompts:
+    - tts: 삼 번
+    choices:
+      '3': c1_k4
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k4:
+    type: menu
+    label: 4 키
+    prompts:
+    - tts: 사 번
+    choices:
+      '4': c1_k5
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k5:
+    type: menu
+    label: 5 키
+    prompts:
+    - tts: 오 번
+    choices:
+      '5': c1_k6
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k6:
+    type: menu
+    label: 6 키
+    prompts:
+    - tts: 육 번
+    choices:
+      '6': c1_k7
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k7:
+    type: menu
+    label: 7 키
+    prompts:
+    - tts: 칠 번
+    choices:
+      '7': c1_k8
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k8:
+    type: menu
+    label: 8 키
+    prompts:
+    - tts: 팔 번
+    choices:
+      '8': c1_k9
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c1_k9:
+    type: menu
+    label: 9 키
+    prompts:
+    - tts: 구 번
+    choices:
+      '9': pass
+    max_retry: 0
+    on_max_retry: fail
+    timeout_sec: 5
+  c2:
+    type: set
+    label: '[C2] 시작'
+    vars:
+      it_id: C2
+    next: c2_code
+  c2_code:
+    type: service_code
+    label: '[C2] 통계'
+    service_code: IT_C2
+    next: c2_say
+  c2_say:
+    type: play
+    label: '[C2] 안내'
+    prompts:
+    - tts: 시험 C2. 메뉴 별표·우물 정자. 별표를 누르고, 다음에 우물 정자를 누르세요
+      bargein: false
+    next: c2_star
+  c2_star:
+    type: menu
+    label: '* 키'
+    prompts:
+    - tts: 별표
+    choices:
+      '*': c2_hash
+    max_retry: 0
+    on_max_retry: fail
+  c2_hash:
+    type: menu
+    label: '# 키'
+    prompts:
+    - tts: 우물 정자
+    choices:
+      '#': pass
+    max_retry: 0
+    on_max_retry: fail
+  c3:
+    type: set
+    label: '[C3] 시작'
+    vars:
+      it_id: C3
+    next: c3_code
+  c3_code:
+    type: service_code
+    label: '[C3] 통계'
+    service_code: IT_C3
+    next: c3_say
+  c3_say:
+    type: play
+    label: '[C3] 안내'
+    prompts:
+    - tts: 시험 C3. 메뉴 무입력. 아무것도 누르지 마세요
+      bargein: false
+    next: c3_menu
+  c3_menu:
+    type: menu
+    label: 무입력 두 번
+    prompts:
+    - tts: 메뉴입니다. 누르지 마세요.
+    choices:
+      '1': fail
+    noinput_prompts:
+    - tts: 입력이 없습니다.
+    timeout_sec: 3
+    max_retry: 1
+    on_max_retry: pass
+  c4:
+    type: set
+    label: '[C4] 시작'
+    vars:
+      it_id: C4
+    next: c4_code
+  c4_code:
+    type: service_code
+    label: '[C4] 통계'
+    service_code: IT_C4
+    next: c4_say
+  c4_say:
+    type: play
+    label: '[C4] 안내'
+    prompts:
+    - tts: 시험 C4. 메뉴 없는 키. 구 번을 먼저 누르고, 다시 읽어 주면 일 번을 누르세요
+      bargein: false
+    next: c4_menu
+  c4_menu:
+    type: menu
+    label: 없는 키 뒤 바른 키
+    prompts:
+    - tts: 일 번을 누르세요.
+    choices:
+      '1': pass
+    nomatch_prompts:
+    - tts: 잘못 누르셨습니다.
+    max_retry: 2
+    on_max_retry: fail
+  c5:
+    type: set
+    label: '[C5] 시작'
+    vars:
+      it_id: C5
+    next: c5_code
+  c5_code:
+    type: service_code
+    label: '[C5] 통계'
+    service_code: IT_C5
+    next: c5_say
+  c5_say:
+    type: play
+    label: '[C5] 안내'
+    prompts:
+    - tts: 시험 C5. 메뉴 재시도 초과. 구 번을 세 번 누르세요
+      bargein: false
+    next: c5_menu
+  c5_menu:
+    type: menu
+    label: 재시도 초과
+    prompts:
+    - tts: 구 번을 누르세요.
+    choices:
+      '1': fail
+    nomatch_prompts:
+    - tts: 잘못 누르셨습니다.
+    max_retry: 2
+    on_max_retry: pass
+  c6:
+    type: set
+    label: '[C6] 시작'
+    vars:
+      it_id: C6
+    next: c6_code
+  c6_code:
+    type: service_code
+    label: '[C6] 통계'
+    service_code: IT_C6
+    next: c6_say
+  c6_say:
+    type: play
+    label: '[C6] 안내'
+    prompts:
+    - tts: 시험 C6. 메뉴 기본값 상속. 아무것도 누르지 마세요
+      bargein: false
+    next: c6_menu
+  c6_menu:
+    type: menu
+    label: 기본값 상속(재시도 2회, 기본 경로)
+    prompts:
+    - tts: 누르지 마세요.
+    choices:
+      '1': fail
+    timeout_sec: 3
+  c7:
+    type: set
+    label: '[C7] 시작'
+    vars:
+      it_id: C7
+    next: c7_code
+  c7_code:
+    type: service_code
+    label: '[C7] 통계'
+    service_code: IT_C7
+    next: c7_say
+  c7_say:
+    type: play
+    label: '[C7] 안내'
+    prompts:
+    - tts: 시험 C7. 메뉴 무입력 판단 초. 아무것도 누르지 마세요. 이 초와 십 초를 잽니다
+      bargein: false
+    next: c7_2s
+  c7_2s:
+    type: menu
+    label: 무입력 2초
+    prompts:
+    - tts: 이 초 대기.
+    choices:
+      '1': fail
+    timeout_sec: 2
+    max_retry: 0
+    on_max_retry: c7_10s
+  c7_10s:
+    type: menu
+    label: 무입력 10초
+    prompts:
+    - tts: 십 초 대기.
+    choices:
+      '1': fail
+    timeout_sec: 10
+    max_retry: 0
+    on_max_retry: pass
+  c8:
+    type: set
+    label: '[C8] 시작'
+    vars:
+      it_id: C8
+    next: c8_code
+  c8_code:
+    type: service_code
+    label: '[C8] 통계'
+    service_code: IT_C8
+    next: c8_say
+  c8_say:
+    type: play
+    label: '[C8] 안내'
+    prompts:
+    - tts: 시험 C8. 멘트 중 선택. 메뉴 문장이 끝나기 전에 일 번을 누르세요
+      bargein: false
+    next: c8_menu
+  c8_menu:
+    type: menu
+    label: 멘트 중 선택
+    prompts:
+    - tts: 일 번은 통과, 이 번은 실패, 삼 번도 실패, 사 번도 실패입니다. 이 문장이 끝나기 전에 누르세요.
+    choices:
+      '1': pass
+      '2': fail
+      '3': fail
+      '4': fail
+    max_retry: 1
+    on_max_retry: fail
+  c9:
+    type: set
+    label: '[C9] 시작'
+    vars:
+      it_id: C9
+    next: c9_code
+  c9_code:
+    type: service_code
+    label: '[C9] 통계'
+    service_code: IT_C9
+    next: c9_say
+  c9_say:
+    type: play
+    label: '[C9] 안내'
+    prompts:
+    - tts: 시험 C9. 무입력·오류 멘트 없이 재시도. 아무것도 누르지 마세요
+      bargein: false
+    next: c9_menu
+  c9_menu:
+    type: menu
+    label: 재시도 멘트 없음
+    prompts:
+    - tts: 누르지 마세요. 추가 안내 없이 다시 읽습니다.
+    choices:
+      '1': fail
+    timeout_sec: 3
+    max_retry: 1
+    on_max_retry: pass
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_c1:
+    title: '[C1] 메뉴 숫자 키'
+    note: '누를 것: 안내대로 0~9 중 들은 키 / 들려야 할 것: 통과'
+    nodes:
+    - c1
+    - c1_code
+    - c1_say
+    - c1_k0
+    - c1_k1
+    - c1_k2
+    - c1_k3
+    - c1_k4
+    - c1_k5
+    - c1_k6
+    - c1_k7
+    - c1_k8
+    - c1_k9
+  t_c2:
+    title: '[C2] 메뉴 별표·우물 정자'
+    note: '누를 것: * 다음 # / 들려야 할 것: 통과'
+    nodes:
+    - c2
+    - c2_code
+    - c2_say
+    - c2_star
+    - c2_hash
+  t_c3:
+    title: '[C3] 메뉴 무입력'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 무입력 안내 뒤 메뉴를 다시 읽고, 다시 무입력이면 "통과"'
+    nodes:
+    - c3
+    - c3_code
+    - c3_say
+    - c3_menu
+  t_c4:
+    title: '[C4] 메뉴 없는 키'
+    note: '누를 것: 9 / 들려야 할 것: 잘못 누름 안내 뒤 메뉴를 다시 읽음, 그다음 1'
+    nodes:
+    - c4
+    - c4_code
+    - c4_say
+    - c4_menu
+  t_c5:
+    title: '[C5] 메뉴 재시도 초과'
+    note: '누를 것: 9 를 세 번 / 들려야 할 것: 재시도 초과 경로로 "통과"'
+    nodes:
+    - c5
+    - c5_code
+    - c5_say
+    - c5_menu
+  t_c6:
+    title: '[C6] 메뉴 기본값 상속'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 시나리오 기본값(2회)대로 재시도 초과 뒤 "통과"'
+    nodes:
+    - c6
+    - c6_code
+    - c6_say
+    - c6_menu
+  t_c7:
+    title: '[C7] 메뉴 무입력 판단 초'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 2초 뒤와 10초 뒤 각각 무입력 안내'
+    nodes:
+    - c7
+    - c7_code
+    - c7_say
+    - c7_2s
+    - c7_10s
+  t_c8:
+    title: '[C8] 멘트 중 선택'
+    note: '누를 것: 메뉴 멘트가 끝나기 전에 1 / 들려야 할 것: 통과'
+    nodes:
+    - c8
+    - c8_code
+    - c8_say
+    - c8_menu
+  t_c9:
+    title: '[C9] 무입력·오류 멘트 없이 재시도'
+    note: '누를 것: 아무것도 누르지 않음(두 번) / 들려야 할 것: 추가 안내 없이 메뉴를 다시 읽고 "통과"'
+    nodes:
+    - c9
+    - c9_code
+    - c9_say
+    - c9_menu
