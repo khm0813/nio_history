@@ -99,6 +99,14 @@ nodes:
       next: it_go_m
     - when: startsWith(vars.it_case, '12')
       next: it_go_l
+    - when: startsWith(vars.it_case, '09')
+      next: it_go_i
+    - when: startsWith(vars.it_case, '11')
+      next: it_go_k
+    - when: startsWith(vars.it_case, '06')
+      next: it_go_f
+    - when: startsWith(vars.it_case, '05')
+      next: it_go_e
     default: it_unknown
   it_go_b:
     type: call_subflow
@@ -204,6 +212,58 @@ nodes:
       done: it_record
       unknown: it_unknown
     next: it_record
+  it_go_i:
+    type: call_subflow
+    label: I. 기간계 호출
+    scenario: it_i_backend
+    in:
+      it_case: ${vars.it_case}
+    out:
+      it_last: it_id
+      it_last_result: it_result
+    exits:
+      done: it_record
+      unknown: it_unknown
+    next: it_record
+  it_go_k:
+    type: call_subflow
+    label: K. 서비스코드
+    scenario: it_k_svccode
+    in:
+      it_case: ${vars.it_case}
+    out:
+      it_last: it_id
+      it_last_result: it_result
+    exits:
+      done: it_record
+      unknown: it_unknown
+    next: it_record
+  it_go_f:
+    type: call_subflow
+    label: F. 통화 종료
+    scenario: it_f_end
+    in:
+      it_case: ${vars.it_case}
+    out:
+      it_last: it_id
+      it_last_result: it_result
+    exits:
+      done: it_record
+      unknown: it_unknown
+    next: it_record
+  it_go_e:
+    type: call_subflow
+    label: E. 전환
+    scenario: it_e_transfer
+    in:
+      it_case: ${vars.it_case}
+    out:
+      it_last: it_id
+      it_last_result: it_result
+    exits:
+      done: it_record
+      unknown: it_unknown
+    next: it_record
   it_record:
     type: set
     label: 결과 모으기
@@ -250,6 +310,10 @@ sections:
     - it_go_j
     - it_go_m
     - it_go_l
+    - it_go_i
+    - it_go_k
+    - it_go_f
+    - it_go_e
     - it_record
     - it_unknown
     - it_end
