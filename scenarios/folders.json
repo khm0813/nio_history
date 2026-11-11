@@ -1,4 +1,9 @@
 {
-  "folders" : [ ],
-  "of" : { }
+  "folders" : [ "통합테스트" ],
+  "of" : {
+    "it_b_play" : "통합테스트",
+    "it_c_menu" : "통합테스트",
+    "it_d_collect" : "통합테스트",
+    "test_main" : "통합테스트"
+  }
 }
