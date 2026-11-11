@@ -1,0 +1,12 @@
+# 통합테스트(I6, K1): 시험 서버가 받은 요청 수. key=ani:<ani> (고객 조회), key=code:<서비스코드> (통계 전송)
+connector: it/hits
+kind: rest-json
+description: 통합테스트 - 시험 서버가 받은 요청 수
+host: ${hosts.it_api}
+timeout_ms: 2000
+rest:
+  method: GET
+  path: /it/hits?key=${in.key}
+  response_map:
+    count: count
+ok_when: "true"
