@@ -48,6 +48,7 @@ connections:
     service:Customer Service: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
     service:테스트큐: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
   mode: "icm"
+  on_end: "hangup"
   returns:
     caller_input: "Y"
     FromExtVXML0: "EndType=${end_type};CTNm=${queue.CTNm};PQNm=${queue.PQNm};TrnNo=${number};"
