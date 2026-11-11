@@ -1,0 +1,351 @@
+id: it_j_script
+version: 0.1.0
+name: 통합테스트 J. 스크립트
+description: '통합테스트 묶음 J(스크립트): test_main 이 시험 번호 10xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '1001'
+      next: j1
+    - when: vars.it_case == '1002'
+      next: j2
+    - when: vars.it_case == '1003'
+      next: j3
+    - when: vars.it_case == '1004'
+      next: j4
+    - when: vars.it_case == '1005'
+      next: j5
+    - when: vars.it_case == '1006'
+      next: j6
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  j1:
+    type: set
+    label: '[J1] 시작'
+    vars:
+      it_id: J1
+    next: j1_code
+  j1_code:
+    type: service_code
+    label: '[J1] 통계'
+    service_code: IT_J1
+    next: j1_say
+  j1_say:
+    type: play
+    label: '[J1] 안내'
+    prompts:
+    - tts: 시험 J1. Java 스크립트. 아무것도 누르지 마세요
+      bargein: false
+    next: j1_set
+  j1_set:
+    type: set
+    label: 입력값
+    vars:
+      j_in: x
+    next: j1_run
+  j1_run:
+    type: script
+    label: 'Java: 변수 읽고 쓰기, 출구로'
+    lang: java
+    code: 'String a = vars.get("j_in");
+
+      vars.put("j_out", a + "-java");
+
+      return "ok";'
+    exits:
+      ok: j1_chk
+    next: fail
+  j1_chk:
+    type: branch
+    label: 결과
+    cases:
+    - when: not (vars.j_out == 'x-java')
+      next: fail
+    default: pass
+  j2:
+    type: set
+    label: '[J2] 시작'
+    vars:
+      it_id: J2
+    next: j2_code
+  j2_code:
+    type: service_code
+    label: '[J2] 통계'
+    service_code: IT_J2
+    next: j2_say
+  j2_say:
+    type: play
+    label: '[J2] 안내'
+    prompts:
+    - tts: 시험 J2. JavaScript 스크립트. 아무것도 누르지 마세요
+      bargein: false
+    next: j2_set
+  j2_set:
+    type: set
+    label: 입력값
+    vars:
+      j_in: x
+    next: j2_run
+  j2_run:
+    type: script
+    label: 'JavaScript: 변수 읽고 쓰기, 출구로'
+    lang: javascript
+    code: 'vars.j_out = vars.j_in + ''-js'';
+
+      return ''ok'';'
+    exits:
+      ok: j2_chk
+    next: fail
+  j2_chk:
+    type: branch
+    label: 결과
+    cases:
+    - when: not (vars.j_out == 'x-js')
+      next: fail
+    default: pass
+  j3:
+    type: set
+    label: '[J3] 시작'
+    vars:
+      it_id: J3
+    next: j3_code
+  j3_code:
+    type: service_code
+    label: '[J3] 통계'
+    service_code: IT_J3
+    next: j3_say
+  j3_say:
+    type: play
+    label: '[J3] 안내'
+    prompts:
+    - tts: 시험 J3. 스크립트 반환 없음. 아무것도 누르지 마세요
+      bargein: false
+    next: j3_run
+  j3_run:
+    type: script
+    label: 반환 없음 → next
+    lang: java
+    code: vars.put("j3", "done");
+    exits:
+      ok: fail
+    next: j3_chk
+  j3_chk:
+    type: branch
+    label: 결과
+    cases:
+    - when: not (vars.j3 == 'done')
+      next: fail
+    default: pass
+  j4:
+    type: set
+    label: '[J4] 시작'
+    vars:
+      it_id: J4
+    next: j4_code
+  j4_code:
+    type: service_code
+    label: '[J4] 통계'
+    service_code: IT_J4
+    next: j4_say
+  j4_say:
+    type: play
+    label: '[J4] 안내'
+    prompts:
+    - tts: 시험 J4. 스크립트에서 커넥터. 아무것도 누르지 마세요
+      bargein: false
+    next: j4_run
+  j4_run:
+    type: script
+    label: 스크립트에서 커넥터 (it/customer)
+    lang: java
+    code: 'Reply r = connectors.call("it/customer", Map.of("ani", "1004"));
+
+      if (!r.isOk()) return "bad";
+
+      vars.put("j4", r.field("name"));
+
+      return "ok";'
+    exits:
+      ok: j4_chk
+      bad: fail
+    next: fail
+  j4_chk:
+    type: branch
+    label: 받은 이름
+    cases:
+    - when: not (vars.j4 == '홍길동')
+      next: fail
+    default: pass
+  j5:
+    type: set
+    label: '[J5] 시작'
+    vars:
+      it_id: J5
+    next: j5_code
+  j5_code:
+    type: service_code
+    label: '[J5] 통계'
+    service_code: IT_J5
+    next: j5_say
+  j5_say:
+    type: play
+    label: '[J5] 안내'
+    prompts:
+    - tts: 시험 J5. 스크립트 log. 아무것도 누르지 마세요
+      bargein: false
+    next: j5_run
+  j5_run:
+    type: script
+    label: log 남기기
+    lang: java
+    code: 'log("IT J5 script log line");
+
+      return "ok";'
+    exits:
+      ok: pass
+    next: fail
+  j6:
+    type: set
+    label: '[J6] 시작'
+    vars:
+      it_id: J6
+    next: j6_code
+  j6_code:
+    type: service_code
+    label: '[J6] 통계'
+    service_code: IT_J6
+    next: j6_say
+  j6_say:
+    type: play
+    label: '[J6] 안내'
+    prompts:
+    - tts: 시험 J6. 스크립트 시간 초과. 아무것도 누르지 마세요
+      bargein: false
+    next: j6_run
+  j6_run:
+    type: script
+    label: 끝나지 않는 반복 → 시간 초과 → 오류 경로
+    lang: java
+    code: 'long n = 0;
+
+      while (true) { n++; }'
+    timeout_ms: 100
+    next: fail
+    on_error: pass
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_j1:
+    title: '[J1] Java 스크립트'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - j1
+    - j1_code
+    - j1_say
+    - j1_set
+    - j1_run
+    - j1_chk
+  t_j2:
+    title: '[J2] JavaScript 스크립트'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - j2
+    - j2_code
+    - j2_say
+    - j2_set
+    - j2_run
+    - j2_chk
+  t_j3:
+    title: '[J3] 스크립트 반환 없음'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - j3
+    - j3_code
+    - j3_say
+    - j3_run
+    - j3_chk
+  t_j4:
+    title: '[J4] 스크립트에서 커넥터'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - j4
+    - j4_code
+    - j4_say
+    - j4_run
+    - j4_chk
+  t_j5:
+    title: '[J5] 스크립트 log'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과(추적에 로그)'
+    nodes:
+    - j5
+    - j5_code
+    - j5_say
+    - j5_run
+  t_j6:
+    title: '[J6] 스크립트 시간 초과'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 오류 경로로 "통과"'
+    nodes:
+    - j6
+    - j6_code
+    - j6_say
+    - j6_run
