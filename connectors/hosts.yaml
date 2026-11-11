@@ -14,3 +14,6 @@ hosts:
     # this node's vendor shell (agent state, /cti/*)
     url: http://127.0.0.1:7080/nio-shell
   test_host: { url: http://104.21.68.161 }
+  it_api: { url: http://10.0.6.101:18100 }   # 통합테스트
+  it_tcp: { host: 10.0.6.101, port: 18101 }   # 통합테스트
+  it_down: { url: http://10.0.6.101:18199 }   # 통합테스트
