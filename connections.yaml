@@ -12,9 +12,9 @@ connections:
     service:테스트큐: "569900"
   verified:
     ok: true
-    at: "2026-11-11T02:28:03.348117707Z"
+    at: "2026-11-11T04:05:13.864004330Z"
     by: "admin"
-    build: "0.1.0-20261111.1"
+    build: "0.1.0-20261111.2"
     detail: "nio-shell.war · http://127.0.0.1:7002"
 - id: "bp"
   vendor: "bright-pattern"
