@@ -1,0 +1,475 @@
+id: it_g_logic
+version: 0.1.0
+name: 통합테스트 G. 흐름 제어와 식
+description: '통합테스트 묶음 G(흐름 제어와 식): test_main 이 시험 번호 07xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '0701'
+      next: g1
+    - when: vars.it_case == '0702'
+      next: g2
+    - when: vars.it_case == '0703'
+      next: g3
+    - when: vars.it_case == '0704'
+      next: g4
+    - when: vars.it_case == '0705'
+      next: g5
+    - when: vars.it_case == '0707'
+      next: g7
+    - when: vars.it_case == '0708'
+      next: g8
+    - when: vars.it_case == '0710'
+      next: g10
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  g1:
+    type: set
+    label: '[G1] 시작'
+    vars:
+      it_id: G1
+    next: g1_code
+  g1_code:
+    type: service_code
+    label: '[G1] 통계'
+    service_code: IT_G1
+    next: g1_say
+  g1_say:
+    type: play
+    label: '[G1] 안내'
+    prompts:
+    - tts: 시험 G1. 변수 넣기. 아무것도 누르지 마세요
+      bargein: false
+    next: g1_set
+  g1_set:
+    type: set
+    label: 고정값·잇기·식
+    vars:
+      a: '5'
+      b: ${vars.a}0
+      c: ${num(vars.a) + 1}
+    next: g1_chk
+  g1_chk:
+    type: branch
+    label: 넣은 값 확인
+    cases:
+    - when: not (vars.a == '5')
+      next: fail
+    - when: not (vars.b == '50')
+      next: fail
+    - when: not (vars.c == 6)
+      next: fail
+    default: pass
+  g2:
+    type: set
+    label: '[G2] 시작'
+    vars:
+      it_id: G2
+    next: g2_code
+  g2_code:
+    type: service_code
+    label: '[G2] 통계'
+    service_code: IT_G2
+    next: g2_say
+  g2_say:
+    type: play
+    label: '[G2] 안내'
+    prompts:
+    - tts: 시험 G2. 비교 연산. 아무것도 누르지 마세요
+      bargein: false
+    next: g2_chk
+  g2_chk:
+    type: branch
+    label: 비교 연산
+    cases:
+    - when: not (1 == 1)
+      next: fail
+    - when: not (2 != 3)
+      next: fail
+    - when: not (3 < 4)
+      next: fail
+    - when: not (4 <= 4)
+      next: fail
+    - when: not (5 > 4)
+      next: fail
+    - when: not (5 >= 5)
+      next: fail
+    - when: not ('10' > '9')
+      next: fail
+    - when: not ('abc' == 'abc')
+      next: fail
+    - when: not ('b' > 'a')
+      next: fail
+    - when: not ('abc' != 'abd')
+      next: fail
+    default: pass
+  g3:
+    type: set
+    label: '[G3] 시작'
+    vars:
+      it_id: G3
+    next: g3_code
+  g3_code:
+    type: service_code
+    label: '[G3] 통계'
+    service_code: IT_G3
+    next: g3_say
+  g3_say:
+    type: play
+    label: '[G3] 안내'
+    prompts:
+    - tts: 시험 G3. 논리 연산. 아무것도 누르지 마세요
+      bargein: false
+    next: g3_chk
+  g3_chk:
+    type: branch
+    label: 논리 연산
+    cases:
+    - when: not (true and true)
+      next: fail
+    - when: not (not (true and false))
+      next: fail
+    - when: not (false or true)
+      next: fail
+    - when: not (not false)
+      next: fail
+    - when: not ((1 == 1 or 1 == 2) and 2 == 2)
+      next: fail
+    default: pass
+  g4:
+    type: set
+    label: '[G4] 시작'
+    vars:
+      it_id: G4
+    next: g4_code
+  g4_code:
+    type: service_code
+    label: '[G4] 통계'
+    service_code: IT_G4
+    next: g4_say
+  g4_say:
+    type: play
+    label: '[G4] 안내'
+    prompts:
+    - tts: 시험 G4. 산술 연산. 아무것도 누르지 마세요
+      bargein: false
+    next: g4_chk
+  g4_chk:
+    type: branch
+    label: 산술 연산
+    cases:
+    - when: not (1 + 2 * 3 == 7)
+      next: fail
+    - when: not ((1 + 2) * 3 == 9)
+      next: fail
+    - when: not (10 - 4 == 6)
+      next: fail
+    - when: not (10 / 4 == 2.5)
+      next: fail
+    - when: not (7 % 3 == 1)
+      next: fail
+    - when: not (-2 + 5 == 3)
+      next: fail
+    default: pass
+  g5:
+    type: set
+    label: '[G5] 시작'
+    vars:
+      it_id: G5
+    next: g5_code
+  g5_code:
+    type: service_code
+    label: '[G5] 통계'
+    service_code: IT_G5
+    next: g5_say
+  g5_say:
+    type: play
+    label: '[G5] 안내'
+    prompts:
+    - tts: 시험 G5. 분기 순서와 else. 아무것도 누르지 마세요
+      bargein: false
+    next: g5_set
+  g5_set:
+    type: set
+    label: x = 5
+    vars:
+      x: '5'
+    next: g5_first
+  g5_first:
+    type: branch
+    label: 위에서 처음 맞는 조건으로
+    cases:
+    - when: vars.x > 3
+      next: g5_else
+    - when: vars.x > 1
+      next: fail
+    default: fail
+  g5_else:
+    type: branch
+    label: 아무것도 안 맞으면 else
+    cases:
+    - when: vars.x > 10
+      next: fail
+    - when: vars.x < 0
+      next: fail
+    default: pass
+  g7:
+    type: set
+    label: '[G7] 시작'
+    vars:
+      it_id: G7
+    next: g7_code
+  g7_code:
+    type: service_code
+    label: '[G7] 통계'
+    service_code: IT_G7
+    next: g7_say
+  g7_say:
+    type: play
+    label: '[G7] 안내'
+    prompts:
+    - tts: 시험 G7. 함수 17개. 아무것도 누르지 마세요
+      bargein: false
+    next: g7_chk
+  g7_chk:
+    type: branch
+    label: 함수 17개
+    cases:
+    - when: not (len('abc') == 3)
+      next: fail
+    - when: not (substr('abcdef', 2, 3) == 'cde')
+      next: fail
+    - when: not (trim('  a ') == 'a')
+      next: fail
+    - when: not (upper('ab') == 'AB')
+      next: fail
+    - when: not (lower('AB') == 'ab')
+      next: fail
+    - when: not (startsWith('abc', 'ab'))
+      next: fail
+    - when: not (endsWith('abc', 'bc'))
+      next: fail
+    - when: not (contains('abc', 'b'))
+      next: fail
+    - when: not (matches('a1', '[a-z][0-9]'))
+      next: fail
+    - when: not (isEmpty('  '))
+      next: fail
+    - when: not (num('12') + 1 == 13)
+      next: fail
+    - when: not (str(5) == '5')
+      next: fail
+    - when: not (concat('a', 'b', 1) == 'ab1')
+      next: fail
+    - when: not (min(3, 1, 2) == 1)
+      next: fail
+    - when: not (max(3, 1, 2) == 3)
+      next: fail
+    - when: not (abs(-4) == 4)
+      next: fail
+    - when: not (round(2.456, 2) == 2.46)
+      next: fail
+    default: pass
+  g8:
+    type: set
+    label: '[G8] 시작'
+    vars:
+      it_id: G8
+    next: g8_code
+  g8_code:
+    type: service_code
+    label: '[G8] 통계'
+    service_code: IT_G8
+    next: g8_say
+  g8_say:
+    type: play
+    label: '[G8] 안내'
+    prompts:
+    - tts: 시험 G8. 식 오류. 아무것도 누르지 마세요
+      bargein: false
+    next: g8_set
+  g8_set:
+    type: set
+    label: 숫자가 아닌 값
+    vars:
+      e: abc
+    next: g8_eval
+  g8_eval:
+    type: branch
+    label: 실행 중 식 오류 → 이 노드의 오류 경로
+    cases:
+    - when: num(vars.e) > 1
+      next: fail
+    default: fail
+    on_error: pass
+  g10:
+    type: set
+    label: '[G10] 시작'
+    vars:
+      it_id: G10
+    next: g10_code
+  g10_code:
+    type: service_code
+    label: '[G10] 통계'
+    service_code: IT_G10
+    next: g10_say
+  g10_say:
+    type: play
+    label: '[G10] 안내'
+    prompts:
+    - tts: 시험 G10. 경로 값. 아무것도 누르지 마세요
+      bargein: false
+    next: g10_read
+  g10_read:
+    type: play
+    label: 경로 값 읽기
+    prompts:
+    - tts: 발신 번호 ${session.ani}, 받은 번호 ${session.dnis}, 교환기 ${session.vendor}, 사이트 폴백 번호 ${site.transfer.fallback_number}.
+    next: g10_chk
+  g10_chk:
+    type: branch
+    label: 경로 값 확인
+    cases:
+    - when: not (not isEmpty(session.ani))
+      next: fail
+    - when: not (not isEmpty(session.dnis))
+      next: fail
+    - when: not (not isEmpty(session.vendor))
+      next: fail
+    - when: not (not isEmpty(session.ucid))
+      next: fail
+    - when: not (not isEmpty(site.transfer.fallback_number))
+      next: fail
+    default: pass
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_g1:
+    title: '[G1] 변수 넣기'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g1
+    - g1_code
+    - g1_say
+    - g1_set
+    - g1_chk
+  t_g2:
+    title: '[G2] 비교 연산'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g2
+    - g2_code
+    - g2_say
+    - g2_chk
+  t_g3:
+    title: '[G3] 논리 연산'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g3
+    - g3_code
+    - g3_say
+    - g3_chk
+  t_g4:
+    title: '[G4] 산술 연산'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g4
+    - g4_code
+    - g4_say
+    - g4_chk
+  t_g5:
+    title: '[G5] 분기 순서와 else'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g5
+    - g5_code
+    - g5_say
+    - g5_set
+    - g5_first
+    - g5_else
+  t_g7:
+    title: '[G7] 함수 17개'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g7
+    - g7_code
+    - g7_say
+    - g7_chk
+  t_g8:
+    title: '[G8] 식 오류'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 오류 경로로 "통과"'
+    nodes:
+    - g8
+    - g8_code
+    - g8_say
+    - g8_set
+    - g8_eval
+  t_g10:
+    title: '[G10] 경로 값'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - g10
+    - g10_code
+    - g10_say
+    - g10_read
+    - g10_chk
