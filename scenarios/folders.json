@@ -9,6 +9,8 @@
     "it_sub2" : "통합테스트",
     "it_g_logic" : "통합테스트",
     "it_h_subflow" : "통합테스트",
-    "it_j_script" : "통합테스트"
+    "it_j_script" : "통합테스트",
+    "it_m_calendar" : "통합테스트",
+    "it_l_notice" : "통합테스트"
   }
 }
