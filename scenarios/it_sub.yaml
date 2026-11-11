@@ -1,0 +1,72 @@
+id: it_sub
+version: 0.1.0
+name: 통합테스트 H 도우미 - 서브플로우
+description: '통합테스트 H 묶음이 부르는 서브플로우. vars.mode 로 동작을 고른다: echo · alt · odd · menu · end'
+start: mode
+defaults:
+  timeout_sec: 5
+  max_retry: 1
+  on_max_retry: r_alt
+  on_error: r_alt
+nodes:
+  mode:
+    type: branch
+    label: 동작 고르기
+    cases:
+    - when: vars.mode == 'echo'
+      next: echo
+    - when: vars.mode == 'alt'
+      next: r_alt
+    - when: vars.mode == 'odd'
+      next: r_odd
+    - when: vars.mode == 'menu'
+      next: ask
+    - when: vars.mode == 'end'
+      next: bye
+    default: r_alt
+  echo:
+    type: set
+    label: 받은 값에 ! 붙이기
+    vars:
+      out: ${vars.val}!
+    next: r_ok
+  ask:
+    type: menu
+    label: 안에서 입력
+    prompts:
+    - tts: 서브플로우 안의 메뉴입니다. 일 번을 누르세요.
+    choices:
+      '1': r_ok
+    nomatch_prompts:
+    - tts: 잘못 누르셨습니다.
+  bye:
+    type: hangup
+    label: 안에서 통화 끝
+    prompts:
+    - tts: 서브플로우 안에서 통화를 끝냅니다.
+      bargein: false
+    reason: it_sub_end
+  r_ok:
+    type: return
+    label: 출구 ok
+    exit: ok
+  r_alt:
+    type: return
+    label: 출구 alt
+    exit: alt
+  r_odd:
+    type: return
+    label: 출구 odd (부르는 쪽에 없는 이름)
+    exit: odd
+sections:
+  main:
+    title: 통합테스트 H 도우미
+    note: 'vars.mode: echo(out = val + ''!'', ok) · alt · odd · menu(1 → ok) · end(hangup)'
+    nodes:
+    - mode
+    - echo
+    - ask
+    - bye
+    - r_ok
+    - r_alt
+    - r_odd
