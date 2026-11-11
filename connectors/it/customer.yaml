@@ -1,0 +1,15 @@
+# 통합테스트(I1, I3, I6): 시험 서버의 고객 조회. ani=bizerr 이면 grade 가 비어 업무 오류가 된다.
+# retry 2 는 연결 오류에만 쓰인다. 업무 오류에는 다시 부르지 않는다(I6 이 시험 서버의 요청 수로 확인).
+connector: it/customer
+kind: rest-json
+description: 통합테스트 - 고객 조회 (시험 서버)
+host: ${hosts.it_api}
+timeout_ms: 2000
+retry: 2
+rest:
+  method: GET
+  path: /it/customer?ani=${in.ani}
+  response_map:
+    grade: data.grade
+    name: data.name
+ok_when: resp.grade != ''
