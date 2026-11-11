@@ -1,0 +1,18 @@
+# 통합테스트(I2): 고정 길이 전문. 계좌번호가 9 로 시작하면 업무 오류(respGubun 1).
+connector: it/balance
+kind: tcp-fixed
+description: 통합테스트 - 잔액 조회 전문 (시험 서버)
+host: it_tcp
+timeout_ms: 2000
+charset: EUC-KR
+request:
+  header: { $ref: ../it-header/send.yaml }
+  body:
+    - { name: acctNo, len: 11 }
+    - { name: pwd,    len: 8, pad: left, fill: "0" }
+response:
+  header: { $ref: ../it-header/recv.yaml }
+  body:
+    - { name: acctName, len: 20 }
+    - { name: balance,  len: 15, type: number }
+ok_when: resp.respGubun == '0'
