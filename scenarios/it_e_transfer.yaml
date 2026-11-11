@@ -1,0 +1,344 @@
+id: it_e_transfer
+version: 0.1.0
+name: 통합테스트 E. 전환
+description: '통합테스트 묶음 E(전환): test_main 이 시험 번호 05xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '0501'
+      next: e1
+    - when: vars.it_case == '0502'
+      next: e2
+    - when: vars.it_case == '0505'
+      next: e5
+    - when: vars.it_case == '0506'
+      next: e6
+    - when: vars.it_case == '0507'
+      next: e7
+    - when: vars.it_case == '0508'
+      next: e8
+    - when: vars.it_case == '0510'
+      next: e10
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  e1:
+    type: set
+    label: '[E1] 시작'
+    vars:
+      it_id: E1
+    next: e1_code
+  e1_code:
+    type: service_code
+    label: '[E1] 통계'
+    service_code: IT_E1
+    next: e1_say
+  e1_say:
+    type: play
+    label: '[E1] 안내'
+    prompts:
+    - tts: 시험 E1. 번호로 전환. 아무것도 누르지 마세요. 천 번으로 전환됩니다
+      bargein: false
+    next: e1_go
+  e1_go:
+    type: transfer
+    label: 번호 1000 으로
+    dest: '1000'
+    prompts:
+    - tts: 천 번으로 전환합니다.
+      bargein: false
+    on_fail: fail
+  e2:
+    type: set
+    label: '[E2] 시작'
+    vars:
+      it_id: E2
+    next: e2_code
+  e2_code:
+    type: service_code
+    label: '[E2] 통계'
+    service_code: IT_E2
+    next: e2_say
+  e2_say:
+    type: play
+    label: '[E2] 안내'
+    prompts:
+    - tts: 시험 E2. 큐로 전환. 아무것도 누르지 마세요. 시험 전환 큐로 전환됩니다
+      bargein: false
+    next: e2_go
+  e2_go:
+    type: transfer
+    label: 큐로
+    dest: service:it_전환큐
+    prompts:
+    - tts: 시험 전환 큐로 연결합니다.
+      bargein: false
+    on_fail: fail
+  e5:
+    type: set
+    label: '[E5] 시작'
+    vars:
+      it_id: E5
+    next: e5_code
+  e5_code:
+    type: service_code
+    label: '[E5] 통계'
+    service_code: IT_E5
+    next: e5_say
+  e5_say:
+    type: play
+    label: '[E5] 안내'
+    prompts:
+    - tts: 시험 E5. 전환 실패. 아무것도 누르지 마세요. 없는 번호로 전환을 시도합니다
+      bargein: false
+    next: e5_go
+  e5_go:
+    type: transfer
+    label: 없는 번호 (실패해야 함)
+    dest: '99999999'
+    prompts:
+    - tts: 없는 번호로 전환을 시도합니다.
+      bargein: false
+    on_fail: pass
+  e6:
+    type: set
+    label: '[E6] 시작'
+    vars:
+      it_id: E6
+    next: e6_code
+  e6_code:
+    type: service_code
+    label: '[E6] 통계'
+    service_code: IT_E6
+    next: e6_say
+  e6_say:
+    type: play
+    label: '[E6] 안내'
+    prompts:
+    - tts: 시험 E6. UUI 전달. 아무것도 누르지 마세요. 받는 쪽에서 UUI 를 확인하세요
+      bargein: false
+    next: e6_go
+  e6_go:
+    type: transfer
+    label: UUI 실어 큐로
+    dest: service:it_전환큐
+    uui: IT|${session.ani}|E6
+    prompts:
+    - tts: UUI 를 실어 연결합니다.
+      bargein: false
+    on_fail: fail
+  e7:
+    type: set
+    label: '[E7] 시작'
+    vars:
+      it_id: E7
+    next: e7_code
+  e7_code:
+    type: service_code
+    label: '[E7] 통계'
+    service_code: IT_E7
+    next: e7_say
+  e7_say:
+    type: play
+    label: '[E7] 안내'
+    prompts:
+    - tts: 시험 E7. 계산한 큐. 일 번을 누르세요. 계산한 큐로 전환됩니다
+      bargein: false
+    next: e7_menu
+  e7_menu:
+    type: menu
+    label: 큐 고르기
+    prompts:
+    - tts: 시험 전환 큐는 일 번입니다.
+    choices:
+      '1': e7_set
+    max_retry: 1
+    on_max_retry: fail
+  e7_set:
+    type: set
+    label: 고른 큐
+    vars:
+      queue: it_전환큐
+    next: e7_go
+  e7_go:
+    type: transfer
+    label: 계산한 큐
+    dest: service:${vars.queue}
+    queues:
+    - service:it_전환큐
+    prompts:
+    - tts: 고른 큐로 연결합니다.
+      bargein: false
+    on_fail: fail
+  e8:
+    type: set
+    label: '[E8] 시작'
+    vars:
+      it_id: E8
+    next: e8_code
+  e8_code:
+    type: service_code
+    label: '[E8] 통계'
+    service_code: IT_E8
+    next: e8_say
+  e8_say:
+    type: play
+    label: '[E8] 안내'
+    prompts:
+    - tts: 시험 E8. 값 없는 큐. 아무것도 누르지 마세요. 값 없는 큐가 기본 큐로 바뀌어 전환됩니다
+      bargein: false
+    next: e8_go
+  e8_go:
+    type: transfer
+    label: 값 없는 큐 → 기본 큐
+    dest: service:it_빈큐
+    prompts:
+    - tts: 값 없는 큐로 연결을 시도합니다.
+      bargein: false
+    on_fail: fail
+  e10:
+    type: set
+    label: '[E10] 시작'
+    vars:
+      it_id: E10
+    next: e10_code
+  e10_code:
+    type: service_code
+    label: '[E10] 통계'
+    service_code: IT_E10
+    next: e10_say
+  e10_say:
+    type: play
+    label: '[E10] 안내'
+    prompts:
+    - tts: 시험 E10. 사이트 설정 번호. 아무것도 누르지 마세요. 사이트 설정 번호로 전환됩니다
+      bargein: false
+    next: e10_go
+  e10_go:
+    type: transfer
+    label: 사이트 설정 번호
+    dest: ${site.transfer.fallback_number}
+    prompts:
+    - tts: 사이트 설정 번호로 전환합니다.
+      bargein: false
+    on_fail: fail
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_e1:
+    title: '[E1] 번호로 전환'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 안내 뒤 시험 번호로 넘어감'
+    nodes:
+    - e1
+    - e1_code
+    - e1_say
+    - e1_go
+  t_e2:
+    title: '[E2] 큐로 전환'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 안내 뒤 테스트큐로 넘어감'
+    nodes:
+    - e2
+    - e2_code
+    - e2_say
+    - e2_go
+  t_e5:
+    title: '[E5] 전환 실패'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 없는 번호로 전환 실패 뒤 "통과"'
+    nodes:
+    - e5
+    - e5_code
+    - e5_say
+    - e5_go
+  t_e6:
+    title: '[E6] UUI 전달'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 안내 뒤 테스트큐로 넘어감(상대 쪽에서 UUI 확인)'
+    nodes:
+    - e6
+    - e6_code
+    - e6_say
+    - e6_go
+  t_e7:
+    title: '[E7] 계산한 큐'
+    note: '누를 것: 1 / 들려야 할 것: 계산한 큐(테스트큐)로 넘어감'
+    nodes:
+    - e7
+    - e7_code
+    - e7_say
+    - e7_menu
+    - e7_set
+    - e7_go
+  t_e8:
+    title: '[E8] 값 없는 큐'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 값 없는 큐 → 연결의 기본 큐로 넘어감'
+    nodes:
+    - e8
+    - e8_code
+    - e8_say
+    - e8_go
+  t_e10:
+    title: '[E10] 사이트 설정 번호'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 사이트 상담원 번호로 넘어감'
+    nodes:
+    - e10
+    - e10_code
+    - e10_say
+    - e10_go
