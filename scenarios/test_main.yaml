@@ -95,6 +95,10 @@ nodes:
       next: it_go_h
     - when: startsWith(vars.it_case, '10')
       next: it_go_j
+    - when: startsWith(vars.it_case, '13')
+      next: it_go_m
+    - when: startsWith(vars.it_case, '12')
+      next: it_go_l
     default: it_unknown
   it_go_b:
     type: call_subflow
@@ -174,6 +178,32 @@ nodes:
       done: it_record
       unknown: it_unknown
     next: it_record
+  it_go_m:
+    type: call_subflow
+    label: M. 업무시간·휴일
+    scenario: it_m_calendar
+    in:
+      it_case: ${vars.it_case}
+    out:
+      it_last: it_id
+      it_last_result: it_result
+    exits:
+      done: it_record
+      unknown: it_unknown
+    next: it_record
+  it_go_l:
+    type: call_subflow
+    label: L. 공지사항
+    scenario: it_l_notice
+    in:
+      it_case: ${vars.it_case}
+    out:
+      it_last: it_id
+      it_last_result: it_result
+    exits:
+      done: it_record
+      unknown: it_unknown
+    next: it_record
   it_record:
     type: set
     label: 결과 모으기
@@ -218,6 +248,8 @@ sections:
     - it_go_g
     - it_go_h
     - it_go_j
+    - it_go_m
+    - it_go_l
     - it_record
     - it_unknown
     - it_end
