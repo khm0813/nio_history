@@ -1,0 +1,6 @@
+# 통합테스트 전문 요청 머리 (64바이트). connector 가 없는 파일은 배치(layout)이고 커넥터 목록에 나오지 않는다.
+length: 64
+fields:
+  - { name: trcode,   offset: 0,  len: 10, value: "IT00000001" }
+  - { name: channel,  offset: 10, len: 2,  value: "IV" }
+  - { name: callerId, offset: 12, len: 11, value: "${in.ani}" }
