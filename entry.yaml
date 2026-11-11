@@ -1,6 +1,5 @@
 # DNIS -> scenario. Written by the console (services); overrides site.yaml entry.
 ---
 entry:
-  "9900": "kiwoom-ars-9900"
   queue:wait: "cisco_queue_wait"
   '*': "test_main"

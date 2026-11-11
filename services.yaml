@@ -1,10 +1,6 @@
 # Receiving numbers per main scenario (id == main). Edited in the console: 편집 › 시나리오 제목 줄의 받는 번호.
 ---
 services:
-  kiwoom-ars-9900:
-    numbers:
-    - "9900"
-    main: "kiwoom-ars-9900"
   cisco_queue_wait:
     numbers:
     - "queue:wait"
