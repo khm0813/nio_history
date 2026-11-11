@@ -1,0 +1,230 @@
+id: it_m_calendar
+version: 0.1.0
+name: 통합테스트 M. 업무시간·휴일
+description: '통합테스트 묶음 M(업무시간·휴일): test_main 이 시험 번호 13xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '1301'
+      next: m1
+    - when: vars.it_case == '1302'
+      next: m2
+    - when: vars.it_case == '1303'
+      next: m3
+    - when: vars.it_case == '1304'
+      next: m4
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  m1:
+    type: set
+    label: '[M1] 시작'
+    vars:
+      it_id: M1
+    next: m1_code
+  m1_code:
+    type: service_code
+    label: '[M1] 통계'
+    service_code: IT_M1
+    next: m1_say
+  m1_say:
+    type: play
+    label: '[M1] 안내'
+    prompts:
+    - tts: 시험 M1. isOpen. 아무것도 누르지 마세요
+      bargein: false
+    next: m1_chk
+  m1_chk:
+    type: branch
+    label: isOpen
+    cases:
+    - when: not (isOpen('it_open'))
+      next: fail
+    - when: not (not isOpen('it_closed'))
+      next: fail
+    default: pass
+  m2:
+    type: set
+    label: '[M2] 시작'
+    vars:
+      it_id: M2
+    next: m2_code
+  m2_code:
+    type: service_code
+    label: '[M2] 통계'
+    service_code: IT_M2
+    next: m2_say
+  m2_say:
+    type: play
+    label: '[M2] 안내'
+    prompts:
+    - tts: 시험 M2. isBusinessDay. 아무것도 누르지 마세요
+      bargein: false
+    next: m2_chk
+  m2_chk:
+    type: branch
+    label: isBusinessDay
+    cases:
+    - when: not (isBusinessDay('it_open'))
+      next: fail
+    - when: not (not isBusinessDay('it_closed'))
+      next: fail
+    default: pass
+  m3:
+    type: set
+    label: '[M3] 시작'
+    vars:
+      it_id: M3
+    next: m3_code
+  m3_code:
+    type: service_code
+    label: '[M3] 통계'
+    service_code: IT_M3
+    next: m3_say
+  m3_say:
+    type: play
+    label: '[M3] 안내'
+    prompts:
+    - tts: 시험 M3. 휴일 함수. 아무것도 누르지 마세요
+      bargein: false
+    next: m3_read
+  m3_read:
+    type: play
+    label: 휴일 함수 읽기
+    prompts:
+    - tts: 오늘 휴일 여부는 ${isHoliday()}, 휴일 이름은 ${holidayName()} 입니다.
+    next: m3_chk
+  m3_chk:
+    type: branch
+    label: 휴일 여부와 이름이 맞는지
+    cases:
+    - when: not ((isHoliday() and not isEmpty(holidayName())) or (not isHoliday() and isEmpty(holidayName())))
+      next: fail
+    default: pass
+  m4:
+    type: set
+    label: '[M4] 시작'
+    vars:
+      it_id: M4
+    next: m4_code
+  m4_code:
+    type: service_code
+    label: '[M4] 통계'
+    service_code: IT_M4
+    next: m4_say
+  m4_say:
+    type: play
+    label: '[M4] 안내'
+    prompts:
+    - tts: 시험 M4. nextOpenText. 아무것도 누르지 마세요
+      bargein: false
+    next: m4_read
+  m4_read:
+    type: play
+    label: 다음 여는 때 읽기
+    prompts:
+    - tts: 메인상담센터가 다음에 여는 때는 ${nextOpenText('center')} 입니다.
+    next: m4_chk
+  m4_chk:
+    type: branch
+    label: 값이 있는지
+    cases:
+    - when: not (not isEmpty(nextOpenText('center')))
+      next: fail
+    default: pass
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_m1:
+    title: '[M1] isOpen'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - m1
+    - m1_code
+    - m1_say
+    - m1_chk
+  t_m2:
+    title: '[M2] isBusinessDay'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - m2
+    - m2_code
+    - m2_say
+    - m2_chk
+  t_m3:
+    title: '[M3] 휴일 함수'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 오늘 휴일 여부와 이름을 읽어 줌'
+    nodes:
+    - m3
+    - m3_code
+    - m3_say
+    - m3_read
+    - m3_chk
+  t_m4:
+    title: '[M4] nextOpenText'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 메인상담센터가 다음에 여는 때를 읽어 줌'
+    nodes:
+    - m4
+    - m4_code
+    - m4_say
+    - m4_read
+    - m4_chk
