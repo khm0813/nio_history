@@ -5,3 +5,7 @@ queues:
 - name: "service:Maintenance Renewal"
 - name: "service:테스트큐"
   note: "통합테스트에서 사용하는 큐"
+- name: "service:it_전환큐"
+  note: "통합테스트 전환 (값은 lab 관리자가 바꿈)"
+- name: "service:it_빈큐"
+  note: "통합테스트 E8: 어느 교환기에도 값을 넣지 않는다"
