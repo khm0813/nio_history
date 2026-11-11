@@ -6,32 +6,32 @@ connections:
   name: "Avaya EP (lab)"
   url: "http://10.0.6.101:7080/nio-shell"
   pbx: "10.0.7.91:443"
+  state: "active"
+  queues:
+    service:Customer Service: "1000"
+    service:테스트큐: "569900"
   verified:
     ok: true
     at: "2026-11-11T05:32:28.261016461Z"
     by: "admin"
     build: "0.1.0-20261111.5"
     detail: "nio-shell.war · http://127.0.0.1:7002"
-  state: "active"
-  queues:
-    service:Customer Service: "1000"
-    service:테스트큐: "569900"
 - id: "bp"
   vendor: "bright-pattern"
   name: "Bright Pattern (lab 245)"
   url: "http://10.0.6.101:7006"
   pbx: "10.0.22.245:443"
+  state: "standby"
+  queues:
+    service:Customer Service: "D0CE5344-261C-47A1-80C0-26520602E7F3"
+    service:Maintenance Renewal: "A6ED540A-C7E8-44A7-9783-61DCF21D5D65"
+    service:테스트큐: "D0CE5344-261C-47A1-80C0-26520602E7F3"
   verified:
     ok: true
     at: "2026-11-09T04:51:31.070805065Z"
     by: "admin"
     build: "0.1.0-SNAPSHOT+2026-11-09T03:11:54Z"
     detail: "package app_nio-shell.zip"
-  state: "standby"
-  queues:
-    service:Customer Service: "D0CE5344-261C-47A1-80C0-26520602E7F3"
-    service:Maintenance Renewal: "A6ED540A-C7E8-44A7-9783-61DCF21D5D65"
-    service:테스트큐: "D0CE5344-261C-47A1-80C0-26520602E7F3"
 - id: "cvp"
   vendor: "cisco-cvp"
   name: "Cisco CVP"
@@ -53,6 +53,7 @@ connections:
     FromExtVXML0: "EndType=${end_type};CTNm=${queue.CTNm};PQNm=${queue.PQNm};TrnNo=${number};"
     FromExtVXML1: "CustNo=${uui.CustNo};VIP=${uui.VIP};Menu=${uui.Menu};"
   end_types:
+    end: "DIS"
     error: "DIS"
   entry_apps:
     HelloWorld: "queue:wait"
