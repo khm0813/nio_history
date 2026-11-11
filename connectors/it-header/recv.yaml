@@ -1,0 +1,6 @@
+# 통합테스트 전문 응답 머리 (64바이트).
+length: 64
+fields:
+  - { name: respGubun, offset: 40, len: 1 }
+  - { name: respCode,  offset: 41, len: 6 }
+  - { name: respMsg,   offset: 47, len: 17 }
