@@ -172,11 +172,11 @@ nodes:
     next: j3_run
   j3_run:
     type: script
-    label: 반환 없음 → next
+    label: 반환 없음 → 출구 ok, ok 가 없으면 next
     lang: java
     code: vars.put("j3", "done");
     exits:
-      ok: fail
+      other: fail
     next: j3_chk
   j3_chk:
     type: branch
