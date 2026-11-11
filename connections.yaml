@@ -43,7 +43,7 @@ connections:
     by: "admin"
     build: "0.1.0-20261111.5"
     detail: "CVP.war · http://127.0.0.1:7002"
-  state: "active"
+  state: "standby"
   queues:
     service:Customer Service: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
     service:테스트큐: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
