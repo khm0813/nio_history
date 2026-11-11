@@ -170,7 +170,7 @@ nodes:
     type: transfer
     label: UUI 실어 큐로
     dest: service:it_전환큐
-    uui: IT|${session.ani}|E6
+    uui: ANI=${session.ani};DNIS=${session.dnis};Menu=E6
     prompts:
     - tts: UUI 를 실어 연결합니다.
       bargein: false
@@ -310,7 +310,7 @@ sections:
     - e5_go
   t_e6:
     title: '[E6] UUI 전달'
-    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 안내 뒤 테스트큐로 넘어감(상대 쪽에서 UUI 확인)'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 안내 뒤 시험 전환 큐로 넘어감. 받는 쪽에서 ANI=…;DNIS=…;Menu=E6 확인(Avaya UUI, Cisco ICM 변수, BP 발신자 이름)'
     nodes:
     - e6
     - e6_code
