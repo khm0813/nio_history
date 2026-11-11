@@ -93,12 +93,16 @@ nodes:
     service_code: IT_K1
     next: k1_wait
   k1_wait:
-    type: play
-    label: 보내는 동안 안내
+    type: menu
+    label: 보내는 동안 2초 대기
     prompts:
-    - tts: 통계를 보냈습니다. 도착했는지 확인합니다.
+    - tts: 통계를 보냈습니다. 이 초 뒤에 도착했는지 확인합니다.
       bargein: false
-    next: k1_after
+    choices:
+      '1': k1_after
+    timeout_sec: 2
+    max_retry: 0
+    on_max_retry: k1_after
   k1_after:
     type: call_backend
     label: '뒤: 시험 서버가 받은 IT_K1 수'
