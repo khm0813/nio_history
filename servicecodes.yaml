@@ -326,6 +326,10 @@ groups:
     name: "[I7] 대기 멘트와 느린 응답"
     parent: "IT_I"
     dtmf: "0907"
+  - code: "IT_I8"
+    name: "[I8] 교환기가 기다려 주는 한계"
+    parent: "IT_I"
+    dtmf: "0908"
   - code: "IT_J"
     name: "J. 스크립트"
     parent: "TEST0000"
@@ -446,3 +450,6 @@ groups:
     name: "[N7] 종료 후 흐름"
     parent: "IT_N"
     dtmf: "1407"
+sender:
+  connector: "it/stats"
+  enabled: true
