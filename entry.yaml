@@ -3,6 +3,6 @@
 entry:
   "9900": "kiwoom-ars-9900"
   "39001": "ars9000_main"
-  "39000": "hangook_15882288"
+  "99999": "hangook_15882288"
   queue:wait: "cisco_queue_wait"
   '*': "test_main"

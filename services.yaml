@@ -11,7 +11,7 @@ services:
     main: "ars9000_main"
   hangook_15882288:
     numbers:
-    - "39000"
+    - "99999"
     main: "hangook_15882288"
   cisco_queue_wait:
     numbers:
