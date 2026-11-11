@@ -390,12 +390,12 @@ nodes:
     type: menu
     label: 지연 고르기
     prompts:
-    - tts: 기다릴 시간을 고르세요. 삼 초는 일 번, 오 초는 이 번, 팔 초는 삼 번, 십이 초는 사 번입니다.
+    - tts: 기다릴 시간을 고르세요. 삼 초는 일 번, 오 초는 이 번, 육 초는 삼 번, 칠 초는 사 번입니다.
     choices:
       '1': i8_s3
       '2': i8_s5
-      '3': i8_s8
-      '4': i8_s12
+      '3': i8_s6
+      '4': i8_s7
     max_retry: 1
     on_max_retry: fail
   i8_s3:
@@ -410,17 +410,17 @@ nodes:
     vars:
       i8_ms: '5000'
     next: i8_wait
-  i8_s8:
+  i8_s6:
     type: set
-    label: 8초
+    label: 6초
     vars:
-      i8_ms: '8000'
+      i8_ms: '6000'
     next: i8_wait
-  i8_s12:
+  i8_s7:
     type: set
-    label: 12초
+    label: 7초
     vars:
-      i8_ms: '12000'
+      i8_ms: '7000'
     next: i8_wait
   i8_wait:
     type: play
@@ -431,8 +431,8 @@ nodes:
     next: i8_call
   i8_call:
     type: call_backend
-    label: 고른 시간만큼 걸리는 응답 (제한 15초)
-    connector: it/wait
+    label: 고른 시간만큼 걸리는 응답 (제한 7.5초)
+    connector: it/slow7
     in:
       ms: ${vars.i8_ms}
     out:
@@ -531,7 +531,7 @@ sections:
     - i7_chk
   t_i8:
     title: '[I8] 교환기가 기다려 주는 한계'
-    note: '누를 것: 1~4 로 지연 고르기(1=3초, 2=5초, 3=8초, 4=12초) / 들려야 할 것: 대기 뒤 "통과". 끊기거나 오류 안내가 나오면 그 지연이 한계'
+    note: '누를 것: 1~4 로 지연 고르기(1=3초, 2=5초, 3=6초, 4=7초) / 들려야 할 것: 대기 뒤 "통과". 끊기거나 오류 안내가 나오면 그 지연이 한계'
     nodes:
     - i8
     - i8_code
@@ -539,8 +539,8 @@ sections:
     - i8_menu
     - i8_s3
     - i8_s5
-    - i8_s8
-    - i8_s12
+    - i8_s6
+    - i8_s7
     - i8_wait
     - i8_call
     - i8_chk
