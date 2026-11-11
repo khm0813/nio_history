@@ -1,0 +1,546 @@
+id: it_i_backend
+version: 0.1.0
+name: 통합테스트 I. 기간계 호출
+description: '통합테스트 묶음 I(기간계 호출): test_main 이 시험 번호 09xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '0901'
+      next: i1
+    - when: vars.it_case == '0902'
+      next: i2
+    - when: vars.it_case == '0903'
+      next: i3
+    - when: vars.it_case == '0904'
+      next: i4
+    - when: vars.it_case == '0905'
+      next: i5
+    - when: vars.it_case == '0906'
+      next: i6
+    - when: vars.it_case == '0907'
+      next: i7
+    - when: vars.it_case == '0908'
+      next: i8
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  i1:
+    type: set
+    label: '[I1] 시작'
+    vars:
+      it_id: I1
+    next: i1_code
+  i1_code:
+    type: service_code
+    label: '[I1] 통계'
+    service_code: IT_I1
+    next: i1_say
+  i1_say:
+    type: play
+    label: '[I1] 안내'
+    prompts:
+    - tts: 시험 I1. REST 호출 성공. 아무것도 누르지 마세요
+      bargein: false
+    next: i1_call
+  i1_call:
+    type: call_backend
+    label: REST 고객 조회
+    connector: it/customer
+    in:
+      ani: '1004'
+    out:
+      i1_name: name
+      i1_grade: grade
+    next: i1_read
+    on_timeout: fail
+    on_error: fail
+  i1_read:
+    type: play
+    label: 받은 값 읽기
+    prompts:
+    - tts: 받아 온 고객 이름은 ${vars.i1_name}, 등급은 ${vars.i1_grade} 입니다.
+    next: i1_chk
+  i1_chk:
+    type: branch
+    label: 받은 값
+    cases:
+    - when: not (vars.i1_name == '홍길동')
+      next: fail
+    - when: not (vars.i1_grade == 'VIP')
+      next: fail
+    default: pass
+  i2:
+    type: set
+    label: '[I2] 시작'
+    vars:
+      it_id: I2
+    next: i2_code
+  i2_code:
+    type: service_code
+    label: '[I2] 통계'
+    service_code: IT_I2
+    next: i2_say
+  i2_say:
+    type: play
+    label: '[I2] 안내'
+    prompts:
+    - tts: 시험 I2. 전문 호출 성공. 아무것도 누르지 마세요
+      bargein: false
+    next: i2_call
+  i2_call:
+    type: call_backend
+    label: 고정 길이 전문 잔액 조회
+    connector: it/balance
+    in:
+      acctNo: '12345678901'
+      pwd: '1234'
+      ani: ${session.ani}
+    out:
+      i2_name: acctName
+      i2_bal: balance
+    next: i2_read
+    on_timeout: fail
+    on_error: fail
+  i2_read:
+    type: play
+    label: 받은 값 읽기
+    prompts:
+    - tts: 계좌 이름은 ${vars.i2_name}, 잔액은 ${vars.i2_bal} 원입니다.
+    next: i2_chk
+  i2_chk:
+    type: branch
+    label: 받은 값 (EUC-KR 한글 포함)
+    cases:
+    - when: not (vars.i2_bal == 1234500)
+      next: fail
+    - when: not (vars.i2_name == '홍길동 시험계좌')
+      next: fail
+    default: pass
+  i3:
+    type: set
+    label: '[I3] 시작'
+    vars:
+      it_id: I3
+    next: i3_code
+  i3_code:
+    type: service_code
+    label: '[I3] 통계'
+    service_code: IT_I3
+    next: i3_say
+  i3_say:
+    type: play
+    label: '[I3] 안내'
+    prompts:
+    - tts: 시험 I3. 업무 오류. 아무것도 누르지 마세요
+      bargein: false
+    next: i3_call
+  i3_call:
+    type: call_backend
+    label: 업무 오류 응답
+    connector: it/customer
+    in:
+      ani: bizerr
+    out: {}
+    next: fail
+    on_timeout: fail
+    on_error: i3_chk
+  i3_chk:
+    type: branch
+    label: 업무 오류로 왔는지
+    cases:
+    - when: not (vars.last_backend_status == 'BUSINESS_ERROR')
+      next: fail
+    default: pass
+  i4:
+    type: set
+    label: '[I4] 시작'
+    vars:
+      it_id: I4
+    next: i4_code
+  i4_code:
+    type: service_code
+    label: '[I4] 통계'
+    service_code: IT_I4
+    next: i4_say
+  i4_say:
+    type: play
+    label: '[I4] 안내'
+    prompts:
+    - tts: 시험 I4. 시간 초과. 아무것도 누르지 마세요. 일 초 뒤 시간 초과가 납니다
+      bargein: false
+    next: i4_call
+  i4_call:
+    type: call_backend
+    label: 3초 걸리는 응답 (제한 1초)
+    connector: it/slow
+    in:
+      ms: '3000'
+    out: {}
+    next: fail
+    on_timeout: i4_chk
+    on_error: fail
+  i4_chk:
+    type: branch
+    label: 시간 초과로 왔는지
+    cases:
+    - when: not (vars.last_backend_status == 'TIMEOUT')
+      next: fail
+    default: pass
+  i5:
+    type: set
+    label: '[I5] 시작'
+    vars:
+      it_id: I5
+    next: i5_code
+  i5_code:
+    type: service_code
+    label: '[I5] 통계'
+    service_code: IT_I5
+    next: i5_say
+  i5_say:
+    type: play
+    label: '[I5] 안내'
+    prompts:
+    - tts: 시험 I5. 연결 실패. 아무것도 누르지 마세요
+      bargein: false
+    next: i5_call
+  i5_call:
+    type: call_backend
+    label: 닫힌 포트
+    connector: it/down
+    in: {}
+    out: {}
+    next: fail
+    on_timeout: fail
+    on_error: i5_chk
+  i5_chk:
+    type: branch
+    label: 연결 오류로 왔는지
+    cases:
+    - when: not (vars.last_backend_status == 'TRANSPORT_ERROR')
+      next: fail
+    default: pass
+  i6:
+    type: set
+    label: '[I6] 시작'
+    vars:
+      it_id: I6
+    next: i6_code
+  i6_code:
+    type: service_code
+    label: '[I6] 통계'
+    service_code: IT_I6
+    next: i6_say
+  i6_say:
+    type: play
+    label: '[I6] 안내'
+    prompts:
+    - tts: 시험 I6. 업무 오류는 재시도 안 함. 아무것도 누르지 마세요
+      bargein: false
+    next: i6_before
+  i6_before:
+    type: call_backend
+    label: '앞: 시험 서버가 받은 수'
+    connector: it/hits
+    in:
+      key: ani:bizerr
+    out:
+      i6_a: count
+    next: i6_call
+    on_timeout: fail
+    on_error: fail
+  i6_call:
+    type: call_backend
+    label: 업무 오류 (재시도 설정 2)
+    connector: it/customer
+    in:
+      ani: bizerr
+    out: {}
+    next: fail
+    on_timeout: fail
+    on_error: i6_after
+  i6_after:
+    type: call_backend
+    label: '뒤: 시험 서버가 받은 수'
+    connector: it/hits
+    in:
+      key: ani:bizerr
+    out:
+      i6_b: count
+    next: i6_chk
+    on_timeout: fail
+    on_error: fail
+  i6_chk:
+    type: branch
+    label: 한 번만 보냈는지
+    cases:
+    - when: not (num(vars.i6_b) - num(vars.i6_a) == 1)
+      next: fail
+    default: pass
+  i7:
+    type: set
+    label: '[I7] 시작'
+    vars:
+      it_id: I7
+    next: i7_code
+  i7_code:
+    type: service_code
+    label: '[I7] 통계'
+    service_code: IT_I7
+    next: i7_say
+  i7_say:
+    type: play
+    label: '[I7] 안내'
+    prompts:
+    - tts: 시험 I7. 대기 멘트와 느린 응답. 아무것도 누르지 마세요
+      bargein: false
+    next: i7_wait
+  i7_wait:
+    type: play
+    label: 끼어들기 안 되는 대기 멘트
+    prompts:
+    - tts: 조회 중입니다. 잠시만 기다려 주세요.
+      bargein: false
+    next: i7_call
+  i7_call:
+    type: call_backend
+    label: 0.8초 걸리는 응답
+    connector: it/slow
+    in:
+      ms: '800'
+    out:
+      i7: grade
+    next: i7_chk
+    on_timeout: fail
+    on_error: fail
+  i7_chk:
+    type: branch
+    label: 응답을 받았는지
+    cases:
+    - when: not (vars.i7 == 'SLOW')
+      next: fail
+    default: pass
+  i8:
+    type: set
+    label: '[I8] 시작'
+    vars:
+      it_id: I8
+    next: i8_code
+  i8_code:
+    type: service_code
+    label: '[I8] 통계'
+    service_code: IT_I8
+    next: i8_say
+  i8_say:
+    type: play
+    label: '[I8] 안내'
+    prompts:
+    - tts: 시험 I8. 교환기가 기다려 주는 한계. 교환기가 셸의 응답을 얼마나 기다려 주는지 잽니다
+      bargein: false
+    next: i8_menu
+  i8_menu:
+    type: menu
+    label: 지연 고르기
+    prompts:
+    - tts: 기다릴 시간을 고르세요. 삼 초는 일 번, 오 초는 이 번, 팔 초는 삼 번, 십이 초는 사 번입니다.
+    choices:
+      '1': i8_s3
+      '2': i8_s5
+      '3': i8_s8
+      '4': i8_s12
+    max_retry: 1
+    on_max_retry: fail
+  i8_s3:
+    type: set
+    label: 3초
+    vars:
+      i8_ms: '3000'
+    next: i8_wait
+  i8_s5:
+    type: set
+    label: 5초
+    vars:
+      i8_ms: '5000'
+    next: i8_wait
+  i8_s8:
+    type: set
+    label: 8초
+    vars:
+      i8_ms: '8000'
+    next: i8_wait
+  i8_s12:
+    type: set
+    label: 12초
+    vars:
+      i8_ms: '12000'
+    next: i8_wait
+  i8_wait:
+    type: play
+    label: 대기 멘트
+    prompts:
+    - tts: 조회 중입니다. 잠시만 기다려 주세요.
+      bargein: false
+    next: i8_call
+  i8_call:
+    type: call_backend
+    label: 고른 시간만큼 걸리는 응답 (제한 15초)
+    connector: it/wait
+    in:
+      ms: ${vars.i8_ms}
+    out:
+      i8: grade
+    next: i8_chk
+    on_timeout: fail
+    on_error: fail
+  i8_chk:
+    type: branch
+    label: 응답을 받았는지
+    cases:
+    - when: not (vars.i8 == 'SLOW')
+      next: fail
+    default: pass
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_i1:
+    title: '[I1] REST 호출 성공'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 받아 온 고객 이름과 "통과"'
+    nodes:
+    - i1
+    - i1_code
+    - i1_say
+    - i1_call
+    - i1_read
+    - i1_chk
+  t_i2:
+    title: '[I2] 전문 호출 성공'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 받아 온 계좌 이름과 "통과"'
+    nodes:
+    - i2
+    - i2_code
+    - i2_say
+    - i2_call
+    - i2_read
+    - i2_chk
+  t_i3:
+    title: '[I3] 업무 오류'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 오류 경로로 "통과"'
+    nodes:
+    - i3
+    - i3_code
+    - i3_say
+    - i3_call
+    - i3_chk
+  t_i4:
+    title: '[I4] 시간 초과'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 대기 뒤 시간 초과 경로로 "통과"'
+    nodes:
+    - i4
+    - i4_code
+    - i4_say
+    - i4_call
+    - i4_chk
+  t_i5:
+    title: '[I5] 연결 실패'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 오류 경로로 "통과"'
+    nodes:
+    - i5
+    - i5_code
+    - i5_say
+    - i5_call
+    - i5_chk
+  t_i6:
+    title: '[I6] 업무 오류는 재시도 안 함'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - i6
+    - i6_code
+    - i6_say
+    - i6_before
+    - i6_call
+    - i6_after
+    - i6_chk
+  t_i7:
+    title: '[I7] 대기 멘트와 느린 응답'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 끼어들기 안 되는 대기 멘트 뒤 "통과"'
+    nodes:
+    - i7
+    - i7_code
+    - i7_say
+    - i7_wait
+    - i7_call
+    - i7_chk
+  t_i8:
+    title: '[I8] 교환기가 기다려 주는 한계'
+    note: '누를 것: 1~4 로 지연 고르기(1=3초, 2=5초, 3=8초, 4=12초) / 들려야 할 것: 대기 뒤 "통과". 끊기거나 오류 안내가 나오면 그 지연이 한계'
+    nodes:
+    - i8
+    - i8_code
+    - i8_say
+    - i8_menu
+    - i8_s3
+    - i8_s5
+    - i8_s8
+    - i8_s12
+    - i8_wait
+    - i8_call
+    - i8_chk
