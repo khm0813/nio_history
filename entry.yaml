@@ -2,6 +2,5 @@
 ---
 entry:
   "9900": "kiwoom-ars-9900"
-  "39001": "ars9000_main"
   queue:wait: "cisco_queue_wait"
   '*': "test_main"

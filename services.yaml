@@ -5,10 +5,6 @@ services:
     numbers:
     - "9900"
     main: "kiwoom-ars-9900"
-  ars9000_main:
-    numbers:
-    - "39001"
-    main: "ars9000_main"
   cisco_queue_wait:
     numbers:
     - "queue:wait"
