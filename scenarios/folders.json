@@ -11,6 +11,10 @@
     "it_h_subflow" : "통합테스트",
     "it_j_script" : "통합테스트",
     "it_m_calendar" : "통합테스트",
-    "it_l_notice" : "통합테스트"
+    "it_l_notice" : "통합테스트",
+    "it_i_backend" : "통합테스트",
+    "it_k_svccode" : "통합테스트",
+    "it_f_end" : "통합테스트",
+    "it_e_transfer" : "통합테스트"
   }
 }
