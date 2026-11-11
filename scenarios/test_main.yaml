@@ -11,60 +11,54 @@ nodes:
   welcome:
     type: play
     prompts:
-    - tts: 안녕하세요. ECS 통합테스트 시나리오입니다. 이 테스트에서는 모든 케이스의 시나리오 테스트를 진행합니다.
+      - tts: 안녕하세요. ECS 통합테스트 시나리오입니다. 이 테스트에서는 모든 케이스의 시나리오 테스트를 진행합니다.
     next: branch-q3c9rm
     label: 통합테스트시나리오-인사
   bye:
     type: hangup
     label: 종료
     prompts:
-    - tts: 감사합니다.
+      - tts: 감사합니다.
   service_code-toc51k:
     type: service_code
     label: 통합테스트 메인시나리오 시작 통계
     service_code: TEST0000
-    next: notice-x32arn
+    next: welcome
   branch-q3c9rm:
     type: branch
     label: 분기
     cases:
-    - when: session.dnis == '68001'
-      next: play-hg3b8v
-    - when: session.dnis == '8003'
-      next: play-7hx4gt
+      - when: session.dnis == '68001'
+        next: play-hg3b8v
+      - when: session.dnis == '8003'
+        next: play-7hx4gt
     default: play-ofp42y
   play-hg3b8v:
     type: play
     label: 통합테스트시나리오_멘트 재생(CVP인입)
     prompts:
-    - tts: '${session.vendor} 으로부터 연결되었습니다. 전달받은값은 Application  : ${session.cvp_application}, ani : ${session.cvp__ani}, callKey : ${session.cvp_callkey}
+      - tts: '${session.vendor} 으로부터 연결되었습니다. 전달받은값은 Application  : ${session.cvp_application}, ani : ${session.cvp__ani}, callKey : ${session.cvp_callkey}
 
-        으로 전달받았습니다.'
+          으로 전달받았습니다.'
     next: it_ask
   play-7hx4gt:
     type: play
     label: 통합테스트시나리오_멘트 재생(BP인입)
     prompts:
-    - tts: '${session.vendor} 으로부터 연결되었습니다. '
+      - tts: '${session.vendor} 으로부터 연결되었습니다. '
     next: it_ask
-  notice-x32arn:
-    type: notice
-    label: 공지사항
-    next: welcome
-    notices:
-    - n-20261110-1
   play-ofp42y:
     type: play
     label: 통합테스트시나리오_멘트 재생(avaya인입)
     prompts:
-    - tts: '${session.vendor} 으로부터 연결되었습니다. '
+      - tts: '${session.vendor} 으로부터 연결되었습니다. '
     next: it_ask
   it_ask:
     type: collect
     label: 시험 번호 입력
     prompts:
-    - tts: 시험 번호 네 자리를 눌러 주세요. 끝내려면 영을 네 번 누르세요.
-      bargein: true
+      - tts: 시험 번호 네 자리를 눌러 주세요. 끝내려면 영을 네 번 누르세요.
+        bargein: true
     var: it_case
     min_digits: 4
     max_digits: 4
@@ -73,40 +67,40 @@ nodes:
     max_retry: 2
     on_max_retry: it_end
     noinput_prompts:
-    - tts: 입력이 없습니다.
+      - tts: 입력이 없습니다.
     nomatch_prompts:
-    - tts: 네 자리를 눌러 주세요.
+      - tts: 네 자리를 눌러 주세요.
     next: it_route
   it_route:
     type: branch
     label: 묶음으로 나누기
     cases:
-    - when: vars.it_case == '0000'
-      next: it_end
-    - when: startsWith(vars.it_case, '02')
-      next: it_go_b
-    - when: startsWith(vars.it_case, '03')
-      next: it_go_c
-    - when: startsWith(vars.it_case, '04')
-      next: it_go_d
-    - when: startsWith(vars.it_case, '07')
-      next: it_go_g
-    - when: startsWith(vars.it_case, '08')
-      next: it_go_h
-    - when: startsWith(vars.it_case, '10')
-      next: it_go_j
-    - when: startsWith(vars.it_case, '13')
-      next: it_go_m
-    - when: startsWith(vars.it_case, '12')
-      next: it_go_l
-    - when: startsWith(vars.it_case, '09')
-      next: it_go_i
-    - when: startsWith(vars.it_case, '11')
-      next: it_go_k
-    - when: startsWith(vars.it_case, '06')
-      next: it_go_f
-    - when: startsWith(vars.it_case, '05')
-      next: it_go_e
+      - when: vars.it_case == '0000'
+        next: it_end
+      - when: startsWith(vars.it_case, '02')
+        next: it_go_b
+      - when: startsWith(vars.it_case, '03')
+        next: it_go_c
+      - when: startsWith(vars.it_case, '04')
+        next: it_go_d
+      - when: startsWith(vars.it_case, '07')
+        next: it_go_g
+      - when: startsWith(vars.it_case, '08')
+        next: it_go_h
+      - when: startsWith(vars.it_case, '10')
+        next: it_go_j
+      - when: startsWith(vars.it_case, '13')
+        next: it_go_m
+      - when: startsWith(vars.it_case, '12')
+        next: it_go_l
+      - when: startsWith(vars.it_case, '09')
+        next: it_go_i
+      - when: startsWith(vars.it_case, '11')
+        next: it_go_k
+      - when: startsWith(vars.it_case, '06')
+        next: it_go_f
+      - when: startsWith(vars.it_case, '05')
+        next: it_go_e
     default: it_unknown
   it_go_b:
     type: call_subflow
@@ -274,49 +268,48 @@ nodes:
     type: play
     label: 없는 번호
     prompts:
-    - tts: 없는 시험 번호입니다.
-      bargein: false
+      - tts: 없는 시험 번호입니다.
+        bargein: false
     next: it_ask
   it_end:
     type: play
     label: 시험 끝
     prompts:
-    - tts: 통합 시험을 마칩니다.
-      bargein: false
+      - tts: 통합 시험을 마칩니다.
+        bargein: false
     next: bye
 sections:
   main:
     title: 통합테스트시나리오-메인분기
     nodes:
-    - welcome
-    - bye
-    - service_code-toc51k
-    - branch-q3c9rm
-    - play-hg3b8v
-    - play-7hx4gt
-    - notice-x32arn
-    - play-ofp42y
+      - welcome
+      - bye
+      - service_code-toc51k
+      - branch-q3c9rm
+      - play-hg3b8v
+      - play-7hx4gt
+      - play-ofp42y
   it_select:
     title: 통합테스트 - 시험 번호 선택
     note: 인사 뒤 시험 번호 4자리(묶음 2자리 + 항목 2자리, 예 0303 = C3)를 받아 묶음 서브플로우로 보낸다. 0000 은 종료. 번호표는 it/cases.tsv
     nodes:
-    - it_ask
-    - it_route
-    - it_go_b
-    - it_go_c
-    - it_go_d
-    - it_go_g
-    - it_go_h
-    - it_go_j
-    - it_go_m
-    - it_go_l
-    - it_go_i
-    - it_go_k
-    - it_go_f
-    - it_go_e
-    - it_record
-    - it_unknown
-    - it_end
+      - it_ask
+      - it_route
+      - it_go_b
+      - it_go_c
+      - it_go_d
+      - it_go_g
+      - it_go_h
+      - it_go_j
+      - it_go_m
+      - it_go_l
+      - it_go_i
+      - it_go_k
+      - it_go_f
+      - it_go_e
+      - it_record
+      - it_unknown
+      - it_end
 layout:
   sections:
     main:
@@ -343,9 +336,57 @@ layout:
     play-7hx4gt:
       x: 440
       y: -100
-    notice-x32arn:
-      x: -460
-      y: -100
     play-ofp42y:
       x: 440
       y: 20
+    it_ask:
+      x: 1500
+      y: 680
+    it_route:
+      x: 1800
+      y: 1000
+    it_go_b:
+      x: 2100
+      y: 2240
+    it_go_c:
+      x: 2100
+      y: 2080
+    it_go_d:
+      x: 2100
+      y: 1920
+    it_go_g:
+      x: 2100
+      y: 1760
+    it_go_h:
+      x: 2100
+      y: 1600
+    it_go_j:
+      x: 2100
+      y: 1440
+    it_go_m:
+      x: 2100
+      y: 1120
+    it_go_l:
+      x: 2100
+      y: 960
+    it_go_i:
+      x: 2100
+      y: 800
+    it_go_k:
+      x: 2100
+      y: 640
+    it_go_f:
+      x: 2100
+      y: 480
+    it_go_e:
+      x: 2100
+      y: 320
+    it_record:
+      x: 2400
+      y: 1180
+    it_unknown:
+      x: 2400
+      y: 1500
+    it_end:
+      x: 2100
+      y: 180
