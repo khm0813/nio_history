@@ -127,7 +127,7 @@ groups:
     parent: "IT_C"
     dtmf: "0308"
   - code: "IT_C9"
-    name: "[C9] 사이트 기본 무입력·오류 멘트"
+    name: "[C9] 무입력·오류 멘트 없이 재시도"
     parent: "IT_C"
     dtmf: "0309"
   - code: "IT_D"
