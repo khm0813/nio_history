@@ -1,0 +1,366 @@
+id: it_h_subflow
+version: 0.1.0
+name: 통합테스트 H. 서브플로우
+description: '통합테스트 묶음 H(서브플로우): test_main 이 시험 번호 08xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '0801'
+      next: h1
+    - when: vars.it_case == '0802'
+      next: h2
+    - when: vars.it_case == '0803'
+      next: h3
+    - when: vars.it_case == '0804'
+      next: h4
+    - when: vars.it_case == '0805'
+      next: h5
+    - when: vars.it_case == '0806'
+      next: h6
+    - when: vars.it_case == '0807'
+      next: h7
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  h1:
+    type: set
+    label: '[H1] 시작'
+    vars:
+      it_id: H1
+    next: h1_code
+  h1_code:
+    type: service_code
+    label: '[H1] 통계'
+    service_code: IT_H1
+    next: h1_say
+  h1_say:
+    type: play
+    label: '[H1] 안내'
+    prompts:
+    - tts: 시험 H1. 서브플로우 호출과 복귀. 아무것도 누르지 마세요
+      bargein: false
+    next: h1_call
+  h1_call:
+    type: call_subflow
+    label: 부르고 돌아오기
+    scenario: it_sub
+    in:
+      mode: echo
+      val: a
+    out:
+      h1: out
+    exits:
+      ok: pass
+      alt: fail
+    next: fail
+  h2:
+    type: set
+    label: '[H2] 시작'
+    vars:
+      it_id: H2
+    next: h2_code
+  h2_code:
+    type: service_code
+    label: '[H2] 통계'
+    service_code: IT_H2
+    next: h2_say
+  h2_say:
+    type: play
+    label: '[H2] 안내'
+    prompts:
+    - tts: 시험 H2. 서브플로우 값 주고받기. 아무것도 누르지 마세요
+      bargein: false
+    next: h2_call
+  h2_call:
+    type: call_subflow
+    label: 값 넘기고 받기
+    scenario: it_sub
+    in:
+      mode: echo
+      val: hello
+    out:
+      h2: out
+    exits:
+      ok: h2_chk
+      alt: fail
+    next: fail
+  h2_chk:
+    type: branch
+    label: 받은 값
+    cases:
+    - when: not (vars.h2 == 'hello!')
+      next: fail
+    default: pass
+  h3:
+    type: set
+    label: '[H3] 시작'
+    vars:
+      it_id: H3
+    next: h3_code
+  h3_code:
+    type: service_code
+    label: '[H3] 통계'
+    service_code: IT_H3
+    next: h3_say
+  h3_say:
+    type: play
+    label: '[H3] 안내'
+    prompts:
+    - tts: 시험 H3. 서브플로우 출구 이름. 아무것도 누르지 마세요
+      bargein: false
+    next: h3_call
+  h3_call:
+    type: call_subflow
+    label: 출구 이름으로 가기
+    scenario: it_sub
+    in:
+      mode: alt
+    out: {}
+    exits:
+      ok: fail
+      alt: pass
+    next: fail
+  h4:
+    type: set
+    label: '[H4] 시작'
+    vars:
+      it_id: H4
+    next: h4_code
+  h4_code:
+    type: service_code
+    label: '[H4] 통계'
+    service_code: IT_H4
+    next: h4_say
+  h4_say:
+    type: play
+    label: '[H4] 안내'
+    prompts:
+    - tts: 시험 H4. 목록에 없는 출구. 아무것도 누르지 마세요
+      bargein: false
+    next: h4_call
+  h4_call:
+    type: call_subflow
+    label: 목록에 없는 출구 → next
+    scenario: it_sub
+    in:
+      mode: odd
+    out: {}
+    exits:
+      ok: fail
+      alt: fail
+    next: pass
+  h5:
+    type: set
+    label: '[H5] 시작'
+    vars:
+      it_id: H5
+    next: h5_code
+  h5_code:
+    type: service_code
+    label: '[H5] 통계'
+    service_code: IT_H5
+    next: h5_say
+  h5_say:
+    type: play
+    label: '[H5] 안내'
+    prompts:
+    - tts: 시험 H5. 서브플로우 두 단계. 아무것도 누르지 마세요
+      bargein: false
+    next: h5_call
+  h5_call:
+    type: call_subflow
+    label: 두 단계 (it_sub2 → it_sub)
+    scenario: it_sub2
+    in:
+      val: deep
+    out:
+      h5: out
+    exits:
+      ok: h5_chk
+      alt: fail
+    next: fail
+  h5_chk:
+    type: branch
+    label: 두 단계를 거친 값
+    cases:
+    - when: not (vars.h5 == 'deep!')
+      next: fail
+    default: pass
+  h6:
+    type: set
+    label: '[H6] 시작'
+    vars:
+      it_id: H6
+    next: h6_code
+  h6_code:
+    type: service_code
+    label: '[H6] 통계'
+    service_code: IT_H6
+    next: h6_say
+  h6_say:
+    type: play
+    label: '[H6] 안내'
+    prompts:
+    - tts: 시험 H6. 서브플로우 안에서 종료. 아무것도 누르지 마세요. 서브플로우 안에서 통화가 끝납니다
+      bargein: false
+    next: h6_call
+  h6_call:
+    type: call_subflow
+    label: 안에서 통화 끝
+    scenario: it_sub
+    in:
+      mode: end
+    out: {}
+    exits:
+      ok: fail
+      alt: fail
+    next: fail
+  h7:
+    type: set
+    label: '[H7] 시작'
+    vars:
+      it_id: H7
+    next: h7_code
+  h7_code:
+    type: service_code
+    label: '[H7] 통계'
+    service_code: IT_H7
+    next: h7_say
+  h7_say:
+    type: play
+    label: '[H7] 안내'
+    prompts:
+    - tts: 시험 H7. 서브플로우 안에서 입력. 서브플로우 안의 메뉴에서 일 번을 누르세요
+      bargein: false
+    next: h7_call
+  h7_call:
+    type: call_subflow
+    label: 안에서 입력
+    scenario: it_sub
+    in:
+      mode: menu
+    out: {}
+    exits:
+      ok: pass
+      alt: fail
+    next: fail
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_h1:
+    title: '[H1] 서브플로우 호출과 복귀'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 서브플로우 안내 뒤 돌아와 "통과"'
+    nodes:
+    - h1
+    - h1_code
+    - h1_say
+    - h1_call
+  t_h2:
+    title: '[H2] 서브플로우 값 주고받기'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - h2
+    - h2_code
+    - h2_say
+    - h2_call
+    - h2_chk
+  t_h3:
+    title: '[H3] 서브플로우 출구 이름'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - h3
+    - h3_code
+    - h3_say
+    - h3_call
+  t_h4:
+    title: '[H4] 목록에 없는 출구'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - h4
+    - h4_code
+    - h4_say
+    - h4_call
+  t_h5:
+    title: '[H5] 서브플로우 두 단계'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - h5
+    - h5_code
+    - h5_say
+    - h5_call
+    - h5_chk
+  t_h6:
+    title: '[H6] 서브플로우 안에서 종료'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 서브플로우의 종료 멘트 뒤 끊김'
+    nodes:
+    - h6
+    - h6_code
+    - h6_say
+    - h6_call
+  t_h7:
+    title: '[H7] 서브플로우 안에서 입력'
+    note: '누를 것: 1 / 들려야 할 것: 통과'
+    nodes:
+    - h7
+    - h7_code
+    - h7_say
+    - h7_call
