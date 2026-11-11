@@ -1,0 +1,23 @@
+# 통합테스트(K1): 서비스코드 통계 전송을 시험 서버가 받는다. 엔진이 넘기는 값: code, name, parent, group, dtmf, path,
+# call_id, ani, dnis, ucid, vendor, scenario, node, at
+connector: it/stats
+kind: rest-json
+description: 통합테스트 - 서비스코드 수신 (시험 서버)
+host: ${hosts.it_api}
+timeout_ms: 2000
+rest:
+  method: POST
+  path: /it/stats
+  headers: { Content-Type: application/json }
+  body_template:
+    serviceCode: ${in.code}
+    serviceName: ${in.name}
+    parentCode: ${in.parent}
+    callId: ${in.call_id}
+    ani: ${in.ani}
+    dnis: ${in.dnis}
+    vendor: ${in.vendor}
+    scenario: ${in.scenario}
+    node: ${in.node}
+    occurredAt: ${in.at}
+ok_when: "true"
