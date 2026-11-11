@@ -28,6 +28,21 @@ calendars:
     hours: {}
     holidays: true
     base: "center"
+  it_open:
+    name: "통합테스트 항상 열림"
+    hours:
+      mon: "00:00-24:00"
+      tue: "00:00-24:00"
+      wed: "00:00-24:00"
+      thu: "00:00-24:00"
+      fri: "00:00-24:00"
+      sat: "00:00-24:00"
+      sun: "00:00-24:00"
+    holidays: false
+  it_closed:
+    name: "통합테스트 항상 닫힘"
+    hours: {}
+    holidays: false
 holidays:
 - date: "2026-01-01"
   name: "신정"
