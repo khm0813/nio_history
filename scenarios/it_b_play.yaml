@@ -13,24 +13,24 @@ nodes:
     type: branch
     label: 시험 번호로 나누기
     cases:
-    - when: vars.it_case == '0201'
-      next: b1
-    - when: vars.it_case == '0202'
-      next: b2
-    - when: vars.it_case == '0203'
-      next: b3
-    - when: vars.it_case == '0204'
-      next: b4
-    - when: vars.it_case == '0205'
-      next: b5
-    - when: vars.it_case == '0206'
-      next: b6
-    - when: vars.it_case == '0207'
-      next: b7
-    - when: vars.it_case == '0208'
-      next: b8
-    - when: vars.it_case == '0209'
-      next: b9
+      - when: vars.it_case == '0201'
+        next: b1
+      - when: vars.it_case == '0202'
+        next: b2
+      - when: vars.it_case == '0203'
+        next: b3
+      - when: vars.it_case == '0204'
+        next: b4
+      - when: vars.it_case == '0205'
+        next: b5
+      - when: vars.it_case == '0206'
+        next: b6
+      - when: vars.it_case == '0207'
+        next: b7
+      - when: vars.it_case == '0208'
+        next: b8
+      - when: vars.it_case == '0209'
+        next: b9
     default: unknown
   unknown:
     type: return
@@ -46,8 +46,8 @@ nodes:
     type: play
     label: 통과 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 통과입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 통과입니다.
+        bargein: false
     next: back
   fail:
     type: set
@@ -59,8 +59,8 @@ nodes:
     type: play
     label: 실패 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 실패입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 실패입니다.
+        bargein: false
     next: back
   back:
     type: return
@@ -89,14 +89,14 @@ nodes:
     type: play
     label: '[B1] 안내'
     prompts:
-    - tts: 시험 B1. 음원 재생. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B1. 음원 재생. 아무것도 누르지 마세요
+        bargein: false
     next: b1_play
   b1_play:
     type: play
     label: 음원 id 재생
     prompts:
-    - id: welcome
+      - id: welcome
     next: pass
   b2:
     type: set
@@ -113,14 +113,14 @@ nodes:
     type: play
     label: '[B2] 안내'
     prompts:
-    - tts: 시험 B2. 문구만 있는 멘트(TTS). 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B2. 문구만 있는 멘트(TTS). 아무것도 누르지 마세요
+        bargein: false
     next: b2_play
   b2_play:
     type: play
     label: 문구만 있는 멘트
     prompts:
-    - tts: 이 문장은 음성 합성으로 읽는 시험 문장입니다.
+      - tts: 이 문장은 음성 합성으로 읽는 시험 문장입니다.
     next: pass
   b3:
     type: set
@@ -137,14 +137,14 @@ nodes:
     type: play
     label: '[B3] 안내'
     prompts:
-    - tts: 시험 B3. 문구에 변수. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B3. 문구에 변수. 아무것도 누르지 마세요
+        bargein: false
     next: b3_play
   b3_play:
     type: play
     label: 변수 넣은 문구
     prompts:
-    - tts: 발신 번호는 ${session.ani}, 시험 번호는 ${vars.it_case} 입니다.
+      - tts: 발신 번호는 ${session.ani}, 시험 번호는 ${vars.it_case} 입니다.
     next: pass
   b4:
     type: set
@@ -161,14 +161,14 @@ nodes:
     type: play
     label: '[B4] 안내'
     prompts:
-    - tts: 시험 B4. 문구에 식. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B4. 문구에 식. 아무것도 누르지 마세요
+        bargein: false
     next: b4_play
   b4_play:
     type: play
     label: 식 넣은 문구
     prompts:
-    - tts: 일 더하기 이는 ${num(1) + 2} 입니다. 오늘 휴일 이름은 ${holidayName()} 입니다.
+      - tts: 일 더하기 이는 ${num(1) + 2} 입니다. 오늘 휴일 이름은 ${holidayName()} 입니다.
     next: pass
   b5:
     type: set
@@ -185,15 +185,15 @@ nodes:
     type: play
     label: '[B5] 안내'
     prompts:
-    - tts: 시험 B5. 음원과 문구가 둘 다. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B5. 음원과 문구가 둘 다. 아무것도 누르지 마세요
+        bargein: false
     next: b5_play
   b5_play:
     type: play
     label: 음원과 문구 둘 다
     prompts:
-    - id: welcome
-      tts: 이 문장이 들리면 실패입니다.
+      - id: welcome
+        tts: 이 문장이 들리면 실패입니다.
     next: pass
   b6:
     type: set
@@ -210,14 +210,14 @@ nodes:
     type: play
     label: '[B6] 안내'
     prompts:
-    - tts: 시험 B6. 주소(url) 멘트. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B6. 주소(url) 멘트. 아무것도 누르지 마세요
+        bargein: false
     next: b6_play
   b6_play:
     type: play
     label: 주소 멘트
     prompts:
-    - url: http://10.0.6.101:18100/it/audio/welcome.wav
+      - url: http://10.0.6.101:18100/it/audio/welcome.wav
     next: pass
   b7:
     type: set
@@ -234,14 +234,14 @@ nodes:
     type: play
     label: '[B7] 안내'
     prompts:
-    - tts: 시험 B7. 끼어들기 됨. 긴 멘트가 나오는 중에 1번을 누르세요
-      bargein: false
+      - tts: 시험 B7. 끼어들기 됨. 긴 멘트가 나오는 중에 1번을 누르세요
+        bargein: false
     next: b7_menu
   b7_menu:
     type: menu
     label: 끼어들기 되는 멘트
     prompts:
-    - tts: 지금부터 긴 문장을 읽습니다. 이 문장이 끝나기 전에 1번을 누르면 문장이 바로 끊겨야 합니다. 끊기지 않고 끝까지 들리면 실패로 보시면 됩니다. 계속 읽고 있습니다.
+      - tts: 지금부터 긴 문장을 읽습니다. 이 문장이 끝나기 전에 1번을 누르면 문장이 바로 끊겨야 합니다. 끊기지 않고 끝까지 들리면 실패로 보시면 됩니다. 계속 읽고 있습니다.
     choices:
       '1': pass
     max_retry: 1
@@ -261,15 +261,15 @@ nodes:
     type: play
     label: '[B8] 안내'
     prompts:
-    - tts: 시험 B8. 끼어들기 안 됨. 멘트가 나오는 중에 1번을 여러 번 누르세요
-      bargein: false
+      - tts: 시험 B8. 끼어들기 안 됨. 멘트가 나오는 중에 1번을 여러 번 누르세요
+        bargein: false
     next: b8_menu
   b8_menu:
     type: menu
     label: 끼어들기 안 되는 멘트
     prompts:
-    - tts: 이 문장은 끼어들기가 막혀 있습니다. 중간에 눌러도 끝까지 들린 뒤에 1번을 받아야 합니다.
-      bargein: false
+      - tts: 이 문장은 끼어들기가 막혀 있습니다. 중간에 눌러도 끝까지 들린 뒤에 1번을 받아야 합니다.
+        bargein: false
     choices:
       '1': pass
     max_retry: 1
@@ -289,102 +289,155 @@ nodes:
     type: play
     label: '[B9] 안내'
     prompts:
-    - tts: 시험 B9. 멘트 여러 개. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 B9. 멘트 여러 개. 아무것도 누르지 마세요
+        bargein: false
     next: b9_play
   b9_play:
     type: play
     label: 멘트 다섯 개
     prompts:
-    - tts: 하나.
-    - tts: 둘.
-    - tts: 셋.
-    - tts: 넷.
-    - tts: 다섯.
+      - tts: 하나.
+      - tts: 둘.
+      - tts: 셋.
+      - tts: 넷.
+      - tts: 다섯.
     next: pass
 sections:
   frame:
     title: 공통 틀
     note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
     nodes:
-    - entry
-    - unknown
-    - pass
-    - pass_say
-    - fail
-    - fail_say
-    - back
-    - dflt_retry
-    - dflt_error
+      - entry
+      - unknown
+      - pass
+      - pass_say
+      - fail
+      - fail_say
+      - back
+      - dflt_retry
+      - dflt_error
   t_b1:
     title: '[B1] 음원 재생'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 녹음된 인사 음원'
     nodes:
-    - b1
-    - b1_code
-    - b1_say
-    - b1_play
+      - b1
+      - b1_code
+      - b1_say
+      - b1_play
   t_b2:
     title: '[B2] 문구만 있는 멘트(TTS)'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 합성 음성 한 문장'
     nodes:
-    - b2
-    - b2_code
-    - b2_say
-    - b2_play
+      - b2
+      - b2_code
+      - b2_say
+      - b2_play
   t_b3:
     title: '[B3] 문구에 변수'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 발신 번호와 시험 번호를 넣은 문장'
     nodes:
-    - b3
-    - b3_code
-    - b3_say
-    - b3_play
+      - b3
+      - b3_code
+      - b3_say
+      - b3_play
   t_b4:
     title: '[B4] 문구에 식'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 일 더하기 이는 3 과 휴일 이름(없으면 빈칸)'
     nodes:
-    - b4
-    - b4_code
-    - b4_say
-    - b4_play
+      - b4
+      - b4_code
+      - b4_say
+      - b4_play
   t_b5:
     title: '[B5] 음원과 문구가 둘 다'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 음원 쪽(녹음된 인사)이 들림'
     nodes:
-    - b5
-    - b5_code
-    - b5_say
-    - b5_play
+      - b5
+      - b5_code
+      - b5_say
+      - b5_play
   t_b6:
     title: '[B6] 주소(url) 멘트'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 주소로 받은 음원'
     nodes:
-    - b6
-    - b6_code
-    - b6_say
-    - b6_play
+      - b6
+      - b6_code
+      - b6_say
+      - b6_play
   t_b7:
     title: '[B7] 끼어들기 됨'
     note: '누를 것: 긴 멘트 중에 1 / 들려야 할 것: 멘트가 끊기고 "통과"'
     nodes:
-    - b7
-    - b7_code
-    - b7_say
-    - b7_menu
+      - b7
+      - b7_code
+      - b7_say
+      - b7_menu
   t_b8:
     title: '[B8] 끼어들기 안 됨'
     note: '누를 것: 멘트 중에 1 을 여러 번 / 들려야 할 것: 멘트가 끝까지 나온 뒤 결과'
     nodes:
-    - b8
-    - b8_code
-    - b8_say
-    - b8_menu
+      - b8
+      - b8_code
+      - b8_say
+      - b8_menu
   t_b9:
     title: '[B9] 멘트 여러 개'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 하나, 둘, 셋, 넷, 다섯 다섯 멘트가 차례로'
     nodes:
-    - b9
-    - b9_code
-    - b9_say
-    - b9_play
+      - b9
+      - b9_code
+      - b9_say
+      - b9_play
+layout:
+  nodes:
+    entry:
+      x: 640
+      y: 0
+    unknown:
+      x: 1000
+      y: 240
+    pass:
+      x: 980
+      y: 340
+    pass_say:
+      x: 1280
+      y: 340
+    fail:
+      x: 980
+      y: 500
+    fail_say:
+      x: 1280
+      y: 500
+    back:
+      x: 1580
+      y: 440
+    dflt_retry:
+      x: 660
+      y: 380
+    dflt_error:
+      x: 640
+      y: 520
+    b6:
+      x: 300
+      y: 1320
+    b6_code:
+      x: 600
+      y: 1320
+    b6_say:
+      x: 900
+      y: 1320
+    b6_play:
+      x: 1200
+      y: 1320
+    b8:
+      x: 300
+      y: 1840
+    b8_code:
+      x: 600
+      y: 1860
+    b8_say:
+      x: 900
+      y: 1840
+    b8_menu:
+      x: 1200
+      y: 1840
