@@ -1,0 +1,12 @@
+# 통합테스트(I8): 시험 서버가 in.ms 만큼 늦게 답한다. 제한 7.5초 — 셸이 엔진을 8초 기다리므로 그 안에서 교환기가 통화를 유지하는지 본다.
+connector: it/slow7
+kind: rest-json
+description: 통합테스트 - 7초까지 걸리는 응답 (교환기 유지 확인)
+host: ${hosts.it_api}
+timeout_ms: 7500
+rest:
+  method: GET
+  path: /it/slow?ms=${in.ms}
+  response_map:
+    grade: data.grade
+ok_when: resp.grade != ''
