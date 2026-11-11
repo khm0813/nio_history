@@ -1,0 +1,13 @@
+# 통합테스트(I5): 아무도 듣지 않는 포트. 연결 실패 → 1번 다시 해 본 뒤 오류 경로.
+connector: it/down
+kind: rest-json
+description: 통합테스트 - 연결 실패 (닫힌 포트)
+host: ${hosts.it_down}
+timeout_ms: 1000
+retry: 1
+rest:
+  method: GET
+  path: /it/health
+  response_map:
+    status: status
+ok_when: resp.status == 'UP'
