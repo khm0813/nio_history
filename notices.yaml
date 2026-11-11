@@ -22,3 +22,62 @@ notices:
   text: "해당 공지사항은 통합테스트 전용 공지사항입니다."
   action: "continue"
   order: 0
+- enabled: true
+  action: "continue"
+  everywhere: false
+  order: 0
+  id: "it_n_a"
+  title: "통합테스트 공지 A"
+  text: "통합테스트 공지 에이입니다."
+- enabled: true
+  action: "continue"
+  everywhere: false
+  order: 0
+  id: "it_n_b"
+  title: "통합테스트 공지 B"
+  text: "통합테스트 공지 비입니다. 이 공지는 끝까지 들려야 합니다."
+- enabled: true
+  action: "continue"
+  everywhere: false
+  order: 0
+  id: "it_n_dnis"
+  title: "통합테스트 공지 - 39000 전용"
+  text: "삼구공공공 번호로 걸었을 때만 나오는 공지입니다."
+  dnis:
+  - "39000"
+- enabled: true
+  action: "continue"
+  everywhere: false
+  order: 0
+  id: "it_n_old"
+  title: "통합테스트 공지 - 지난 기간"
+  text: "이 공지가 들리면 실패입니다."
+  from: "2026-01-01"
+  to: "2026-01-02"
+- enabled: true
+  action: "continue"
+  everywhere: false
+  order: 0
+  id: "it_n_open"
+  title: "통합테스트 공지 - 항상 열림 스케줄"
+  text: "항상 열림 스케줄 조건 공지입니다."
+  calendar:
+    name: "it_open"
+    when: "open"
+- enabled: true
+  action: "continue"
+  everywhere: false
+  order: 0
+  id: "it_n_shut"
+  title: "통합테스트 공지 - 항상 닫힘 스케줄"
+  text: "이 공지가 들리면 실패입니다."
+  calendar:
+    name: "it_closed"
+    when: "open"
+- enabled: true
+  action: "end"
+  everywhere: false
+  order: 0
+  id: "it_n_end"
+  title: "통합테스트 공지 - 안내 후 종료"
+  text: "안내 후 통화를 끝내는 공지입니다."
