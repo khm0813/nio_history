@@ -1,0 +1,145 @@
+id: it_k_svccode
+version: 0.1.0
+name: 통합테스트 K. 서비스코드
+description: '통합테스트 묶음 K(서비스코드): test_main 이 시험 번호 11xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '1101'
+      next: k1
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  k1:
+    type: set
+    label: '[K1] 시작'
+    vars:
+      it_id: K1
+    next: k1_code
+  k1_code:
+    type: service_code
+    label: '[K1] 통계'
+    service_code: IT_K1
+    next: k1_say
+  k1_say:
+    type: play
+    label: '[K1] 안내'
+    prompts:
+    - tts: 시험 K1. 서비스코드 전송. 아무것도 누르지 마세요
+      bargein: false
+    next: k1_before
+  k1_before:
+    type: call_backend
+    label: '앞: 시험 서버가 받은 IT_K1 수'
+    connector: it/hits
+    in:
+      key: code:IT_K1
+    out:
+      k1_a: count
+    next: k1_send
+    on_timeout: fail
+    on_error: fail
+  k1_send:
+    type: service_code
+    label: IT_K1 한 번 더 보내기
+    service_code: IT_K1
+    next: k1_wait
+  k1_wait:
+    type: play
+    label: 보내는 동안 안내
+    prompts:
+    - tts: 통계를 보냈습니다. 도착했는지 확인합니다.
+      bargein: false
+    next: k1_after
+  k1_after:
+    type: call_backend
+    label: '뒤: 시험 서버가 받은 IT_K1 수'
+    connector: it/hits
+    in:
+      key: code:IT_K1
+    out:
+      k1_b: count
+    next: k1_chk
+    on_timeout: fail
+    on_error: fail
+  k1_chk:
+    type: branch
+    label: 도착했는지
+    cases:
+    - when: not (num(vars.k1_b) > num(vars.k1_a))
+      next: fail
+    default: pass
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_k1:
+    title: '[K1] 서비스코드 전송'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과(시험 서버가 코드를 받음)'
+    nodes:
+    - k1
+    - k1_code
+    - k1_say
+    - k1_before
+    - k1_send
+    - k1_wait
+    - k1_after
+    - k1_chk
