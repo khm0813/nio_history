@@ -13,24 +13,24 @@ nodes:
     type: branch
     label: 시험 번호로 나누기
     cases:
-    - when: vars.it_case == '0401'
-      next: d1
-    - when: vars.it_case == '0402'
-      next: d2
-    - when: vars.it_case == '0404'
-      next: d4
-    - when: vars.it_case == '0405'
-      next: d5
-    - when: vars.it_case == '0406'
-      next: d6
-    - when: vars.it_case == '0407'
-      next: d7
-    - when: vars.it_case == '0408'
-      next: d8
-    - when: vars.it_case == '0409'
-      next: d9
-    - when: vars.it_case == '0411'
-      next: d11
+      - when: vars.it_case == '0401'
+        next: d1
+      - when: vars.it_case == '0402'
+        next: d2
+      - when: vars.it_case == '0404'
+        next: d4
+      - when: vars.it_case == '0405'
+        next: d5
+      - when: vars.it_case == '0406'
+        next: d6
+      - when: vars.it_case == '0407'
+        next: d7
+      - when: vars.it_case == '0408'
+        next: d8
+      - when: vars.it_case == '0409'
+        next: d9
+      - when: vars.it_case == '0411'
+        next: d11
     default: unknown
   unknown:
     type: return
@@ -46,8 +46,8 @@ nodes:
     type: play
     label: 통과 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 통과입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 통과입니다.
+        bargein: false
     next: back
   fail:
     type: set
@@ -59,8 +59,8 @@ nodes:
     type: play
     label: 실패 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 실패입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 실패입니다.
+        bargein: false
     next: back
   back:
     type: return
@@ -89,14 +89,14 @@ nodes:
     type: play
     label: '[D1] 안내'
     prompts:
-    - tts: 시험 D1. 고정 자리 입력. 일 이 삼 사를 누르세요
-      bargein: false
+      - tts: 시험 D1. 고정 자리 입력. 일 이 삼 사를 누르세요
+        bargein: false
     next: d1_in
   d1_in:
     type: collect
     label: 고정 4자리
     prompts:
-    - tts: 네 자리를 누르세요.
+      - tts: 네 자리를 누르세요.
     var: d1
     min_digits: 4
     max_digits: 4
@@ -108,8 +108,8 @@ nodes:
     type: branch
     label: 1234 인가
     cases:
-    - when: vars.d1 == '1234'
-      next: pass
+      - when: vars.d1 == '1234'
+        next: pass
     default: fail
   d2:
     type: set
@@ -126,14 +126,14 @@ nodes:
     type: play
     label: '[D2] 안내'
     prompts:
-    - tts: 시험 D2. 우물 정자로 끝냄. 일 이 삼 우물 정자를 누르세요
-      bargein: false
+      - tts: 시험 D2. 우물 정자로 끝냄. 일 이 삼 우물 정자를 누르세요
+        bargein: false
     next: d2_in
   d2_in:
     type: collect
     label: '# 으로 끝냄'
     prompts:
-    - tts: 누르고 우물 정자.
+      - tts: 누르고 우물 정자.
     var: d2
     min_digits: 1
     max_digits: 10
@@ -145,8 +145,8 @@ nodes:
     type: branch
     label: 123 인가 (# 이 빠졌나)
     cases:
-    - when: vars.d2 == '123'
-      next: pass
+      - when: vars.d2 == '123'
+        next: pass
     default: fail
   d4:
     type: set
@@ -163,14 +163,14 @@ nodes:
     type: play
     label: '[D4] 안내'
     prompts:
-    - tts: 시험 D4. 종료 키 없이 자리 사이 시간. 일 이를 누르고 기다리세요
-      bargein: false
+      - tts: 시험 D4. 종료 키 없이 자리 사이 시간. 일 이를 누르고 기다리세요
+        bargein: false
     next: d4_in
   d4_in:
     type: collect
     label: 자리 사이 시간으로 끝냄
     prompts:
-    - tts: 누르고 기다리세요.
+      - tts: 누르고 기다리세요.
     var: d4
     min_digits: 1
     max_digits: 10
@@ -183,8 +183,8 @@ nodes:
     type: branch
     label: 12 인가
     cases:
-    - when: vars.d4 == '12'
-      next: pass
+      - when: vars.d4 == '12'
+        next: pass
     default: fail
   d5:
     type: set
@@ -201,20 +201,20 @@ nodes:
     type: play
     label: '[D5] 안내'
     prompts:
-    - tts: 시험 D5. 자리수 미달. 일 이 우물 정자를 누르고, 다시 들리면 일 이 삼 사 우물 정자를 누르세요
-      bargein: false
+      - tts: 시험 D5. 자리수 미달. 일 이 우물 정자를 누르고, 다시 들리면 일 이 삼 사 우물 정자를 누르세요
+        bargein: false
     next: d5_in
   d5_in:
     type: collect
     label: 자리수 미달
     prompts:
-    - tts: 네 자리 이상 누르고 우물 정자.
+      - tts: 네 자리 이상 누르고 우물 정자.
     var: d5
     min_digits: 4
     max_digits: 10
     term_key: '#'
     nomatch_prompts:
-    - tts: 자리수가 모자랍니다.
+      - tts: 자리수가 모자랍니다.
     max_retry: 2
     on_max_retry: fail
     next: d5_chk
@@ -222,8 +222,8 @@ nodes:
     type: branch
     label: 1234 인가
     cases:
-    - when: vars.d5 == '1234'
-      next: pass
+      - when: vars.d5 == '1234'
+        next: pass
     default: fail
   d6:
     type: set
@@ -240,20 +240,20 @@ nodes:
     type: play
     label: '[D6] 안내'
     prompts:
-    - tts: 시험 D6. 숫자 입력 무입력. 처음엔 누르지 말고, 다시 들리면 일 이 삼 사 우물 정자를 누르세요
-      bargein: false
+      - tts: 시험 D6. 숫자 입력 무입력. 처음엔 누르지 말고, 다시 들리면 일 이 삼 사 우물 정자를 누르세요
+        bargein: false
     next: d6_in
   d6_in:
     type: collect
     label: 무입력 뒤 입력
     prompts:
-    - tts: 누르고 우물 정자.
+      - tts: 누르고 우물 정자.
     var: d6
     min_digits: 4
     max_digits: 10
     term_key: '#'
     noinput_prompts:
-    - tts: 입력이 없습니다.
+      - tts: 입력이 없습니다.
     timeout_sec: 4
     max_retry: 2
     on_max_retry: fail
@@ -262,8 +262,8 @@ nodes:
     type: branch
     label: 1234 인가
     cases:
-    - when: vars.d6 == '1234'
-      next: pass
+      - when: vars.d6 == '1234'
+        next: pass
     default: fail
   d7:
     type: set
@@ -280,20 +280,20 @@ nodes:
     type: play
     label: '[D7] 안내'
     prompts:
-    - tts: 시험 D7. 숫자 입력 재시도 초과. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 D7. 숫자 입력 재시도 초과. 아무것도 누르지 마세요
+        bargein: false
     next: d7_in
   d7_in:
     type: collect
     label: 재시도 초과
     prompts:
-    - tts: 누르지 마세요.
+      - tts: 누르지 마세요.
     var: d7
     min_digits: 1
     max_digits: 4
     term_key: '#'
     noinput_prompts:
-    - tts: 입력이 없습니다.
+      - tts: 입력이 없습니다.
     timeout_sec: 3
     max_retry: 2
     on_max_retry: pass
@@ -313,14 +313,14 @@ nodes:
     type: play
     label: '[D8] 안내'
     prompts:
-    - tts: 시험 D8. 입력값을 뒤에서 씀. 오 육 칠 팔 우물 정자를 누르세요
-      bargein: false
+      - tts: 시험 D8. 입력값을 뒤에서 씀. 오 육 칠 팔 우물 정자를 누르세요
+        bargein: false
     next: d8_in
   d8_in:
     type: collect
     label: 입력
     prompts:
-    - tts: 누르고 우물 정자.
+      - tts: 누르고 우물 정자.
     var: d8
     min_digits: 1
     max_digits: 10
@@ -332,14 +332,14 @@ nodes:
     type: play
     label: 입력값 읽기
     prompts:
-    - tts: 입력하신 번호는 ${vars.d8} 입니다.
+      - tts: 입력하신 번호는 ${vars.d8} 입니다.
     next: d8_chk
   d8_chk:
     type: branch
     label: 5678 인가
     cases:
-    - when: vars.d8 == '5678'
-      next: pass
+      - when: vars.d8 == '5678'
+        next: pass
     default: fail
   d9:
     type: set
@@ -356,14 +356,14 @@ nodes:
     type: play
     label: '[D9] 안내'
     prompts:
-    - tts: 시험 D9. 긴 입력(14자리). 일부터 영까지, 다시 일 이 삼 사, 열네 자리를 누르고 우물 정자를 누르세요
-      bargein: false
+      - tts: 시험 D9. 긴 입력(14자리). 일부터 영까지, 다시 일 이 삼 사, 열네 자리를 누르고 우물 정자를 누르세요
+        bargein: false
     next: d9_in
   d9_in:
     type: collect
     label: 14자리
     prompts:
-    - tts: 열네 자리를 누르고 우물 정자.
+      - tts: 열네 자리를 누르고 우물 정자.
     var: d9
     min_digits: 14
     max_digits: 14
@@ -376,8 +376,8 @@ nodes:
     type: branch
     label: 12345678901234 인가
     cases:
-    - when: vars.d9 == '12345678901234'
-      next: pass
+      - when: vars.d9 == '12345678901234'
+        next: pass
     default: fail
   d11:
     type: set
@@ -394,14 +394,14 @@ nodes:
     type: play
     label: '[D11] 안내'
     prompts:
-    - tts: 시험 D11. 입력 중 별표. 일 이 별표 삼 사 우물 정자를 누르세요
-      bargein: false
+      - tts: 시험 D11. 입력 중 별표. 일 이 별표 삼 사 우물 정자를 누르세요
+        bargein: false
     next: d11_in
   d11_in:
     type: collect
     label: 입력 중 별표
     prompts:
-    - tts: 누르고 우물 정자.
+      - tts: 누르고 우물 정자.
     var: d11
     min_digits: 1
     max_digits: 10
@@ -413,100 +413,129 @@ nodes:
     type: play
     label: 받은 값 읽기 (교환기별 기록)
     prompts:
-    - tts: 받은 값은 ${vars.d11} 입니다.
+      - tts: 받은 값은 ${vars.d11} 입니다.
     next: pass
 sections:
   frame:
     title: 공통 틀
     note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
     nodes:
-    - entry
-    - unknown
-    - pass
-    - pass_say
-    - fail
-    - fail_say
-    - back
-    - dflt_retry
-    - dflt_error
+      - entry
+      - unknown
+      - pass
+      - pass_say
+      - fail
+      - fail_say
+      - back
+      - dflt_retry
+      - dflt_error
   t_d1:
     title: '[D1] 고정 자리 입력'
     note: '누를 것: 1234 / 들려야 할 것: 네 자리에서 바로 끝나고 "통과"'
     nodes:
-    - d1
-    - d1_code
-    - d1_say
-    - d1_in
-    - d1_chk
+      - d1
+      - d1_code
+      - d1_say
+      - d1_in
+      - d1_chk
   t_d2:
     title: '[D2] 우물 정자로 끝냄'
     note: '누를 것: 123# / 들려야 할 것: 통과'
     nodes:
-    - d2
-    - d2_code
-    - d2_say
-    - d2_in
-    - d2_chk
+      - d2
+      - d2_code
+      - d2_say
+      - d2_in
+      - d2_chk
   t_d4:
     title: '[D4] 종료 키 없이 자리 사이 시간'
     note: '누를 것: 12 누르고 기다림 / 들려야 할 것: 3초 뒤 끝나고 "통과"'
     nodes:
-    - d4
-    - d4_code
-    - d4_say
-    - d4_in
-    - d4_chk
+      - d4
+      - d4_code
+      - d4_say
+      - d4_in
+      - d4_chk
   t_d5:
     title: '[D5] 자리수 미달'
     note: '누를 것: 12# / 들려야 할 것: 잘못 누름 안내 뒤 다시 받음, 그다음 1234#'
     nodes:
-    - d5
-    - d5_code
-    - d5_say
-    - d5_in
-    - d5_chk
+      - d5
+      - d5_code
+      - d5_say
+      - d5_in
+      - d5_chk
   t_d6:
     title: '[D6] 숫자 입력 무입력'
     note: '누를 것: 아무것도 누르지 않음, 다음 1234# / 들려야 할 것: 무입력 안내 뒤 다시 받음'
     nodes:
-    - d6
-    - d6_code
-    - d6_say
-    - d6_in
-    - d6_chk
+      - d6
+      - d6_code
+      - d6_say
+      - d6_in
+      - d6_chk
   t_d7:
     title: '[D7] 숫자 입력 재시도 초과'
     note: '누를 것: 아무것도 누르지 않음(세 번) / 들려야 할 것: 재시도 초과 경로로 "통과"'
     nodes:
-    - d7
-    - d7_code
-    - d7_say
-    - d7_in
+      - d7
+      - d7_code
+      - d7_say
+      - d7_in
   t_d8:
     title: '[D8] 입력값을 뒤에서 씀'
     note: '누를 것: 5 6 7 8 # / 들려야 할 것: 입력하신 번호는 5 6 7 8 과 "통과"'
     nodes:
-    - d8
-    - d8_code
-    - d8_say
-    - d8_in
-    - d8_read
-    - d8_chk
+      - d8
+      - d8_code
+      - d8_say
+      - d8_in
+      - d8_read
+      - d8_chk
   t_d9:
     title: '[D9] 긴 입력(14자리)'
     note: '누를 것: 12345678901234# / 들려야 할 것: 통과'
     nodes:
-    - d9
-    - d9_code
-    - d9_say
-    - d9_in
-    - d9_chk
+      - d9
+      - d9_code
+      - d9_say
+      - d9_in
+      - d9_chk
   t_d11:
     title: '[D11] 입력 중 별표'
     note: '누를 것: 12*34# / 들려야 할 것: 들어간 값을 읽어 줌(교환기별 확인)'
     nodes:
-    - d11
-    - d11_code
-    - d11_say
-    - d11_in
-    - d11_read
+      - d11
+      - d11_code
+      - d11_say
+      - d11_in
+      - d11_read
+layout:
+  nodes:
+    entry:
+      x: 0
+      y: -80
+    unknown:
+      x: 520
+      y: 120
+    pass:
+      x: 520
+      y: 200
+    pass_say:
+      x: 820
+      y: 200
+    fail:
+      x: 520
+      y: 360
+    fail_say:
+      x: 820
+      y: 360
+    back:
+      x: 1120
+      y: 300
+    dflt_retry:
+      x: 0
+      y: 300
+    dflt_error:
+      x: 0
+      y: 420
