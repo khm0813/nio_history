@@ -1,0 +1,13 @@
+# 통합테스트(I4, I7): 시험 서버가 in.ms 만큼 늦게 답한다. 1초를 넘기면 시간 초과.
+connector: it/slow
+kind: rest-json
+description: 통합테스트 - 느린 응답 (시험 서버)
+host: ${hosts.it_api}
+timeout_ms: 1000
+rest:
+  method: GET
+  path: /it/slow?ms=${in.ms}
+  response_map:
+    grade: data.grade
+    name: data.name
+ok_when: resp.grade != ''
