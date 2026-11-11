@@ -1,0 +1,12 @@
+# 통합테스트(I8): 시험 서버가 in.ms 만큼 늦게 답한다. 제한 15초 — 교환기가 셸 응답을 얼마나 기다려 주는지 잰다.
+connector: it/wait
+kind: rest-json
+description: 통합테스트 - 오래 걸리는 응답 (교환기 한계 측정)
+host: ${hosts.it_api}
+timeout_ms: 15000
+rest:
+  method: GET
+  path: /it/slow?ms=${in.ms}
+  response_map:
+    grade: data.grade
+ok_when: resp.grade != ''
