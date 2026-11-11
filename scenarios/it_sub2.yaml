@@ -1,0 +1,40 @@
+id: it_sub2
+version: 0.1.0
+name: 통합테스트 H 도우미 - 두 단계
+description: '통합테스트 H5: it_sub(echo)를 다시 불러 받은 값을 그대로 돌려준다'
+start: call
+defaults:
+  timeout_sec: 5
+  max_retry: 1
+  on_max_retry: r_alt
+  on_error: r_alt
+nodes:
+  call:
+    type: call_subflow
+    label: it_sub 부르기 (echo)
+    scenario: it_sub
+    in:
+      mode: echo
+      val: ${vars.val}
+    out:
+      out: out
+    exits:
+      ok: r_ok
+      alt: r_alt
+    next: r_alt
+  r_ok:
+    type: return
+    label: 출구 ok
+    exit: ok
+  r_alt:
+    type: return
+    label: 출구 alt
+    exit: alt
+sections:
+  main:
+    title: 통합테스트 H 도우미 (두 단계)
+    note: it_sub 를 echo 로 불러 out 을 그대로 돌려준다
+    nodes:
+    - call
+    - r_ok
+    - r_alt
