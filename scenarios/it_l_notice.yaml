@@ -1,0 +1,412 @@
+id: it_l_notice
+version: 0.1.0
+name: 통합테스트 L. 공지사항
+description: '통합테스트 묶음 L(공지사항): test_main 이 시험 번호 12xx 로 부른다. 기준 목록 it/MATRIX.md'
+start: entry
+defaults:
+  timeout_sec: 5
+  max_retry: 2
+  on_max_retry: dflt_retry
+  on_error: dflt_error
+nodes:
+  entry:
+    type: branch
+    label: 시험 번호로 나누기
+    cases:
+    - when: vars.it_case == '1201'
+      next: l1
+    - when: vars.it_case == '1202'
+      next: l2
+    - when: vars.it_case == '1203'
+      next: l3
+    - when: vars.it_case == '1204'
+      next: l4
+    - when: vars.it_case == '1205'
+      next: l5
+    - when: vars.it_case == '1207'
+      next: l7
+    - when: vars.it_case == '1209'
+      next: l9
+    - when: vars.it_case == '1210'
+      next: l10
+    default: unknown
+  unknown:
+    type: return
+    label: 이 묶음에 없는 번호
+    exit: unknown
+  pass:
+    type: set
+    label: 통과 기록
+    vars:
+      it_result: pass
+    next: pass_say
+  pass_say:
+    type: play
+    label: 통과 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 통과입니다.
+      bargein: false
+    next: back
+  fail:
+    type: set
+    label: 실패 기록
+    vars:
+      it_result: fail
+    next: fail_say
+  fail_say:
+    type: play
+    label: 실패 안내
+    prompts:
+    - tts: 시험 ${vars.it_id}, 실패입니다.
+      bargein: false
+    next: back
+  back:
+    type: return
+    label: 시험 번호 입력으로
+    exit: done
+  dflt_retry:
+    type: goto
+    label: 기본 재시도 초과 경로
+    next: fail
+  dflt_error:
+    type: goto
+    label: 기본 오류 경로
+    next: fail
+  l1:
+    type: set
+    label: '[L1] 시작'
+    vars:
+      it_id: L1
+    next: l1_code
+  l1_code:
+    type: service_code
+    label: '[L1] 통계'
+    service_code: IT_L1
+    next: l1_say
+  l1_say:
+    type: play
+    label: '[L1] 안내'
+    prompts:
+    - tts: 시험 L1. 고른 공지. 아무것도 누르지 마세요. 공지 에이, 비 순서로 나옵니다
+      bargein: false
+    next: l1_n
+  l1_n:
+    type: notice
+    label: 고른 공지 둘
+    notices:
+    - it_n_a
+    - it_n_b
+    next: l1_chk
+  l1_chk:
+    type: branch
+    label: 고른 순서대로 나왔는지
+    cases:
+    - when: not (vars.notice_ids == 'it_n_a,it_n_b')
+      next: fail
+    default: pass
+  l2:
+    type: set
+    label: '[L2] 시작'
+    vars:
+      it_id: L2
+    next: l2_code
+  l2_code:
+    type: service_code
+    label: '[L2] 통계'
+    service_code: IT_L2
+    next: l2_say
+  l2_say:
+    type: play
+    label: '[L2] 안내'
+    prompts:
+    - tts: 시험 L2. 공지 대상 번호. 아무것도 누르지 마세요. 삼구공공공으로 걸었을 때만 공지가 나옵니다
+      bargein: false
+    next: l2_n
+  l2_n:
+    type: notice
+    label: 39000 전용 공지
+    notices:
+    - it_n_dnis
+    next: l2_chk
+  l2_chk:
+    type: branch
+    label: 번호 조건
+    cases:
+    - when: not ((session.dnis == '39000' and vars.notice_ids == 'it_n_dnis') or (session.dnis != '39000' and vars.notice_count == 0))
+      next: fail
+    default: pass
+  l3:
+    type: set
+    label: '[L3] 시작'
+    vars:
+      it_id: L3
+    next: l3_code
+  l3_code:
+    type: service_code
+    label: '[L3] 통계'
+    service_code: IT_L3
+    next: l3_say
+  l3_say:
+    type: play
+    label: '[L3] 안내'
+    prompts:
+    - tts: 시험 L3. 기간 지난 공지. 아무것도 누르지 마세요. 공지가 나오면 실패입니다
+      bargein: false
+    next: l3_n
+  l3_n:
+    type: notice
+    label: 기간 지난 공지
+    notices:
+    - it_n_old
+    next: l3_chk
+  l3_chk:
+    type: branch
+    label: 안 나왔는지
+    cases:
+    - when: not (vars.notice_count == 0)
+      next: fail
+    default: pass
+  l4:
+    type: set
+    label: '[L4] 시작'
+    vars:
+      it_id: L4
+    next: l4_code
+  l4_code:
+    type: service_code
+    label: '[L4] 통계'
+    service_code: IT_L4
+    next: l4_say
+  l4_say:
+    type: play
+    label: '[L4] 안내'
+    prompts:
+    - tts: 시험 L4. 스케줄 조건 공지. 아무것도 누르지 마세요. 항상 열림 공지만 나옵니다
+      bargein: false
+    next: l4_n
+  l4_n:
+    type: notice
+    label: 스케줄 조건 공지 둘
+    notices:
+    - it_n_open
+    - it_n_shut
+    next: l4_chk
+  l4_chk:
+    type: branch
+    label: 열림 조건 공지만
+    cases:
+    - when: not (vars.notice_ids == 'it_n_open')
+      next: fail
+    default: pass
+  l5:
+    type: set
+    label: '[L5] 시작'
+    vars:
+      it_id: L5
+    next: l5_code
+  l5_code:
+    type: service_code
+    label: '[L5] 통계'
+    service_code: IT_L5
+    next: l5_say
+  l5_say:
+    type: play
+    label: '[L5] 안내'
+    prompts:
+    - tts: 시험 L5. 안내 후 종료 공지. 아무것도 누르지 마세요. 공지 뒤 통화가 끝납니다
+      bargein: false
+    next: l5_n
+  l5_n:
+    type: notice
+    label: 안내 후 종료 공지
+    notices:
+    - it_n_end
+    next: fail
+  l7:
+    type: set
+    label: '[L7] 시작'
+    vars:
+      it_id: L7
+    next: l7_code
+  l7_code:
+    type: service_code
+    label: '[L7] 통계'
+    service_code: IT_L7
+    next: l7_say
+  l7_say:
+    type: play
+    label: '[L7] 안내'
+    prompts:
+    - tts: 시험 L7. 한 번 들은 공지. 아무것도 누르지 마세요. 공지 에이가 한 번만 나옵니다
+      bargein: false
+    next: l7_n1
+  l7_n1:
+    type: notice
+    label: 공지 A
+    notices:
+    - it_n_a
+    next: l7_n2
+  l7_n2:
+    type: notice
+    label: 공지 A 한 번 더
+    notices:
+    - it_n_a
+    next: l7_chk
+  l7_chk:
+    type: branch
+    label: 두 번째는 안 나왔는지
+    cases:
+    - when: not (vars.notice_count == 0)
+      next: fail
+    default: pass
+  l9:
+    type: set
+    label: '[L9] 시작'
+    vars:
+      it_id: L9
+    next: l9_code
+  l9_code:
+    type: service_code
+    label: '[L9] 통계'
+    service_code: IT_L9
+    next: l9_say
+  l9_say:
+    type: play
+    label: '[L9] 안내'
+    prompts:
+    - tts: 시험 L9. hasNotice. 아무것도 누르지 마세요
+      bargein: false
+    next: l9_chk
+  l9_chk:
+    type: branch
+    label: hasNotice
+    cases:
+    - when: not (hasNotice('it_n_a'))
+      next: fail
+    - when: not (not hasNotice('it_n_old'))
+      next: fail
+    - when: not (hasNotice('it_n_open'))
+      next: fail
+    - when: not (not hasNotice('it_n_shut'))
+      next: fail
+    - when: not (not hasNotice('it_none'))
+      next: fail
+    default: pass
+  l10:
+    type: set
+    label: '[L10] 시작'
+    vars:
+      it_id: L10
+    next: l10_code
+  l10_code:
+    type: service_code
+    label: '[L10] 통계'
+    service_code: IT_L10
+    next: l10_say
+  l10_say:
+    type: play
+    label: '[L10] 안내'
+    prompts:
+    - tts: 시험 L10. 공지 중 끼어들기. 공지가 나오는 동안 일 번을 누르고, 공지가 끝난 뒤 다시 일 번을 누르세요
+      bargein: false
+    next: l10_n
+  l10_n:
+    type: notice
+    label: 공지 B (끼어들기 안 됨)
+    notices:
+    - it_n_b
+    next: l10_menu
+  l10_menu:
+    type: menu
+    label: 공지 뒤 메뉴
+    prompts:
+    - tts: 공지가 끝났습니다. 일 번을 누르세요.
+    choices:
+      '1': pass
+    max_retry: 1
+    on_max_retry: fail
+sections:
+  frame:
+    title: 공통 틀
+    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    nodes:
+    - entry
+    - unknown
+    - pass
+    - pass_say
+    - fail
+    - fail_say
+    - back
+    - dflt_retry
+    - dflt_error
+  t_l1:
+    title: '[L1] 고른 공지'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 시험 공지 두 개가 차례로'
+    nodes:
+    - l1
+    - l1_code
+    - l1_say
+    - l1_n
+    - l1_chk
+  t_l2:
+    title: '[L2] 공지 대상 번호'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 39000 으로 걸었을 때만 공지'
+    nodes:
+    - l2
+    - l2_code
+    - l2_say
+    - l2_n
+    - l2_chk
+  t_l3:
+    title: '[L3] 기간 지난 공지'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 공지 없이 "통과"'
+    nodes:
+    - l3
+    - l3_code
+    - l3_say
+    - l3_n
+    - l3_chk
+  t_l4:
+    title: '[L4] 스케줄 조건 공지'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 항상 열림 스케줄 공지만 나옴'
+    nodes:
+    - l4
+    - l4_code
+    - l4_say
+    - l4_n
+    - l4_chk
+  t_l5:
+    title: '[L5] 안내 후 종료 공지'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 공지 뒤 끊김'
+    nodes:
+    - l5
+    - l5_code
+    - l5_say
+    - l5_n
+  t_l7:
+    title: '[L7] 한 번 들은 공지'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 같은 공지가 한 번만'
+    nodes:
+    - l7
+    - l7_code
+    - l7_say
+    - l7_n1
+    - l7_n2
+    - l7_chk
+  t_l9:
+    title: '[L9] hasNotice'
+    note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
+    nodes:
+    - l9
+    - l9_code
+    - l9_say
+    - l9_chk
+  t_l10:
+    title: '[L10] 공지 중 끼어들기'
+    note: '누를 것: 공지 중에 1 / 들려야 할 것: 교환기별 확인'
+    nodes:
+    - l10
+    - l10_code
+    - l10_say
+    - l10_n
+    - l10_menu
