@@ -4,6 +4,11 @@
     "it_b_play" : "통합테스트",
     "it_c_menu" : "통합테스트",
     "it_d_collect" : "통합테스트",
-    "test_main" : "통합테스트"
+    "test_main" : "통합테스트",
+    "it_sub" : "통합테스트",
+    "it_sub2" : "통합테스트",
+    "it_g_logic" : "통합테스트",
+    "it_h_subflow" : "통합테스트",
+    "it_j_script" : "통합테스트"
   }
 }
