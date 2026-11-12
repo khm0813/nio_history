@@ -23,11 +23,14 @@ nodes:
     type: collect
     label: 숫자 입력
     prompts:
-      - tts: "전화번호를 남겨주시면, 확인 후 다시 연락드리도록하겠습니다. "
+      - tts: 전화번호 입력 후 우물정자를 눌러주세요.
     var: input
     min_digits: 1
     max_digits: 10
     next: play-ydqcq5
+    term_key: "#"
+    max_retry: 3
+    interdigit_timeout_sec: 13
   play-ydqcq5:
     type: play
     label: 멘트 재생
@@ -55,24 +58,23 @@ sections:
 layout:
   nodes:
     welcome:
-      x: -140
-      y: 0
-    bye:
-      x: -140
-      y: 660
-    collect-oukf03:
-      x: -140
-      y: 160
-    play-ydqcq5:
       x: -220
-      y: 320
+      y: 40
+    bye:
+      x: 1000
+      y: -60
+    collect-oukf03:
+      x: 80
+      y: 20
+    play-ydqcq5:
+      x: 380
+      y: 0
     menu-c1o80h:
-      x: -140
-      y: 500
+      x: 680
+      y: 20
   sections:
     main:
       x: -230
       y: -58
       w: 840
       h: 866
-  dir: TB
