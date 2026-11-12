@@ -12,14 +12,54 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: 안녕하세요.
-    next: bye
+      - tts: "안녕하세요. 모든 상담사가 전화중이어서 연결이 불가합니다. "
+    next: collect-oukf03
   bye:
     type: hangup
     label: 종료
     prompts:
       - tts: 감사합니다.
+  collect-oukf03:
+    type: collect
+    label: 숫자 입력
+    prompts:
+      - tts: "전화번호를 남겨주시면, 확인 후 다시 연락드리도록하겠습니다. "
+    var: input
+    min_digits: 1
+    max_digits: 10
+    next: play-ydqcq5
+  play-ydqcq5:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 입력하신 번호는 ${vars.input} 입니다.
+    next: bye
 sections:
   main:
     title: 통합테스트-콜백
-    nodes: [welcome, bye]
+    nodes:
+      - welcome
+      - bye
+      - collect-oukf03
+      - play-ydqcq5
+layout:
+  nodes:
+    welcome:
+      x: -200
+      y: 0
+    bye:
+      x: -200
+      y: 580
+    collect-oukf03:
+      x: -220
+      y: 160
+    play-ydqcq5:
+      x: -220
+      y: 340
+  sections:
+    main:
+      x: -230
+      y: -58
+      w: 840
+      h: 866
+  dir: TB
