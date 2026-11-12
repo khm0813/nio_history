@@ -33,6 +33,8 @@ nodes:
         next: play-hg3b8v
       - when: session.dnis == '8003'
         next: play-7hx4gt
+      - when: session.dnis == '39000'
+        next: play-wbm8wf
     default: transfer-t0hx51
   play-hg3b8v:
     type: play
@@ -278,6 +280,12 @@ nodes:
     label: 상담원 전환
     mode: blind
     dest: "service:테스트큐"
+  play-wbm8wf:
+    type: play
+    label: 통합테스트시나리오_멘트 재생(BP인입)
+    prompts:
+      - tts: "${session.vendor} 으로부터 연결되었습니다. "
+    next: transfer-t0hx51
 sections:
   main:
     title: 통합테스트시나리오-메인분기
@@ -289,6 +297,7 @@ sections:
       - play-hg3b8v
       - play-7hx4gt
       - transfer-t0hx51
+      - play-wbm8wf
   it_select:
     title: 통합테스트 - 시험 번호 선택
     note: 인사 뒤 시험 번호 4자리(묶음 2자리 + 항목 2자리, 예 0303 = C3)를 받아 묶음 서브플로우로 보낸다. 0000 은 종료. 번호표는 it/cases.tsv
@@ -388,5 +397,8 @@ layout:
       x: 1040
       y: -220
     transfer-t0hx51:
-      x: 60
-      y: 1040
+      x: 140
+      y: 1160
+    play-wbm8wf:
+      x: 140
+      y: 960
