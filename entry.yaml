@@ -3,3 +3,4 @@
 entry:
   queue:wait: "cisco_queue_wait"
   '*': "test_main"
+  "35001": "test_callback"

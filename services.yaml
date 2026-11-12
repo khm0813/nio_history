@@ -9,3 +9,7 @@ services:
     numbers:
     - "*"
     main: "test_main"
+  test_callback:
+    numbers:
+    - "35001"
+    main: "test_callback"
