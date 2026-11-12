@@ -13,20 +13,20 @@ nodes:
     type: branch
     label: 시험 번호로 나누기
     cases:
-    - when: vars.it_case == '0801'
-      next: h1
-    - when: vars.it_case == '0802'
-      next: h2
-    - when: vars.it_case == '0803'
-      next: h3
-    - when: vars.it_case == '0804'
-      next: h4
-    - when: vars.it_case == '0805'
-      next: h5
-    - when: vars.it_case == '0806'
-      next: h6
-    - when: vars.it_case == '0807'
-      next: h7
+      - when: vars.it_case == '0801'
+        next: h1
+      - when: vars.it_case == '0802'
+        next: h2
+      - when: vars.it_case == '0803'
+        next: h3
+      - when: vars.it_case == '0804'
+        next: h4
+      - when: vars.it_case == '0805'
+        next: h5
+      - when: vars.it_case == '0806'
+        next: h6
+      - when: vars.it_case == '0807'
+        next: h7
     default: unknown
   unknown:
     type: return
@@ -42,8 +42,8 @@ nodes:
     type: play
     label: 통과 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 통과입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 통과입니다.
+        bargein: false
     next: back
   fail:
     type: set
@@ -55,8 +55,8 @@ nodes:
     type: play
     label: 실패 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 실패입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 실패입니다.
+        bargein: false
     next: back
   back:
     type: return
@@ -85,8 +85,8 @@ nodes:
     type: play
     label: '[H1] 안내'
     prompts:
-    - tts: 시험 H1. 서브플로우 호출과 복귀. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 H1. 서브플로우 호출과 복귀. 아무것도 누르지 마세요
+        bargein: false
     next: h1_call
   h1_call:
     type: call_subflow
@@ -116,8 +116,8 @@ nodes:
     type: play
     label: '[H2] 안내'
     prompts:
-    - tts: 시험 H2. 서브플로우 값 주고받기. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 H2. 서브플로우 값 주고받기. 아무것도 누르지 마세요
+        bargein: false
     next: h2_call
   h2_call:
     type: call_subflow
@@ -136,8 +136,8 @@ nodes:
     type: branch
     label: 받은 값
     cases:
-    - when: not (vars.h2 == 'hello!')
-      next: fail
+      - when: not (vars.h2 == 'hello!')
+        next: fail
     default: pass
   h3:
     type: set
@@ -154,8 +154,8 @@ nodes:
     type: play
     label: '[H3] 안내'
     prompts:
-    - tts: 시험 H3. 서브플로우 출구 이름. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 H3. 서브플로우 출구 이름. 아무것도 누르지 마세요
+        bargein: false
     next: h3_call
   h3_call:
     type: call_subflow
@@ -183,8 +183,8 @@ nodes:
     type: play
     label: '[H4] 안내'
     prompts:
-    - tts: 시험 H4. 목록에 없는 출구. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 H4. 목록에 없는 출구. 아무것도 누르지 마세요
+        bargein: false
     next: h4_call
   h4_call:
     type: call_subflow
@@ -212,8 +212,8 @@ nodes:
     type: play
     label: '[H5] 안내'
     prompts:
-    - tts: 시험 H5. 서브플로우 두 단계. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 H5. 서브플로우 두 단계. 아무것도 누르지 마세요
+        bargein: false
     next: h5_call
   h5_call:
     type: call_subflow
@@ -231,8 +231,8 @@ nodes:
     type: branch
     label: 두 단계를 거친 값
     cases:
-    - when: not (vars.h5 == 'deep!')
-      next: fail
+      - when: not (vars.h5 == 'deep!')
+        next: fail
     default: pass
   h6:
     type: set
@@ -249,8 +249,8 @@ nodes:
     type: play
     label: '[H6] 안내'
     prompts:
-    - tts: 시험 H6. 서브플로우 안에서 종료. 아무것도 누르지 마세요. 서브플로우 안에서 통화가 끝납니다
-      bargein: false
+      - tts: 시험 H6. 서브플로우 안에서 종료. 아무것도 누르지 마세요. 서브플로우 안에서 통화가 끝납니다
+        bargein: false
     next: h6_call
   h6_call:
     type: call_subflow
@@ -278,8 +278,8 @@ nodes:
     type: play
     label: '[H7] 안내'
     prompts:
-    - tts: 시험 H7. 서브플로우 안에서 입력. 서브플로우 안의 메뉴에서 일 번을 누르세요
-      bargein: false
+      - tts: 시험 H7. 서브플로우 안에서 입력. 서브플로우 안의 메뉴에서 일 번을 누르세요
+        bargein: false
     next: h7_call
   h7_call:
     type: call_subflow
@@ -297,70 +297,99 @@ sections:
     title: 공통 틀
     note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
     nodes:
-    - entry
-    - unknown
-    - pass
-    - pass_say
-    - fail
-    - fail_say
-    - back
-    - dflt_retry
-    - dflt_error
+      - entry
+      - unknown
+      - pass
+      - pass_say
+      - fail
+      - fail_say
+      - back
+      - dflt_retry
+      - dflt_error
   t_h1:
     title: '[H1] 서브플로우 호출과 복귀'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 서브플로우 안내 뒤 돌아와 "통과"'
     nodes:
-    - h1
-    - h1_code
-    - h1_say
-    - h1_call
+      - h1
+      - h1_code
+      - h1_say
+      - h1_call
   t_h2:
     title: '[H2] 서브플로우 값 주고받기'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - h2
-    - h2_code
-    - h2_say
-    - h2_call
-    - h2_chk
+      - h2
+      - h2_code
+      - h2_say
+      - h2_call
+      - h2_chk
   t_h3:
     title: '[H3] 서브플로우 출구 이름'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - h3
-    - h3_code
-    - h3_say
-    - h3_call
+      - h3
+      - h3_code
+      - h3_say
+      - h3_call
   t_h4:
     title: '[H4] 목록에 없는 출구'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - h4
-    - h4_code
-    - h4_say
-    - h4_call
+      - h4
+      - h4_code
+      - h4_say
+      - h4_call
   t_h5:
     title: '[H5] 서브플로우 두 단계'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - h5
-    - h5_code
-    - h5_say
-    - h5_call
-    - h5_chk
+      - h5
+      - h5_code
+      - h5_say
+      - h5_call
+      - h5_chk
   t_h6:
     title: '[H6] 서브플로우 안에서 종료'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 서브플로우의 종료 멘트 뒤 끊김'
     nodes:
-    - h6
-    - h6_code
-    - h6_say
-    - h6_call
+      - h6
+      - h6_code
+      - h6_say
+      - h6_call
   t_h7:
     title: '[H7] 서브플로우 안에서 입력'
     note: '누를 것: 1 / 들려야 할 것: 통과'
     nodes:
-    - h7
-    - h7_code
-    - h7_say
-    - h7_call
+      - h7
+      - h7_code
+      - h7_say
+      - h7_call
+layout:
+  nodes:
+    entry:
+      x: -100
+      y: -160
+    unknown:
+      x: 340
+      y: 140
+    pass:
+      x: 320
+      y: 300
+    pass_say:
+      x: 620
+      y: 300
+    fail:
+      x: 320
+      y: 460
+    fail_say:
+      x: 620
+      y: 460
+    back:
+      x: 920
+      y: 400
+    dflt_retry:
+      x: -20
+      y: 360
+    dflt_error:
+      x: -20
+      y: 480
