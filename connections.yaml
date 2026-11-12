@@ -10,7 +10,7 @@ connections:
   queues:
     service:Customer Service: "1000"
     service:it_전환큐: "1000"
-    service:테스트큐: "569900"
+    service:테스트큐: "30002"
   default_queue: "service:it_전환큐"
   verified:
     ok: true
