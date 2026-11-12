@@ -61,20 +61,20 @@ layout:
       x: -220
       y: 40
     bye:
-      x: 1000
-      y: -60
+      x: 1080
+      y: 0
     collect-oukf03:
       x: 80
       y: 20
     play-ydqcq5:
-      x: 380
+      x: 400
       y: 0
     menu-c1o80h:
-      x: 680
-      y: 20
+      x: 740
+      y: 0
   sections:
     main:
-      x: -230
+      x: -250
       y: -58
-      w: 840
+      w: 1640
       h: 866
