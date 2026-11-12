@@ -26,7 +26,7 @@ nodes:
       - tts: 전화번호 입력 후 우물정자를 눌러주세요.
     var: input
     min_digits: 1
-    max_digits: 10
+    max_digits: 13
     next: play-ydqcq5
     term_key: "#"
     max_retry: 3
