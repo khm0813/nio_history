@@ -12,7 +12,7 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: "안녕하세요. 모든 상담사가 전화중이어서 연결이 불가합니다. "
+      - tts: 안녕하세요. 고객님의 소중한 개인정보를 입력해주세요.
     next: collect-oukf03
   bye:
     type: hangup
@@ -48,7 +48,7 @@ nodes:
     max_retry: 3
 sections:
   main:
-    title: 통합테스트-콜백
+    title: 통합테스트-삼자통화
     nodes:
       - welcome
       - bye
