@@ -12,4 +12,5 @@ services:
   test_callback:
     numbers:
     - "35001"
+    - "39001"
     main: "test_callback"
