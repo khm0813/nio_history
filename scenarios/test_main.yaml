@@ -14,6 +14,7 @@ nodes:
       - tts: 안녕하세요. ECS 통합테스트 시나리오입니다. 이 테스트에서는 모든 케이스의 시나리오 테스트를 진행합니다.
     next: branch-q3c9rm
     label: 통합테스트시나리오-인사
+    note: dkdkdkdkdk
   bye:
     type: hangup
     label: 종료
