@@ -33,7 +33,15 @@ nodes:
     label: 멘트 재생
     prompts:
       - tts: 입력하신 번호는 ${vars.input} 입니다.
-    next: bye
+    next: menu-c1o80h
+  menu-c1o80h:
+    type: menu
+    label: 메뉴
+    prompts:
+      - tts: 맞으면 1번, 틀리면 2번을 눌러주세요.
+    choices:
+      "1": bye
+      "2": collect-oukf03
 sections:
   main:
     title: 통합테스트-콜백
@@ -42,20 +50,24 @@ sections:
       - bye
       - collect-oukf03
       - play-ydqcq5
+      - menu-c1o80h
 layout:
   nodes:
     welcome:
-      x: -200
+      x: -140
       y: 0
     bye:
-      x: -200
-      y: 580
+      x: -140
+      y: 660
     collect-oukf03:
-      x: -220
+      x: -140
       y: 160
     play-ydqcq5:
       x: -220
-      y: 340
+      y: 320
+    menu-c1o80h:
+      x: -140
+      y: 500
   sections:
     main:
       x: -230
