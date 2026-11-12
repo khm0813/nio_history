@@ -284,7 +284,8 @@ nodes:
     type: play
     label: 통합테스트시나리오_멘트 재생(BP인입)
     prompts:
-      - tts: "${session.vendor} 으로부터 연결되었습니다. "
+      - tts: ${session.vendor} 으로부터 연결되었습니다. 상담원연결을 테스트합니다.
+        bargein: false
     next: transfer-t0hx51
 sections:
   main:
