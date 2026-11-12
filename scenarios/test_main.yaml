@@ -320,74 +320,74 @@ layout:
       h: 835
   nodes:
     welcome:
-      x: -160
-      y: -100
+      x: -460
+      y: 800
     bye:
-      x: 820
-      y: -60
+      x: 1340
+      y: -220
     service_code-toc51k:
       x: -760
-      y: -80
+      y: 820
     branch-q3c9rm:
-      x: 140
-      y: -120
+      x: -160
+      y: 780
     play-hg3b8v:
-      x: 440
-      y: -220
-    play-7hx4gt:
-      x: 440
-      y: -100
-    play-ofp42y:
-      x: 440
-      y: 20
-    it_ask:
-      x: 1500
+      x: 140
       y: 680
-    it_route:
-      x: 1800
-      y: 1000
-    it_go_b:
-      x: 2100
-      y: 2240
-    it_go_c:
-      x: 2100
-      y: 2080
-    it_go_d:
-      x: 2100
-      y: 1920
-    it_go_g:
-      x: 2100
-      y: 1760
-    it_go_h:
-      x: 2100
-      y: 1600
-    it_go_j:
-      x: 2100
-      y: 1440
-    it_go_m:
-      x: 2100
-      y: 1120
-    it_go_l:
-      x: 2100
-      y: 960
-    it_go_i:
-      x: 2100
+    play-7hx4gt:
+      x: 140
       y: 800
+    play-ofp42y:
+      x: 140
+      y: 920
+    it_ask:
+      x: 440
+      y: 800
+    it_route:
+      x: 740
+      y: 540
+    it_go_b:
+      x: 1040
+      y: -100
+    it_go_c:
+      x: 1040
+      y: 60
+    it_go_d:
+      x: 1040
+      y: 220
+    it_go_g:
+      x: 1040
+      y: 380
+    it_go_h:
+      x: 1040
+      y: 540
+    it_go_j:
+      x: 1040
+      y: 700
+    it_go_m:
+      x: 1040
+      y: 960
+    it_go_l:
+      x: 1040
+      y: 1220
+    it_go_i:
+      x: 1040
+      y: 1380
     it_go_k:
-      x: 2100
-      y: 640
+      x: 1040
+      y: 1540
     it_go_f:
-      x: 2100
-      y: 480
+      x: 1040
+      y: 1700
     it_go_e:
-      x: 2100
-      y: 320
+      x: 1040
+      y: 1860
     it_record:
-      x: 2400
-      y: 1180
+      x: 1340
+      y: 760
     it_unknown:
-      x: 2400
-      y: 1500
+      x: 1340
+      y: 1220
     it_end:
-      x: 2100
-      y: 180
+      x: 1040
+      y: -220
