@@ -7,5 +7,5 @@ services:
     main: "cisco_queue_wait"
   test_main:
     numbers:
-    - "*"
+    - "35001"
     main: "test_main"
