@@ -1,6 +1,6 @@
 id: test_callback
 version: 0.1.0
-name: 통합테스트-콜백
+name: 통합테스트-삼자통화
 start: welcome
 defaults:
   timeout_sec: 5
