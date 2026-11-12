@@ -2,4 +2,5 @@
 ---
 entry:
   queue:wait: "cisco_queue_wait"
+  "35001": "cisco_queue_wait"
   '*': "test_main"
