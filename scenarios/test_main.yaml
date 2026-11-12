@@ -329,23 +329,23 @@ layout:
       h: 835
   nodes:
     welcome:
-      x: -460
-      y: 800
+      x: -420
+      y: 840
     bye:
-      x: 780
-      y: 760
-    service_code-toc51k:
-      x: -760
+      x: 100
       y: 820
-    branch-q3c9rm:
-      x: -160
-      y: 780
-    play-hg3b8v:
-      x: 140
+    service_code-toc51k:
+      x: -420
       y: 680
+    branch-q3c9rm:
+      x: -600
+      y: 1000
+    play-hg3b8v:
+      x: -760
+      y: 1180
     play-7hx4gt:
-      x: 140
-      y: 800
+      x: -500
+      y: 1180
     it_ask:
       x: 440
       y: 800
@@ -398,8 +398,9 @@ layout:
       x: 1040
       y: -220
     transfer-t0hx51:
-      x: 140
-      y: 1160
+      x: 80
+      y: 1300
     play-wbm8wf:
-      x: 140
-      y: 960
+      x: -260
+      y: 1320
+  dir: TB
