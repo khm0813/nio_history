@@ -4,7 +4,6 @@ services:
   cisco_queue_wait:
     numbers:
     - "queue:wait"
-    - "35001"
     main: "cisco_queue_wait"
   test_main:
     numbers:
