@@ -277,7 +277,7 @@ nodes:
     type: transfer
     label: 상담원 전환
     mode: blind
-    dest: "30002"
+    dest: "service:테스트큐"
 sections:
   main:
     title: 통합테스트시나리오-메인분기
