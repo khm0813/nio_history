@@ -15,6 +15,7 @@
     "it_i_backend" : "통합테스트",
     "it_k_svccode" : "통합테스트",
     "it_f_end" : "통합테스트",
-    "it_e_transfer" : "통합테스트"
+    "it_e_transfer" : "통합테스트",
+    "test_callback" : "통합테스트"
   }
 }
