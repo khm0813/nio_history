@@ -5,3 +5,4 @@ entry:
   '*': "test_main"
   "35001": "test_callback"
   "39001": "test_callback"
+  "39999": "kim_test_main"
