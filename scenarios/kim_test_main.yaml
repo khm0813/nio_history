@@ -38,10 +38,6 @@ nodes:
     choices:
       "1": "branch-xtw7tm"
       "2": "collect-ku52a2"
-    nomatch_prompts:
-      - tts: 잘못 입력하셨습니다.
-    noinput_prompts:
-      - tts: 입력시간이 초과되었습니다.
     on_max_retry: play-cj1c8w
     on_error: play-cj1c8w
   branch-xtw7tm:
