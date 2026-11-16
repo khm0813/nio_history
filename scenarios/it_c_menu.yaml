@@ -541,32 +541,32 @@ sections:
 layout:
   nodes:
     entry:
-      x: 300
-      y: -240
+      x: 80
+      y: -320
     unknown:
-      x: 900
-      y: 0
+      x: 1520
+      y: -180
     pass:
-      x: 600
-      y: 120
+      x: 1820
+      y: -40
     pass_say:
-      x: 900
-      y: 120
+      x: 1820
+      y: 140
     fail:
-      x: 600
-      y: 300
+      x: 2120
+      y: -40
     fail_say:
-      x: 900
-      y: 300
+      x: 2120
+      y: 140
     back:
-      x: 1200
-      y: 240
+      x: 1960
+      y: 360
     dflt_retry:
-      x: 300
-      y: 160
+      x: 1820
+      y: -240
     dflt_error:
-      x: 300
-      y: 300
+      x: 2120
+      y: -240
     c1:
       x: 300
       y: 2040
@@ -627,3 +627,4 @@ layout:
       y: 1982
       w: 3940
       h: 348
+  dir: TB
