@@ -38,6 +38,7 @@ nodes:
     choices:
       "1": "branch-xtw7tm"
       "2": "collect-ku52a2"
+    on_max_retry: hangup-jvrqgp
   branch-xtw7tm:
     type: branch
     label: 분기
