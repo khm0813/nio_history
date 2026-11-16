@@ -16,13 +16,13 @@ nodes:
     next: probe
   probe:
     type: call_backend
-    label: ivrbridge 상태 (기록용)
-    connector: ecs/ivrbridge-health
-    out:
-      bridge_at_end: status
+    label: "ERS_EVENT전문"
+    connector: it/evt
+    out: {}
     next: done
     on_timeout: done
     on_error: done
+    note: ERS_EVENT전문
   done:
     type: hangup
     label: 끝
@@ -33,3 +33,10 @@ sections:
       - summarize
       - probe
       - done
+layout:
+  sections:
+    main:
+      x: -30
+      y: -58
+      w: 940
+      h: 577
