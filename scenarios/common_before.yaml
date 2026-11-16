@@ -47,8 +47,8 @@ layout:
       x: -320
       y: 0
     go:
-      x: 300
-      y: 0
+      x: 280
+      y: 20
     call_backend-ynhrpv:
       x: -20
-      y: 120
+      y: 0
