@@ -13,13 +13,49 @@ nodes:
     label: 인사
     prompts:
       - tts: 안녕하세요.
-    next: bye
+    next: set-2urycz
   bye:
     type: hangup
     label: 종료
+  set-2urycz:
+    type: set
+    label: 변수 설정
+    vars:
+      agentNum: "12000"
+      groupId: "39000"
+    note: "테스트 시작시 초기 셋팅해야하는 변수."
+    next: play-qufc69
+  play-qufc69:
+    type: play
+    label: 멘트 재생
     prompts:
-      - tts: 감사합니다.
+      - tts: 초기 셋팅된 상담원번호는 ${vars.agentNum} 이며, 그룹 아이디는 ${vars.groupId} 입니다. 감사합니다.
+    next: bye
 sections:
   main:
     title: 김형민시나리오메인
-    nodes: [welcome, bye]
+    nodes:
+      - welcome
+      - bye
+      - set-2urycz
+      - play-qufc69
+layout:
+  sections:
+    main:
+      x: -30
+      y: -58
+      w: 640
+      h: 748
+  nodes:
+    welcome:
+      x: -660
+      y: 160
+    bye:
+      x: 420
+      y: 180
+    set-2urycz:
+      x: -260
+      y: 160
+    play-qufc69:
+      x: 80
+      y: 160
