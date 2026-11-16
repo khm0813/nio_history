@@ -23,6 +23,7 @@ nodes:
     on_timeout: done
     on_error: done
     note: ERS_EVENT전문
+    in: {}
   done:
     type: hangup
     label: 끝
