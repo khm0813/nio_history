@@ -1,7 +1,7 @@
 id: kim_test_main
 version: 0.1.0
 name: 김형민시나리오메인
-start: welcome
+start: service_code-zlrfmu
 defaults:
   timeout_sec: 5
   max_retry: 3
@@ -81,6 +81,11 @@ nodes:
     type: hangup
     label: 종료
     reason: "재시도초과 종료"
+  service_code-zlrfmu:
+    type: service_code
+    label: 서비스코드
+    service_code: ""
+    next: welcome
 sections:
   main:
     title: 김형민시나리오메인
@@ -96,6 +101,7 @@ sections:
       - collect-ku52a2
       - hangup-v9pj30
       - hangup-jvrqgp
+      - service_code-zlrfmu
 layout:
   sections:
     main:
@@ -137,4 +143,7 @@ layout:
     hangup-jvrqgp:
       x: -380
       y: 800
+    service_code-zlrfmu:
+      x: -720
+      y: -280
   dir: TB
