@@ -101,33 +101,33 @@ layout:
       h: 748
   nodes:
     welcome:
-      x: -580
+      x: -560
       y: 160
     bye:
       x: -900
-      y: 1240
+      y: 1260
     set-2urycz:
-      x: -640
+      x: -560
       y: 340
     play-qufc69:
-      x: -640
+      x: -560
       y: 520
     branch-tq73ed:
-      x: -800
-      y: 1040
+      x: -740
+      y: 1080
     notice-um3ojc:
-      x: -460
-      y: 1280
+      x: -640
+      y: 1260
     hangup-l5al4a:
-      x: -340
-      y: 1480
+      x: -640
+      y: 1440
     menu-tuceu3:
-      x: -680
+      x: -560
       y: 720
     collect-t78c2i:
       x: -460
-      y: 860
+      y: 900
     play-qu38np:
-      x: -160
-      y: 1160
+      x: -380
+      y: 1260
   dir: TB
