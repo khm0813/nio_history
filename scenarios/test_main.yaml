@@ -332,8 +332,8 @@ layout:
       x: -420
       y: 840
     bye:
-      x: 100
-      y: 820
+      x: -680
+      y: 680
     service_code-toc51k:
       x: -420
       y: 680
@@ -348,59 +348,58 @@ layout:
       y: 1180
     it_ask:
       x: 440
-      y: 800
+      y: 860
     it_route:
       x: 740
-      y: 540
+      y: 860
     it_go_b:
       x: 1040
-      y: -100
+      y: 1780
     it_go_c:
       x: 1040
-      y: 60
+      y: 1620
     it_go_d:
       x: 1040
-      y: 220
+      y: 1340
     it_go_g:
       x: 1040
-      y: 380
+      y: 1200
     it_go_h:
       x: 1040
-      y: 540
+      y: 1040
     it_go_j:
       x: 1040
-      y: 700
+      y: 880
     it_go_m:
       x: 1040
-      y: 960
+      y: 580
     it_go_l:
       x: 1040
-      y: 1220
+      y: 420
     it_go_i:
       x: 1040
-      y: 1380
+      y: 260
     it_go_k:
       x: 1040
-      y: 1540
+      y: 100
     it_go_f:
       x: 1040
-      y: 1700
+      y: -60
     it_go_e:
       x: 1040
-      y: 1860
+      y: -220
     it_record:
       x: 1340
-      y: 760
+      y: 560
     it_unknown:
       x: 1340
-      y: 1220
+      y: 840
     it_end:
       x: 1040
-      y: -220
+      y: 1500
     transfer-t0hx51:
-      x: 80
-      y: 1300
+      x: -220
+      y: 1340
     play-wbm8wf:
-      x: -260
-      y: 1320
-  dir: TB
+      x: -220
+      y: 1180
