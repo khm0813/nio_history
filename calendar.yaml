@@ -272,6 +272,9 @@ holidays:
   name: "성탄절"
   kind: "public"
   yearly: false
+- date: "2099-01-01"
+  name: "zz 배포 확인"
+  kind: "temporary"
 overrides:
 - date: "2026-12-25"
   calendars:
