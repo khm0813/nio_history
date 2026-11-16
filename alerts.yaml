@@ -1,0 +1,43 @@
+# Monitor threshold alerts (screen only). Written by the console; missing rules use built-in defaults.
+---
+rules:
+  engine_down:
+    enabled: true
+    warn: 15
+    crit: 60
+  live_calls:
+    enabled: true
+    warn: 150
+    crit: 200
+  backend_pool:
+    enabled: true
+    warn: 70
+    crit: 90
+  connector_p95_ms:
+    enabled: true
+    warn: 3000
+    crit: 5000
+    min_calls: 10
+  connector_fail_pct:
+    enabled: true
+    warn: 10
+    crit: 30
+    min_calls: 10
+  resyncs_5m:
+    enabled: true
+    warn: 5
+    crit: 20
+  queue_missing_5m:
+    enabled: true
+    warn: 1
+    crit: 10
+  servicecode_queued:
+    enabled: true
+    warn: 1000
+    crit: 5000
+  servicecode_failed_5m:
+    enabled: true
+    warn: 1
+    crit: 50
+  sync:
+    enabled: true
