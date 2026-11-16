@@ -4,4 +4,5 @@ common:
   before: "common_before"
   on_error: "common_error"
   after: "common_after"
+  emergency: "common_ems"
   after_timeout_ms: 3000
