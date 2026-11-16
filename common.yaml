@@ -6,3 +6,13 @@ common:
   after: "common_after"
   emergency: "common_ems"
   after_timeout_ms: 3000
+  fallback:
+    noinput:
+      tts: "입력이 되지않았습니다. 다시 입력해주세요."
+    nomatch:
+      tts: "잘 못 누르셨습니다. 다시 입력해주세요."
+    max_retry:
+      tts: "사용방법을 확인하시고 다시 이용해주세요. 감사합니다."
+    error:
+      tts: "처리중 문제가 생겼습니다. 다시 안내드리겠습니다."
+    returns: 3
