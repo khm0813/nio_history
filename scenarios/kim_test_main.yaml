@@ -1,53 +1,22 @@
 id: common_before
 version: 0.1.0
 name: 공통 진입 (인사·점검)
-start: mark
 defaults:
   timeout_sec: 5
   max_retry: 1
-  on_max_retry: go
-  on_error: go
-nodes:
-  mark:
-    type: set
-    label: 진입 표시
-    vars:
-      entered_via: common_before
-      entry_dnis: "${session.dnis}"
-    next: call_backend-tgr0k1
-  go:
-    type: return
-    label: 메인으로
-    exit: ok
-  call_backend-tgr0k1:
-    type: call_backend
-    label: "전문 호출_ERS_CALL"
-    connector: "it/call"
-    in: {}
-    out: {}
-    note: "ERS Call Start 전문"
-    next: go
+nodes: { play-d7kf9m: { type: play, label: 멘트 재생, prompts: [ { tts: 멘트를 입력하세요. } ], next: hangup-weco8f }, hangup-weco8f: { type: hangup, label: 종료, reason: normal } }
 sections:
   main:
     title: common_before_메인
     nodes:
-      - mark
-      - go
-      - call_backend-tgr0k1
+      - play-d7kf9m
+      - hangup-weco8f
 layout:
-  nodes:
-    mark:
-      x: 0
-      y: 0
-    go:
-      x: 600
-      y: 20
-    call_backend-tgr0k1:
-      x: 300
-      y: 0
+  nodes: { play-d7kf9m: { x: 80, y: 60 }, hangup-weco8f: { x: 540, y: 120 } }
   sections:
     main:
       x: -210
       y: -78
-      w: 820
-      h: 592
+      w: 1120
+      h: 523
+start: play-d7kf9m
