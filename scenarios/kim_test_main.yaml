@@ -38,8 +38,6 @@ nodes:
     choices:
       "1": "branch-xtw7tm"
       "2": "collect-ku52a2"
-    on_max_retry: play-cj1c8w
-    on_error: play-cj1c8w
   branch-xtw7tm:
     type: branch
     label: 분기
@@ -73,12 +71,16 @@ nodes:
     var: agentNum
     term_key: "#"
     next: branch-xtw7tm
-    on_max_retry: play-cj1c8w
-    on_error: play-cj1c8w
+    on_max_retry: hangup-jvrqgp
+    on_error: set-rmie5s
   hangup-v9pj30:
     type: hangup
     label: 종료
     reason: 공지사항후종료
+  hangup-jvrqgp:
+    type: hangup
+    label: 종료
+    reason: "재시도초과 종료"
 sections:
   main:
     title: 김형민시나리오메인
@@ -93,6 +95,7 @@ sections:
       - play-1tl3e8
       - collect-ku52a2
       - hangup-v9pj30
+      - hangup-jvrqgp
 layout:
   sections:
     main:
@@ -131,4 +134,7 @@ layout:
     hangup-v9pj30:
       x: -760
       y: 1140
+    hangup-jvrqgp:
+      x: -380
+      y: 800
   dir: TB
