@@ -74,6 +74,8 @@ nodes:
     var: agentNum
     term_key: "#"
     next: branch-xtw7tm
+    on_max_retry: play-cj1c8w
+    on_error: play-cj1c8w
   hangup-v9pj30:
     type: hangup
     label: 종료
