@@ -305,7 +305,7 @@ nodes:
 sections:
   frame:
     title: 공통 틀
-    note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
+    note: "시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다                  "
     nodes:
       - entry
       - unknown
@@ -441,3 +441,15 @@ layout:
     b8_menu:
       x: 1200
       y: 1840
+    b1:
+      x: 300
+      y: 3260
+    b1_code:
+      x: 600
+      y: 3280
+    b1_say:
+      x: 900
+      y: 3260
+    b1_play:
+      x: 1200
+      y: 3260
