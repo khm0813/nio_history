@@ -15,7 +15,7 @@ nodes:
   hangup-l5al4a:
     type: hangup
     label: 종료
-    reason: 공지사항종료
+    reason: 일반종료
   set-rmie5s:
     type: set
     label: 변수 설정_초기설정
@@ -54,6 +54,7 @@ nodes:
   notice-5mmbvx:
     type: notice
     label: 공지사항
+    next: hangup-v9pj30
   play-1tl3e8:
     type: play
     label: 멘트 재생
@@ -71,6 +72,10 @@ nodes:
     var: agentNum
     term_key: "#"
     next: branch-xtw7tm
+  hangup-v9pj30:
+    type: hangup
+    label: 종료
+    reason: 공지사항후종료
 sections:
   main:
     title: 김형민시나리오메인
@@ -84,6 +89,7 @@ sections:
       - notice-5mmbvx
       - play-1tl3e8
       - collect-ku52a2
+      - hangup-v9pj30
 layout:
   sections:
     main:
@@ -119,4 +125,7 @@ layout:
     collect-ku52a2:
       x: -460
       y: 600
+    hangup-v9pj30:
+      x: -760
+      y: 1140
   dir: TB
