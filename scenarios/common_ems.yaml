@@ -30,7 +30,7 @@ layout:
       x: -190
       y: -58
       w: 800
-      h: 620
+      h: 517
   nodes:
     welcome:
       x: -160
