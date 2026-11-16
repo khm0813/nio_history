@@ -1,0 +1,32 @@
+{
+  "id" : "set_mwj69dhr",
+  "name" : "세트연습",
+  "description" : "세트다",
+  "items" : [ {
+    "id" : "play-uj9nv2",
+    "node" : {
+      "type" : "play",
+      "label" : "멘트 재생",
+      "prompts" : [ {
+        "tts" : "멘트를 입력하세요."
+      } ],
+      "next" : "notice-k8f5yx"
+    },
+    "pos" : {
+      "x" : 0,
+      "y" : 0
+    }
+  }, {
+    "id" : "notice-k8f5yx",
+    "node" : {
+      "type" : "notice",
+      "label" : "공지사항"
+    },
+    "pos" : {
+      "x" : 80,
+      "y" : 180
+    }
+  } ],
+  "by" : "admin",
+  "at" : "2026-11-16T11:19:58.111277982Z"
+}
