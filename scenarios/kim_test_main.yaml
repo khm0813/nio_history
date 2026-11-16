@@ -57,6 +57,9 @@ nodes:
     type: notice
     label: 공지사항
     next: hangup-v9pj30
+    notices:
+      - it_n_a
+      - n-20261104-2
   play-1tl3e8:
     type: play
     label: 멘트 재생
