@@ -26,6 +26,8 @@ nodes:
     in: {}
     out: {}
     next: go
+    on_timeout: go
+    on_error: go
 sections:
   main:
     title: common_before_메인
