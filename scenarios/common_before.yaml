@@ -14,21 +14,39 @@ nodes:
     vars:
       entered_via: common_before
       entry_dnis: "${session.dnis}"
-    next: go
+    next: call_backend-ynhrpv
   go:
     type: return
     label: 메인으로
     exit: ok
+  call_backend-ynhrpv:
+    type: call_backend
+    label: 전문 호출
+    connector: "it/call"
+    in: {}
+    out: {}
+    next: go
 sections:
   main:
     title: common_before_메인
     nodes:
       - mark
       - go
+      - call_backend-ynhrpv
 layout:
   sections:
     main:
       x: -30
       y: -58
       w: 640
-      h: 426
+      h: 669
+  nodes:
+    mark:
+      x: -320
+      y: 0
+    go:
+      x: 300
+      y: 0
+    call_backend-ynhrpv:
+      x: -20
+      y: 120
