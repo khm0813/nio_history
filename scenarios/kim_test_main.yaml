@@ -86,6 +86,32 @@ nodes:
     label: ARS 시험 A 통계
     service_code: "T00000000"
     next: welcome
+  wait:
+    type: play
+    label: 대기 멘트
+    prompts:
+      - tts: 잠시만 기다려 주십시오.
+        bargein: false
+    next: call
+  call:
+    type: call_backend
+    label: 전문 호출
+    connector: "cti/agent-state"
+    in: {}
+    out: {}
+    next: ok
+    on_timeout: fail
+    on_error: fail
+  ok:
+    type: play
+    label: 조회 결과 안내
+    prompts:
+      - tts: 조회 결과를 안내해 드리겠습니다.
+  fail:
+    type: play
+    label: 조회 실패 안내
+    prompts:
+      - tts: 지금은 조회할 수 없습니다. 잠시 후 다시 이용해 주십시오.
 sections:
   main:
     title: 김형민시나리오메인
@@ -102,6 +128,14 @@ sections:
       - hangup-v9pj30
       - hangup-jvrqgp
       - service_code-zlrfmu
+  set:
+    title: 대기 멘트 + 전문 호출
+    nodes:
+      - wait
+      - call
+      - ok
+      - fail
+    bundle: true
 layout:
   sections:
     main:
@@ -146,4 +180,16 @@ layout:
     service_code-zlrfmu:
       x: -720
       y: -280
+    wait:
+      x: 40
+      y: 360
+    call:
+      x: 40
+      y: 520
+    ok:
+      x: 40
+      y: 680
+    fail:
+      x: 340
+      y: 680
   dir: TB
