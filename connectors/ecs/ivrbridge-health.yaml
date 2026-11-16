@@ -3,7 +3,7 @@ connector: ecs/ivrbridge-health
 kind: rest-json
 description: ivrbridge 상태 확인 (status 가 UP 이면 정상)
 host: ${hosts.ivrbridge}
-timeout_ms: 2000
+timeout_ms: 4000
 rest:
   method: GET
   path: /ivrbridge/health
