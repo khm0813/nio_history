@@ -11,29 +11,112 @@ nodes:
     label: 인사
     prompts:
       - tts: 안녕하세요.
-    next: hangup-l5al4a
+    next: set-rmie5s
   hangup-l5al4a:
     type: hangup
     label: 종료
     reason: 공지사항종료
+  set-rmie5s:
+    type: set
+    label: 변수 설정_초기설정
+    vars:
+      agentNum: "1200"
+      groupId: "1300"
+    note: "초기 셋팅 변수"
+    next: play-cj1c8w
+  play-cj1c8w:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 초기 셋팅된 상담원 번호는 ${vars.agentNum}  입니다. 그룹아이디는 ${vars.groupId} 입니다.
+    next: menu-zkj0dy
+  menu-zkj0dy:
+    type: menu
+    label: 메뉴
+    prompts:
+      - tts: 초기 셋팅된 상담원 번호를 바꾸실려면 1번, 다른 번호를 입력하실려면 2번을 눌러주세요.
+    choices:
+      "1": "branch-xtw7tm"
+      "2": "collect-ku52a2"
+    nomatch_prompts:
+      - tts: 잘못 입력하셨습니다.
+    noinput_prompts:
+      - tts: ""
+  branch-xtw7tm:
+    type: branch
+    label: 분기
+    cases:
+      - when: vars.agentNum == '1200'
+        next: hangup-l5al4a
+      - when: vars.agentNum == '1300'
+        next: notice-5mmbvx
+    default: play-1tl3e8
+  notice-5mmbvx:
+    type: notice
+    label: 공지사항
+  play-1tl3e8:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 잘못된 상담원 번호입니다. 다시 입력해주세요.
+    next: menu-zkj0dy
+  collect-ku52a2:
+    type: collect
+    label: 숫자 입력
+    prompts:
+      - tts: 새로운 상담원 번호를 입력하고 우물정자를 눌러주세요.
+    min_digits: 5
+    max_digits: 6
+    max_retry: 3
+    var: agentNum
+    term_key: "#"
+    next: branch-xtw7tm
 sections:
   main:
     title: 김형민시나리오메인
     nodes:
       - welcome
       - hangup-l5al4a
+      - set-rmie5s
+      - play-cj1c8w
+      - menu-zkj0dy
+      - branch-xtw7tm
+      - notice-5mmbvx
+      - play-1tl3e8
+      - collect-ku52a2
 layout:
   sections:
     main:
-      x: -650
-      y: -58
-      w: 1260
-      h: 614
+      x: -1090
+      y: -198
+      w: 1700
+      h: 809
   nodes:
     welcome:
-      x: -900
-      y: 60
+      x: -720
+      y: -140
     hangup-l5al4a:
-      x: -660
-      y: 380
+      x: -1060
+      y: 960
+    set-rmie5s:
+      x: -720
+      y: 40
+    play-cj1c8w:
+      x: -720
+      y: 220
+    menu-zkj0dy:
+      x: -720
+      y: 420
+    branch-xtw7tm:
+      x: -900
+      y: 780
+    notice-5mmbvx:
+      x: -800
+      y: 960
+    play-1tl3e8:
+      x: -540
+      y: 960
+    collect-ku52a2:
+      x: -460
+      y: 600
   dir: TB
