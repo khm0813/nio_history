@@ -70,12 +70,12 @@ nodes:
     label: 숫자 입력
     prompts:
       - tts: 상담원번호 5자리를 입력 후 우물정자를 입력해주세요.
-    var: input
     min_digits: 5
     max_digits: 6
     next: branch-tq73ed
     max_retry: 3
     term_key: "#"
+    var: agentNum
   play-qu38np:
     type: play
     label: 멘트 재생
