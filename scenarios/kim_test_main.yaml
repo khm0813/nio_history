@@ -5,97 +5,23 @@ start: welcome
 defaults:
   timeout_sec: 5
   max_retry: 3
-  on_max_retry: bye
-  on_error: bye
 nodes:
   welcome:
     type: play
     label: 인사
     prompts:
       - tts: 안녕하세요.
-    next: set-2urycz
-  bye:
-    type: hangup
-    label: 종료
-    reason: 일반종료
-  set-2urycz:
-    type: set
-    label: 변수 설정
-    vars:
-      agentNum: "12000"
-      groupId: "39000"
-    note: "테스트 시작시 초기 셋팅해야하는 변수."
-    next: play-qufc69
-  play-qufc69:
-    type: play
-    label: 멘트 재생
-    prompts:
-      - tts: 초기 셋팅된 상담원번호는 ${vars.agentNum} 이며, 그룹 아이디는 ${vars.groupId} 입니다. 감사합니다.
-    next: menu-tuceu3
-  branch-tq73ed:
-    type: branch
-    label: 분기
-    cases:
-      - when: vars.agentNum == "12000"
-        next: bye
-      - when: vars.agentNum == "13000"
-        next: notice-um3ojc
-    default: play-qu38np
-  notice-um3ojc:
-    type: notice
-    label: 공지사항
-    note: "형민 테스트 공지사항"
-    notices:
-      - n-20261104-2
-      - it_n_a
     next: hangup-l5al4a
   hangup-l5al4a:
     type: hangup
     label: 종료
     reason: 공지사항종료
-  menu-tuceu3:
-    type: menu
-    label: 메뉴
-    prompts:
-      - tts: 초기 셋팅을 그대로 사용하려면 1번, 새로 입력하려면 2번을 눌러주세요.
-    choices:
-      "1": "branch-tq73ed"
-      "2": "collect-t78c2i"
-    nomatch_prompts:
-      - tts: 잘못입력하셨습니다. 다시 입력해주세요.
-    noinput_prompts:
-      - tts: 입력시간이 초과되었습니다. 다시 입력해주세요.
-  collect-t78c2i:
-    type: collect
-    label: 숫자 입력
-    prompts:
-      - tts: 상담원번호 5자리를 입력 후 우물정자를 입력해주세요.
-    min_digits: 5
-    max_digits: 6
-    next: branch-tq73ed
-    max_retry: 3
-    term_key: "#"
-    var: agentNum
-  play-qu38np:
-    type: play
-    label: 멘트 재생
-    prompts:
-      - tts: 없는 상담원번호가 입력되었습니다. 다시 입력해주세요.
-    next: menu-tuceu3
 sections:
   main:
     title: 김형민시나리오메인
     nodes:
       - welcome
-      - bye
-      - set-2urycz
-      - play-qufc69
-      - branch-tq73ed
-      - notice-um3ojc
       - hangup-l5al4a
-      - menu-tuceu3
-      - collect-t78c2i
-      - play-qu38np
 layout:
   sections:
     main:
@@ -105,33 +31,9 @@ layout:
       h: 748
   nodes:
     welcome:
-      x: -560
-      y: 160
-    bye:
-      x: -900
-      y: 1260
-    set-2urycz:
-      x: -560
-      y: 340
-    play-qufc69:
-      x: -560
-      y: 520
-    branch-tq73ed:
-      x: -740
-      y: 1080
-    notice-um3ojc:
-      x: -640
-      y: 1260
+      x: -620
+      y: 180
     hangup-l5al4a:
-      x: -640
-      y: 1440
-    menu-tuceu3:
       x: -560
-      y: 720
-    collect-t78c2i:
-      x: -460
-      y: 900
-    play-qu38np:
-      x: -380
-      y: 1260
+      y: 400
   dir: TB
