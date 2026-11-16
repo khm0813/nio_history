@@ -83,8 +83,8 @@ nodes:
     reason: "재시도초과 종료"
   service_code-zlrfmu:
     type: service_code
-    label: 서비스코드
-    service_code: ""
+    label: ARS 시험 A 통계
+    service_code: "T00000000"
     next: welcome
 sections:
   main:
