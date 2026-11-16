@@ -51,11 +51,12 @@ layout:
       x: -660
       y: 160
     bye:
-      x: 420
-      y: 180
+      x: -660
+      y: 720
     set-2urycz:
-      x: -260
-      y: 160
+      x: -660
+      y: 340
     play-qufc69:
-      x: 80
-      y: 160
+      x: -660
+      y: 520
+  dir: TB
