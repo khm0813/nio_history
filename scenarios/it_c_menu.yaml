@@ -621,10 +621,21 @@ layout:
     c2_hash:
       x: 3900
       y: 3600
+    c3:
+      x: 2160
+      y: 5600
+    c3_code:
+      x: 2460
+      y: 5620
+    c3_say:
+      x: 2760
+      y: 5600
+    c3_menu:
+      x: 3060
+      y: 5600
   sections:
     t_c1:
       x: 270
       y: 1982
       w: 3940
       h: 348
-  dir: TB
