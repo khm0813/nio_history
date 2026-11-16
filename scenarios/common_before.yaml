@@ -25,3 +25,10 @@ sections:
     nodes:
       - mark
       - go
+layout:
+  sections:
+    main:
+      x: -30
+      y: -58
+      w: 640
+      h: 426
