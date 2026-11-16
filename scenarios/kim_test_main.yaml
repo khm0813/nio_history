@@ -6,7 +6,7 @@ defaults:
 nodes: { play-d7kf9m: { type: play, label: 멘트 재생, prompts: [ { tts: 멘트를 입력하세요. } ], next: hangup-weco8f }, hangup-weco8f: { type: hangup, label: 종료, reason: normal } }
 sections:
   main:
-    title: common_before_메인
+    title: 김형민테스트시나리오_메인
     nodes:
       - play-d7kf9m
       - hangup-weco8f
