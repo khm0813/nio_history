@@ -17,6 +17,7 @@ nodes:
   bye:
     type: hangup
     label: 종료
+    reason: 일반종료
   set-2urycz:
     type: set
     label: 변수 설정
@@ -30,7 +31,27 @@ nodes:
     label: 멘트 재생
     prompts:
       - tts: 초기 셋팅된 상담원번호는 ${vars.agentNum} 이며, 그룹 아이디는 ${vars.groupId} 입니다. 감사합니다.
-    next: bye
+    next: branch-tq73ed
+  branch-tq73ed:
+    type: branch
+    label: 분기
+    cases:
+      - when: vars.agentNum == "12000"
+        next: bye
+      - when: vars.agentNum == "13000"
+        next: notice-um3ojc
+  notice-um3ojc:
+    type: notice
+    label: 공지사항
+    note: "형민 테스트 공지사항"
+    notices:
+      - n-20261104-2
+      - it_n_a
+    next: hangup-l5al4a
+  hangup-l5al4a:
+    type: hangup
+    label: 종료
+    reason: 공지사항종료
 sections:
   main:
     title: 김형민시나리오메인
@@ -39,6 +60,9 @@ sections:
       - bye
       - set-2urycz
       - play-qufc69
+      - branch-tq73ed
+      - notice-um3ojc
+      - hangup-l5al4a
 layout:
   sections:
     main:
@@ -48,15 +72,24 @@ layout:
       h: 748
   nodes:
     welcome:
-      x: -660
+      x: -580
       y: 160
     bye:
-      x: -660
-      y: 720
+      x: -800
+      y: 900
     set-2urycz:
-      x: -660
+      x: -640
       y: 340
     play-qufc69:
-      x: -660
+      x: -640
       y: 520
+    branch-tq73ed:
+      x: -680
+      y: 720
+    notice-um3ojc:
+      x: -460
+      y: 920
+    hangup-l5al4a:
+      x: -460
+      y: 1140
   dir: TB
