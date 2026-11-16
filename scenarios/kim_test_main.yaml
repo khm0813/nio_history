@@ -16,24 +16,42 @@ nodes:
     type: hangup
     label: 종료
     reason: 공지사항종료
+  script-jzaiyr:
+    type: script
+    label: 스크립트
+    code: |-
+      
+      String agent = vars.get("agentNum");
+      if(agent == "13000"){
+        log("13000 으로 입력됨");
+      }else {
+        log(agent + " 으로 입력 됨");
+      }
+      return "ok";
+    exits: {}
+    lang: java
 sections:
   main:
     title: 김형민시나리오메인
     nodes:
       - welcome
       - hangup-l5al4a
+      - script-jzaiyr
 layout:
   sections:
     main:
-      x: -30
+      x: -650
       y: -58
-      w: 640
-      h: 748
+      w: 1260
+      h: 614
   nodes:
     welcome:
-      x: -620
-      y: 180
+      x: -900
+      y: 60
     hangup-l5al4a:
-      x: -560
-      y: 400
+      x: -660
+      y: 380
+    script-jzaiyr:
+      x: -600
+      y: 160
   dir: TB
