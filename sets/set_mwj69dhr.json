@@ -10,7 +10,7 @@
       "prompts" : [ {
         "tts" : "멘트를 입력하세요."
       } ],
-      "next" : "notice-k8f5yx"
+      "next" : "play-bdnpij"
     },
     "pos" : {
       "x" : 0,
@@ -23,10 +23,24 @@
       "label" : "공지사항"
     },
     "pos" : {
-      "x" : 80,
-      "y" : 180
+      "x" : 300,
+      "y" : 360
+    }
+  }, {
+    "id" : "play-bdnpij",
+    "node" : {
+      "type" : "play",
+      "label" : "멘트 재생",
+      "prompts" : [ {
+        "tts" : "멘트를 입력하세요."
+      } ],
+      "next" : "notice-k8f5yx"
+    },
+    "pos" : {
+      "x" : 320,
+      "y" : 40
     }
   } ],
   "by" : "admin",
-  "at" : "2026-11-16T11:19:58.111277982Z"
+  "at" : "2026-11-16T11:35:37.377795682Z"
 }
