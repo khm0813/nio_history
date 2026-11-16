@@ -14,9 +14,9 @@ connections:
   default_queue: "service:it_전환큐"
   verified:
     ok: true
-    at: "2026-11-16T05:58:15.309825384Z"
+    at: "2026-11-16T06:28:34.715644223Z"
     by: "admin"
-    build: "0.1.0-20261116.6"
+    build: "0.1.0-20261116.7"
     detail: "nio-shell.war · http://127.0.0.1:7002"
 - id: "bp"
   vendor: "bright-pattern"
