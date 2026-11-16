@@ -61,17 +61,17 @@ layout:
       x: -220
       y: 40
     bye:
-      x: 1080
-      y: 0
+      x: 980
+      y: 40
     collect-oukf03:
       x: 80
       y: 20
     play-ydqcq5:
-      x: 400
+      x: 380
       y: 0
     menu-c1o80h:
-      x: 740
-      y: 0
+      x: 680
+      y: 20
   sections:
     main:
       x: -250
