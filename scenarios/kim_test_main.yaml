@@ -31,7 +31,7 @@ nodes:
     label: 멘트 재생
     prompts:
       - tts: 초기 셋팅된 상담원번호는 ${vars.agentNum} 이며, 그룹 아이디는 ${vars.groupId} 입니다. 감사합니다.
-    next: branch-tq73ed
+    next: menu-tuceu3
   branch-tq73ed:
     type: branch
     label: 분기
@@ -40,6 +40,7 @@ nodes:
         next: bye
       - when: vars.agentNum == "13000"
         next: notice-um3ojc
+    default: play-qu38np
   notice-um3ojc:
     type: notice
     label: 공지사항
@@ -52,6 +53,31 @@ nodes:
     type: hangup
     label: 종료
     reason: 공지사항종료
+  menu-tuceu3:
+    type: menu
+    label: 메뉴
+    prompts:
+      - tts: 초기 셋팅을 그대로 사용하려면 1번, 새로 입력하려면 2번을 눌러주세요.
+    choices:
+      "1": "branch-tq73ed"
+      "2": "collect-t78c2i"
+  collect-t78c2i:
+    type: collect
+    label: 숫자 입력
+    prompts:
+      - tts: 상담원번호 5자리를 입력 후 우물정자를 입력해주세요.
+    var: input
+    min_digits: 5
+    max_digits: 6
+    next: branch-tq73ed
+    max_retry: 3
+    term_key: "#"
+  play-qu38np:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 없는 상담원번호가 입력되었습니다. 다시 입력해주세요.
+    next: menu-tuceu3
 sections:
   main:
     title: 김형민시나리오메인
@@ -63,6 +89,9 @@ sections:
       - branch-tq73ed
       - notice-um3ojc
       - hangup-l5al4a
+      - menu-tuceu3
+      - collect-t78c2i
+      - play-qu38np
 layout:
   sections:
     main:
@@ -75,8 +104,8 @@ layout:
       x: -580
       y: 160
     bye:
-      x: -800
-      y: 900
+      x: -900
+      y: 1240
     set-2urycz:
       x: -640
       y: 340
@@ -84,12 +113,21 @@ layout:
       x: -640
       y: 520
     branch-tq73ed:
-      x: -680
-      y: 720
+      x: -800
+      y: 1040
     notice-um3ojc:
       x: -460
-      y: 920
+      y: 1280
     hangup-l5al4a:
+      x: -340
+      y: 1480
+    menu-tuceu3:
+      x: -680
+      y: 720
+    collect-t78c2i:
       x: -460
-      y: 1140
+      y: 860
+    play-qu38np:
+      x: -160
+      y: 1160
   dir: TB
