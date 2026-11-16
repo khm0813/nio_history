@@ -13,14 +13,14 @@ nodes:
     type: branch
     label: 시험 번호로 나누기
     cases:
-    - when: vars.it_case == '0601'
-      next: f1
-    - when: vars.it_case == '0602'
-      next: f2
-    - when: vars.it_case == '0603'
-      next: f3
-    - when: vars.it_case == '0605'
-      next: f5
+      - when: vars.it_case == '0601'
+        next: f1
+      - when: vars.it_case == '0602'
+        next: f2
+      - when: vars.it_case == '0603'
+        next: f3
+      - when: vars.it_case == '0605'
+        next: f5
     default: unknown
   unknown:
     type: return
@@ -36,8 +36,8 @@ nodes:
     type: play
     label: 실패 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 실패입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 실패입니다.
+        bargein: false
     next: back
   back:
     type: return
@@ -66,15 +66,15 @@ nodes:
     type: play
     label: '[F1] 안내'
     prompts:
-    - tts: 시험 F1. 종료 노드. 아무것도 누르지 마세요. 통화가 끝납니다
-      bargein: false
+      - tts: 시험 F1. 종료 노드. 아무것도 누르지 마세요. 통화가 끝납니다
+        bargein: false
     next: f1_bye
   f1_bye:
     type: hangup
     label: 종료 노드
     prompts:
-    - tts: 종료 노드 시험입니다. 통화를 끝냅니다.
-      bargein: false
+      - tts: 종료 노드 시험입니다. 통화를 끝냅니다.
+        bargein: false
   f2:
     type: set
     label: '[F2] 시작'
@@ -90,20 +90,20 @@ nodes:
     type: play
     label: '[F2] 안내'
     prompts:
-    - tts: 시험 F2. 멘트 중 발신자 끊음. 다음 긴 멘트가 나오는 동안 전화를 끊으세요
-      bargein: false
+      - tts: 시험 F2. 멘트 중 발신자 끊음. 다음 긴 멘트가 나오는 동안 전화를 끊으세요
+        bargein: false
     next: f2_long
   f2_long:
     type: play
     label: 긴 멘트 (이때 끊음)
     prompts:
-    - tts: '지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. 지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. 지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. 지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. '
+      - tts: '지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. 지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. 지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. 지금부터 긴 멘트를 읽습니다. 이 멘트가 나오는 동안 전화를 끊어 주세요. '
     next: f2_after
   f2_after:
     type: play
     label: 끊지 않았을 때
     prompts:
-    - tts: 이 멘트가 들리면 끊지 않은 것입니다.
+      - tts: 이 멘트가 들리면 끊지 않은 것입니다.
     next: fail
   f3:
     type: set
@@ -120,14 +120,14 @@ nodes:
     type: play
     label: '[F3] 안내'
     prompts:
-    - tts: 시험 F3. 입력 대기 중 끊음. 숫자 입력 안내가 나오면 누르지 말고 전화를 끊으세요
-      bargein: false
+      - tts: 시험 F3. 입력 대기 중 끊음. 숫자 입력 안내가 나오면 누르지 말고 전화를 끊으세요
+        bargein: false
     next: f3_in
   f3_in:
     type: collect
     label: 입력 대기 (이때 끊음)
     prompts:
-    - tts: 아무것도 누르지 말고 전화를 끊어 주세요.
+      - tts: 아무것도 누르지 말고 전화를 끊어 주세요.
     var: f3
     min_digits: 1
     max_digits: 4
@@ -151,58 +151,81 @@ nodes:
     type: play
     label: '[F5] 안내'
     prompts:
-    - tts: 시험 F5. 종료 사유. 아무것도 누르지 마세요. 통화가 끝납니다
-      bargein: false
+      - tts: 시험 F5. 종료 사유. 아무것도 누르지 마세요. 통화가 끝납니다
+        bargein: false
     next: f5_bye
   f5_bye:
     type: hangup
     label: 종료 사유 it_reason
     prompts:
-    - tts: 종료 사유를 남기고 통화를 끝냅니다.
-      bargein: false
+      - tts: 종료 사유를 남기고 통화를 끝냅니다.
+        bargein: false
     reason: it_reason
 sections:
   frame:
     title: 공통 틀
     note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
     nodes:
-    - entry
-    - unknown
-    - fail
-    - fail_say
-    - back
-    - dflt_retry
-    - dflt_error
+      - entry
+      - unknown
+      - fail
+      - fail_say
+      - back
+      - dflt_retry
+      - dflt_error
   t_f1:
     title: '[F1] 종료 노드'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 종료 멘트 뒤 끊김'
     nodes:
-    - f1
-    - f1_code
-    - f1_say
-    - f1_bye
+      - f1
+      - f1_code
+      - f1_say
+      - f1_bye
   t_f2:
     title: '[F2] 멘트 중 발신자 끊음'
     note: '누를 것: 멘트 중에 전화를 끊음 / 들려야 할 것: (추적에 hangup)'
     nodes:
-    - f2
-    - f2_code
-    - f2_say
-    - f2_long
-    - f2_after
+      - f2
+      - f2_code
+      - f2_say
+      - f2_long
+      - f2_after
   t_f3:
     title: '[F3] 입력 대기 중 끊음'
     note: '누를 것: 입력 안내 뒤 전화를 끊음 / 들려야 할 것: (추적에 hangup)'
     nodes:
-    - f3
-    - f3_code
-    - f3_say
-    - f3_in
+      - f3
+      - f3_code
+      - f3_say
+      - f3_in
   t_f5:
     title: '[F5] 종료 사유'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 종료 멘트 뒤 끊김(추적에 사유 it_reason)'
     nodes:
-    - f5
-    - f5_code
-    - f5_say
-    - f5_bye
+      - f5
+      - f5_code
+      - f5_say
+      - f5_bye
+layout:
+  nodes:
+    entry:
+      x: 0
+      y: 0
+    unknown:
+      x: 420
+      y: 140
+    fail:
+      x: 300
+      y: 260
+    fail_say:
+      x: 600
+      y: 260
+    back:
+      x: 900
+      y: 260
+    dflt_retry:
+      x: 0
+      y: 200
+    dflt_error:
+      x: 0
+      y: 320
