@@ -1,5 +1,5 @@
 id: test_main
-version: 0.1.0
+version: "1.0.0"
 name: 통합테스트시나리오
 start: service_code-toc51k
 defaults:
