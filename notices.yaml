@@ -18,7 +18,7 @@ notices:
   order: 1
 - id: "n-20261110-1"
   title: "통합테스트-메인공지사항"
-  enabled: true
+  enabled: false
   text: "해당 공지사항은 통합테스트 전용 공지사항입니다."
   action: "continue"
   order: 0
