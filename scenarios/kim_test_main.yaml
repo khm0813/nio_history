@@ -1,6 +1,5 @@
 id: common_before
 version: 0.1.0
-name: 공통 진입 (인사·점검)
 defaults:
   timeout_sec: 5
   max_retry: 1
@@ -20,3 +19,4 @@ layout:
       w: 1120
       h: 523
 start: play-d7kf9m
+name: "김형민 테스트 시나리오"
