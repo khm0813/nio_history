@@ -327,6 +327,11 @@ layout:
       y: -218
       w: 1640
       h: 835
+    it_select:
+      x: 410
+      y: -278
+      w: 4880
+      h: 712
   nodes:
     welcome:
       x: -420
