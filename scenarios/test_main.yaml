@@ -349,63 +349,63 @@ layout:
       x: -760
       y: 1240
     play-7hx4gt:
-      x: -500
+      x: -460
       y: 1240
     it_ask:
-      x: 2560
-      y: -220
+      x: 320
+      y: 380
     it_route:
-      x: 2020
-      y: -40
+      x: 40
+      y: 640
     it_go_b:
-      x: 4980
-      y: 140
+      x: 1040
+      y: 1580
     it_go_c:
-      x: 4720
-      y: 140
-    it_go_d:
-      x: 3920
-      y: 140
-    it_go_g:
-      x: 3660
-      y: 140
-    it_go_h:
-      x: 3400
-      y: 140
-    it_go_j:
-      x: 2620
-      y: 140
-    it_go_m:
-      x: 1740
-      y: 140
-    it_go_l:
-      x: 1480
-      y: 140
-    it_go_i:
-      x: 1220
-      y: 140
-    it_go_k:
-      x: 960
-      y: 140
-    it_go_f:
-      x: 700
-      y: 140
-    it_go_e:
-      x: 440
-      y: 140
-    it_record:
-      x: 1680
-      y: 340
-    it_unknown:
-      x: 2660
-      y: 340
-    it_end:
-      x: 4460
-      y: 140
-    transfer-t0hx51:
-      x: -220
+      x: 1040
       y: 1420
+    it_go_d:
+      x: 1040
+      y: 1140
+    it_go_g:
+      x: 1040
+      y: 1000
+    it_go_h:
+      x: 1040
+      y: 840
+    it_go_j:
+      x: 1040
+      y: 680
+    it_go_m:
+      x: 1040
+      y: 380
+    it_go_l:
+      x: 1040
+      y: 220
+    it_go_i:
+      x: 1040
+      y: 60
+    it_go_k:
+      x: 1040
+      y: -100
+    it_go_f:
+      x: 1040
+      y: -260
+    it_go_e:
+      x: 1040
+      y: -420
+    it_record:
+      x: 1340
+      y: 360
+    it_unknown:
+      x: 2200
+      y: 720
+    it_end:
+      x: 1040
+      y: 1300
+    transfer-t0hx51:
+      x: 140
+      y: 1240
     play-wbm8wf:
-      x: -220
+      x: -160
       y: 1240
   dir: TB
