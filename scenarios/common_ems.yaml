@@ -1,0 +1,25 @@
+id: common_ems
+version: 0.1.0
+name: 공통 엔진 장애 시나리오
+start: welcome
+defaults:
+  timeout_sec: 5
+  max_retry: 3
+  on_max_retry: bye
+  on_error: bye
+nodes:
+  welcome:
+    type: play
+    label: 인사
+    prompts:
+      - tts: 안녕하세요.
+    next: bye
+  bye:
+    type: hangup
+    label: 종료
+    prompts:
+      - tts: 감사합니다.
+sections:
+  main:
+    title: 공통 엔진 장애 시나리오
+    nodes: [welcome, bye]
