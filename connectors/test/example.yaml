@@ -5,7 +5,12 @@ host: test_host
 timeout_ms: 1500
 retry: 0
 rest:
-  method: POST
+  method: GET
   path: /posts/1
   body_template: {}
   headers: { Content-Type: application/json }
+  response_map:
+    userId: data.userId
+    id: data.id
+    title: data.title
+    body: data.body
