@@ -46,6 +46,11 @@ connections:
     service:it_전환큐: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
     service:테스트큐: "CTNm=V_CT_JW_Menu_1;PQNm=V_PQ_JW_Menu_1"
   default_queue: "service:it_전환큐"
+  numbers:
+  - number: "68001"
+    dnis: "39000"
+    type: "G"
+    note: "CVP 인입을 3900으로 변경"
   mode: "icm"
   on_end: "hangup"
   returns:
