@@ -1,0 +1,55 @@
+{
+  "id" : "set_mwjzsjoh",
+  "name" : "자주쓰이는 멘트인사",
+  "description" : "인사",
+  "items" : [ {
+    "id" : "welcome",
+    "node" : {
+      "type" : "play",
+      "label" : "인사",
+      "prompts" : [ {
+        "tts" : "안녕하세요!!!!!!. 고객님의 소중한 개인정보를 입력해주세요.!!!!!!!!!"
+      } ],
+      "next" : "collect-oukf03"
+    },
+    "pos" : {
+      "x" : 0,
+      "y" : 0
+    }
+  }, {
+    "id" : "collect-oukf03",
+    "node" : {
+      "type" : "collect",
+      "label" : "숫자 입력",
+      "prompts" : [ {
+        "tts" : "전화번호 입력 후 우물정자를 눌러주세요."
+      } ],
+      "var" : "input",
+      "min_digits" : 1,
+      "max_digits" : 13,
+      "next" : "play-ydqcq5",
+      "term_key" : "#",
+      "max_retry" : 3,
+      "interdigit_timeout_sec" : 13
+    },
+    "pos" : {
+      "x" : 440,
+      "y" : 220
+    }
+  }, {
+    "id" : "play-ydqcq5",
+    "node" : {
+      "type" : "play",
+      "label" : "멘트 재생",
+      "prompts" : [ {
+        "tts" : "입력하신 번호는 ${vars.input} 입니다."
+      } ]
+    },
+    "pos" : {
+      "x" : 740,
+      "y" : 200
+    }
+  } ],
+  "by" : "commin",
+  "at" : "2026-11-17T01:06:41.267257391Z"
+}
