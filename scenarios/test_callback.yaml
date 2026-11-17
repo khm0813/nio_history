@@ -12,7 +12,7 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: 변경하였습니다. 안녕하세요. 고객님의 소중한 개인정보를 입력해주세요.
+      - tts: 안녕하세요. 고객님의 소중한 개인정보를 입력해주세요.
     next: collect-oukf03
   bye:
     type: hangup
@@ -58,8 +58,8 @@ sections:
 layout:
   nodes:
     welcome:
-      x: -240
-      y: 80
+      x: -220
+      y: 40
     bye:
       x: 980
       y: 40
