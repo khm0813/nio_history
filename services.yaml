@@ -17,5 +17,5 @@ services:
     main: "test_callback"
   kim_test_main:
     numbers:
-    - "39000"
+    - "15449900"
     main: "kim_test_main"
