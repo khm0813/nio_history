@@ -6,7 +6,7 @@ timeout_ms: 1500
 retry: 0
 rest:
   method: GET
-  path: /posts/${in.number${in.number}
+  path: /posts/${in.number}
   body_template: {}
   headers: { Content-Type: application/json }
   response_map:
