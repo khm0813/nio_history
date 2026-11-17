@@ -10,6 +10,8 @@ nodes:
     type: hangup
     label: 종료
     reason: "입력후 종료"
+    prompts:
+      - tts: "설정되었습니다. 입력해주셔서 감사합니다. "
   service_code-zlrfmu:
     type: service_code
     label: ARS 시험 A 통계
@@ -106,8 +108,8 @@ layout:
       h: 919
   nodes:
     hangup-v9pj30:
-      x: 1260
-      y: -400
+      x: 1380
+      y: -420
     service_code-zlrfmu:
       x: -1120
       y: -240
