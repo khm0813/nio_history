@@ -9,7 +9,7 @@ nodes:
   hangup-v9pj30:
     type: hangup
     label: 종료
-    reason: 공지사항후종료
+    reason: "입력후 종료"
   service_code-zlrfmu:
     type: service_code
     label: ARS 시험 A 통계
@@ -40,18 +40,38 @@ nodes:
     label: 메뉴
     prompts:
       - tts: 상담원번호를 바꾸실려면 1번, 그대로 유지할려면 2번을 눌러주세요.
-        id: welcome
+        id: input_agent_num
     choices:
       "1": "collect-rgglgf"
-      "2": ""
+      "2": "hangup-wp5i8r"
   collect-rgglgf:
     type: collect
     label: 숫자 입력
     prompts:
       - tts: 상담원 번호를 입력해주세요.
-    var: input
-    min_digits: 1
-    max_digits: 10
+    var: agentNum
+    min_digits: 4
+    max_digits: 5
+    term_key: "#"
+    next: menu-rgtlmr
+  menu-rgtlmr:
+    type: menu
+    label: 메뉴
+    prompts:
+      - tts: 입력하신 번호는'${vars.agentNum} 입니다. 맞으면 1번, 틀리면 2번을 눌러주세요.
+    choices:
+      "1": "hangup-v9pj30"
+      "2": "set-0wz7zr"
+  hangup-wp5i8r:
+    type: hangup
+    label: 종료
+    reason: 바로종료
+  call_backend-n1cm7n:
+    type: call_backend
+    label: 전문 호출
+    connector: ""
+    in: {}
+    out: {}
 sections:
   main:
     title: 김형민시나리오메인
@@ -63,6 +83,9 @@ sections:
       - play-cob01n
       - menu-18jg04
       - collect-rgglgf
+      - menu-rgtlmr
+      - hangup-wp5i8r
+      - call_backend-n1cm7n
 layout:
   sections:
     main:
@@ -72,24 +95,32 @@ layout:
       h: 919
   nodes:
     hangup-v9pj30:
-      x: -640
-      y: 520
+      x: 1260
+      y: -400
     service_code-zlrfmu:
-      x: -1080
-      y: -320
-    play-je3viz:
       x: -1120
-      y: -180
-    set-0wz7zr:
-      x: -1020
-      y: -20
-    play-cob01n:
+      y: -240
+    play-je3viz:
       x: -820
-      y: 100
+      y: -260
+    set-0wz7zr:
+      x: -520
+      y: -260
+    play-cob01n:
+      x: -220
+      y: -300
     menu-18jg04:
-      x: -680
-      y: 260
+      x: 80
+      y: -320
     collect-rgglgf:
-      x: -920
-      y: 400
-  dir: TB
+      x: 380
+      y: -320
+    menu-rgtlmr:
+      x: 680
+      y: -280
+    hangup-wp5i8r:
+      x: 420
+      y: 0
+    call_backend-n1cm7n:
+      x: 1120
+      y: -220
