@@ -69,7 +69,7 @@ nodes:
   call_backend-n1cm7n:
     type: call_backend
     label: 전문 호출
-    connector: ""
+    connector: "it/evt"
     in: {}
     out: {}
 sections:
