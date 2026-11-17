@@ -73,6 +73,8 @@ nodes:
     in: {}
     out: {}
     next: hangup-v9pj30
+    on_error: hangup-v9pj30
+    on_timeout: hangup-v9pj30
   notice-ikj2v6:
     type: notice
     label: 공지사항
