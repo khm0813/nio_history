@@ -12,6 +12,16 @@ connections:
     service:it_전환큐: "1000"
     service:테스트큐: "30002"
   default_queue: "service:it_전환큐"
+  numbers:
+  - number: "39000"
+    dnis: "15449900"
+    type: "G"
+  - number: "39001"
+    dnis: "15449900"
+    type: "G"
+  - number: "39002"
+    dnis: "15449900"
+    type: "G"
   verified:
     ok: true
     at: "2026-11-17T09:21:27.896836851Z"
