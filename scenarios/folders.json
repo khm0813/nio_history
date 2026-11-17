@@ -20,6 +20,7 @@
     "kim_test_main" : "김형민테스트",
     "common_after" : "공통",
     "common_before" : "공통",
-    "common_ems" : "공통"
+    "common_ems" : "공통",
+    "common_error" : "공통"
   }
 }
