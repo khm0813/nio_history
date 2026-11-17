@@ -44,8 +44,8 @@ layout:
       h: 669
   nodes:
     mark:
-      x: -340
-      y: 100
+      x: -320
+      y: 0
     go:
       x: 280
       y: 20
