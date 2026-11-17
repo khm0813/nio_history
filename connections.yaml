@@ -30,10 +30,15 @@ connections:
     service:테스트큐: "D0CE5344-261C-47A1-80C0-26520602E7F3"
   default_queue: "service:it_전환큐"
   numbers:
-  - number: "8003"
-    dnis: "39000"
+  - number: "39000"
+    dnis: "15449900"
     type: "G"
-    note: "BP 인입을 3900으로 변경"
+  - number: "39001"
+    dnis: "15449900"
+    type: "P"
+  - number: "39002"
+    dnis: "15449900"
+    type: "I"
   verified:
     ok: true
     at: "2026-11-09T04:51:31.070805065Z"
