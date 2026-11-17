@@ -8,3 +8,4 @@ rest:
   method: POST
   path: /posts/1
   body_template: {}
+  headers: { Content-Type: application/json }
