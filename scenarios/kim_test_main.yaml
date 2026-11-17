@@ -16,7 +16,7 @@ nodes:
     label: 멘트 재생
     prompts:
       - tts: "안녕하세요, 테스트입니다. "
-    next: set-0wz7zr
+    next: collect-h6f29s
   set-0wz7zr:
     type: set
     label: 변수 설정(초기셋팅)
@@ -78,6 +78,33 @@ nodes:
     notices:
       - n-20261104-2
       - it_n_a
+  collect-h6f29s:
+    type: collect
+    label: 숫자 입력
+    prompts:
+      - tts: 아무 숫자를 입력해주세요.
+    var: number
+    min_digits: 1
+    max_digits: 1
+    next: call_backend-s33a9c
+  call_backend-s33a9c:
+    type: call_backend
+    label: 전문 호출
+    connector: "test/example"
+    in:
+      number: ${vars.number}
+    out:
+      userId: userId
+      title: title
+      id: id
+      body: body
+    next: play-mh27rx
+  play-mh27rx:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 전문을 읽어왔습니다. 아이디는 ${vars.id} 번 이며, 제목은 ${vars.title} 입니다.
+    next: set-0wz7zr
 sections:
   main:
     title: 김형민시나리오메인
@@ -92,6 +119,9 @@ sections:
       - hangup-wp5i8r
       - call_backend-n1cm7n
       - notice-ikj2v6
+      - collect-h6f29s
+      - call_backend-s33a9c
+      - play-mh27rx
 layout:
   sections:
     main:
@@ -104,7 +134,7 @@ layout:
       x: 1380
       y: -420
     play-je3viz:
-      x: -820
+      x: -1020
       y: -260
     set-0wz7zr:
       x: -520
@@ -130,4 +160,13 @@ layout:
     notice-ikj2v6:
       x: 280
       y: 40
+    collect-h6f29s:
+      x: -880
+      y: -20
+    call_backend-s33a9c:
+      x: -560
+      y: -20
+    play-mh27rx:
+      x: -260
+      y: 0
 start: play-je3viz
