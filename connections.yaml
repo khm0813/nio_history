@@ -18,10 +18,10 @@ connections:
     type: "G"
   - number: "39001"
     dnis: "15449900"
-    type: "G"
+    type: "P"
   - number: "39002"
     dnis: "15449900"
-    type: "G"
+    type: "I"
   verified:
     ok: true
     at: "2026-11-17T09:21:27.896836851Z"
