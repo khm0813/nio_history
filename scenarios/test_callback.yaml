@@ -1,7 +1,7 @@
 id: test_callback
 version: 0.1.1
 name: 통합테스트-삼자통화
-start: welcome
+start: service_code-s92avi
 defaults:
   timeout_sec: 5
   max_retry: 3
@@ -46,6 +46,11 @@ nodes:
       "1": bye
       "2": collect-oukf03
     max_retry: 3
+  service_code-s92avi:
+    type: service_code
+    label: 서비스코드
+    service_code: ""
+    next: welcome
 sections:
   main:
     title: 통합테스트-삼자통화
@@ -55,6 +60,7 @@ sections:
       - collect-oukf03
       - play-ydqcq5
       - menu-c1o80h
+      - service_code-s92avi
 layout:
   nodes:
     welcome:
@@ -72,6 +78,9 @@ layout:
     menu-c1o80h:
       x: 680
       y: 20
+    service_code-s92avi:
+      x: -360
+      y: -420
   sections:
     main:
       x: -250
