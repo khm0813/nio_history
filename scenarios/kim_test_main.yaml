@@ -1,7 +1,6 @@
 id: kim_test_main
 version: 0.1.1
 name: 김형민시나리오메인
-start: service_code-zlrfmu
 defaults:
   timeout_sec: 5
   max_retry: 3
@@ -12,11 +11,6 @@ nodes:
     reason: "입력후 종료"
     prompts:
       - tts: "설정되었습니다. 입력해주셔서 감사합니다. "
-  service_code-zlrfmu:
-    type: service_code
-    label: ARS 시험 A 통계
-    service_code: "T00000000"
-    next: play-je3viz
   play-je3viz:
     type: play
     label: 멘트 재생
@@ -89,7 +83,6 @@ sections:
     title: 김형민시나리오메인
     nodes:
       - hangup-v9pj30
-      - service_code-zlrfmu
       - play-je3viz
       - set-0wz7zr
       - play-cob01n
@@ -110,9 +103,6 @@ layout:
     hangup-v9pj30:
       x: 1380
       y: -420
-    service_code-zlrfmu:
-      x: -1120
-      y: -240
     play-je3viz:
       x: -820
       y: -260
@@ -140,3 +130,4 @@ layout:
     notice-ikj2v6:
       x: 280
       y: 40
+start: play-je3viz
