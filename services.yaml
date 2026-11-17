@@ -13,6 +13,7 @@ services:
     numbers:
     - "35001"
     - "39001"
+    - "40000"
     main: "test_callback"
   kim_test_main:
     numbers:
