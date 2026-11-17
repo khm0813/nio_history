@@ -19,6 +19,7 @@
     "test_callback" : "통합테스트",
     "kim_test_main" : "김형민테스트",
     "common_after" : "공통",
-    "common_before" : "공통"
+    "common_before" : "공통",
+    "common_ems" : "공통"
   }
 }
