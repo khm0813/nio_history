@@ -60,7 +60,7 @@ nodes:
     prompts:
       - tts: 입력하신 번호는'${vars.agentNum} 입니다. 맞으면 1번, 틀리면 2번을 눌러주세요.
     choices:
-      "1": "hangup-v9pj30"
+      "1": "call_backend-n1cm7n"
       "2": "set-0wz7zr"
   hangup-wp5i8r:
     type: hangup
@@ -72,6 +72,7 @@ nodes:
     connector: "it/evt"
     in: {}
     out: {}
+    next: hangup-v9pj30
 sections:
   main:
     title: 김형민시나리오메인
@@ -122,5 +123,5 @@ layout:
       x: 420
       y: 0
     call_backend-n1cm7n:
-      x: 1120
-      y: -220
+      x: 960
+      y: -420
