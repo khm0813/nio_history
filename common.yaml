@@ -16,3 +16,4 @@ common:
     error:
       tts: "처리중 문제가 생겼습니다. 다시 안내드리겠습니다."
     returns: 3
+    max_retry_action: "hangup"
