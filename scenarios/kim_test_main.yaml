@@ -43,7 +43,7 @@ nodes:
         id: input_agent_num
     choices:
       "1": "collect-rgglgf"
-      "2": "hangup-wp5i8r"
+      "2": "notice-ikj2v6"
   collect-rgglgf:
     type: collect
     label: 숫자 입력
@@ -73,6 +73,13 @@ nodes:
     in: {}
     out: {}
     next: hangup-v9pj30
+  notice-ikj2v6:
+    type: notice
+    label: 공지사항
+    next: hangup-wp5i8r
+    notices:
+      - n-20261104-2
+      - it_n_a
 sections:
   main:
     title: 김형민시나리오메인
@@ -87,6 +94,7 @@ sections:
       - menu-rgtlmr
       - hangup-wp5i8r
       - call_backend-n1cm7n
+      - notice-ikj2v6
 layout:
   sections:
     main:
@@ -120,8 +128,11 @@ layout:
       x: 680
       y: -280
     hangup-wp5i8r:
-      x: 420
-      y: 0
+      x: 620
+      y: 100
     call_backend-n1cm7n:
       x: 960
       y: -420
+    notice-ikj2v6:
+      x: 280
+      y: 40
