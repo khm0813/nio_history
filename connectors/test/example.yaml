@@ -1,0 +1,10 @@
+connector: test/example
+kind: rest-json
+description: 테스트로해보는거
+host: test_host
+timeout_ms: 1500
+retry: 0
+rest:
+  method: POST
+  path: /posts/1
+  body_template: {}
