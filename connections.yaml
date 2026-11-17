@@ -49,6 +49,9 @@ connections:
   - number: "39002"
     dnis: "15449900"
     type: "I"
+  - number: "8003"
+    dnis: "15449900"
+    type: "G"
   verified:
     ok: true
     at: "2026-11-09T04:51:31.070805065Z"
