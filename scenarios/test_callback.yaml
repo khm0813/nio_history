@@ -12,7 +12,7 @@ nodes:
     type: play
     label: 인사
     prompts:
-      - tts: 안녕하세요!!!. 고객님의 소중한 개인정보를 입력해주세요.!!!!!!!!!
+      - tts: 안녕하세요!!!!!!. 고객님의 소중한 개인정보를 입력해주세요.!!!!!!!!!
     next: collect-oukf03
   bye:
     type: hangup
