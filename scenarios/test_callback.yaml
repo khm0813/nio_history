@@ -58,8 +58,8 @@ sections:
 layout:
   nodes:
     welcome:
-      x: -240
-      y: -140
+      x: -340
+      y: 240
     bye:
       x: 980
       y: 40
