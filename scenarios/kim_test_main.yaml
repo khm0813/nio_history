@@ -99,12 +99,20 @@ nodes:
       id: id
       body: body
     next: play-mh27rx
+    on_error: play-ja3zds
+    on_timeout: play-ja3zds
   play-mh27rx:
     type: play
     label: 멘트 재생
     prompts:
       - tts: 전문을 읽어왔습니다. 아이디는 ${vars.id} 번 이며, 제목은 ${vars.title} 입니다.
     next: set-0wz7zr
+  play-ja3zds:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 전문호출에 실패했습니다. 다시 시도해주세요.
+    next: collect-h6f29s
 sections:
   main:
     title: 김형민시나리오메인
@@ -122,6 +130,7 @@ sections:
       - collect-h6f29s
       - call_backend-s33a9c
       - play-mh27rx
+      - play-ja3zds
 layout:
   sections:
     main:
@@ -169,4 +178,7 @@ layout:
     play-mh27rx:
       x: -260
       y: 0
+    play-ja3zds:
+      x: -500
+      y: 180
 start: play-je3viz
