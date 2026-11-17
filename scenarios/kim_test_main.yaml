@@ -14,13 +14,55 @@ nodes:
     type: service_code
     label: ARS 시험 A 통계
     service_code: "T00000000"
-    next: hangup-v9pj30
+    next: play-je3viz
+  play-je3viz:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: "안녕하세요, 테스트입니다. "
+    next: set-0wz7zr
+  set-0wz7zr:
+    type: set
+    label: 변수 설정(초기셋팅)
+    vars:
+      agentNum: "1200"
+      groupId: "1000"
+    note: "초기 상담원아이디 셋팅"
+    next: play-cob01n
+  play-cob01n:
+    type: play
+    label: 멘트 재생
+    prompts:
+      - tts: 초기 셋팅된 상담원 번호는 ${vars.agentNum} 입니다. 그룹아이디는 ${vars.groupId} 입니다.
+    next: menu-18jg04
+  menu-18jg04:
+    type: menu
+    label: 메뉴
+    prompts:
+      - tts: 상담원번호를 바꾸실려면 1번, 그대로 유지할려면 2번을 눌러주세요.
+        id: welcome
+    choices:
+      "1": "collect-rgglgf"
+      "2": ""
+  collect-rgglgf:
+    type: collect
+    label: 숫자 입력
+    prompts:
+      - tts: 상담원 번호를 입력해주세요.
+    var: input
+    min_digits: 1
+    max_digits: 10
 sections:
   main:
     title: 김형민시나리오메인
     nodes:
       - hangup-v9pj30
       - service_code-zlrfmu
+      - play-je3viz
+      - set-0wz7zr
+      - play-cob01n
+      - menu-18jg04
+      - collect-rgglgf
 layout:
   sections:
     main:
@@ -30,9 +72,24 @@ layout:
       h: 919
   nodes:
     hangup-v9pj30:
-      x: -760
-      y: 20
+      x: -640
+      y: 520
     service_code-zlrfmu:
-      x: -880
-      y: -200
+      x: -1080
+      y: -320
+    play-je3viz:
+      x: -1120
+      y: -180
+    set-0wz7zr:
+      x: -1020
+      y: -20
+    play-cob01n:
+      x: -820
+      y: 100
+    menu-18jg04:
+      x: -680
+      y: 260
+    collect-rgglgf:
+      x: -920
+      y: 400
   dir: TB
