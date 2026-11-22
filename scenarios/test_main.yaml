@@ -352,60 +352,59 @@ layout:
       x: -460
       y: 1240
     it_ask:
-      x: 320
-      y: 380
-    it_route:
       x: 40
-      y: 640
+      y: 720
+    it_route:
+      x: 340
+      y: 720
     it_go_b:
-      x: 1040
-      y: 1580
+      x: 640
+      y: 1700
     it_go_c:
-      x: 1040
-      y: 1420
+      x: 640
+      y: 1540
     it_go_d:
-      x: 1040
-      y: 1140
+      x: 640
+      y: 1240
     it_go_g:
-      x: 1040
-      y: 1000
+      x: 640
+      y: 1060
     it_go_h:
-      x: 1040
-      y: 840
+      x: 640
+      y: 900
     it_go_j:
-      x: 1040
-      y: 680
+      x: 640
+      y: 720
     it_go_m:
-      x: 1040
-      y: 380
+      x: 640
+      y: 420
     it_go_l:
-      x: 1040
-      y: 220
+      x: 640
+      y: 260
     it_go_i:
-      x: 1040
-      y: 60
+      x: 640
+      y: 80
     it_go_k:
-      x: 1040
-      y: -100
+      x: 640
+      y: -80
     it_go_f:
-      x: 1040
+      x: 640
       y: -260
     it_go_e:
-      x: 1040
+      x: 640
       y: -420
     it_record:
-      x: 1340
-      y: 360
+      x: 940
+      y: 400
     it_unknown:
-      x: 2200
-      y: 720
+      x: 940
+      y: 700
     it_end:
-      x: 1040
-      y: 1300
+      x: 640
+      y: 1400
     transfer-t0hx51:
       x: 140
       y: 1240
     play-wbm8wf:
       x: -160
       y: 1240
-  dir: TB
