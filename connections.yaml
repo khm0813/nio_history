@@ -24,9 +24,9 @@ connections:
     type: "I"
   verified:
     ok: true
-    at: "2026-11-23T00:43:23.486798796Z"
+    at: "2026-11-23T04:16:36.150894339Z"
     by: "admin"
-    build: "0.1.0-20261123.2"
+    build: "0.1.0-20261123.3"
     detail: "nio-shell.war · http://127.0.0.1:7002"
 - id: "bp"
   vendor: "bright-pattern"
