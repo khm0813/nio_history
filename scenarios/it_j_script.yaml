@@ -13,18 +13,18 @@ nodes:
     type: branch
     label: 시험 번호로 나누기
     cases:
-    - when: vars.it_case == '1001'
-      next: j1
-    - when: vars.it_case == '1002'
-      next: j2
-    - when: vars.it_case == '1003'
-      next: j3
-    - when: vars.it_case == '1004'
-      next: j4
-    - when: vars.it_case == '1005'
-      next: j5
-    - when: vars.it_case == '1006'
-      next: j6
+      - when: vars.it_case == '1001'
+        next: j1
+      - when: vars.it_case == '1002'
+        next: j2
+      - when: vars.it_case == '1003'
+        next: j3
+      - when: vars.it_case == '1004'
+        next: j4
+      - when: vars.it_case == '1005'
+        next: j5
+      - when: vars.it_case == '1006'
+        next: j6
     default: unknown
   unknown:
     type: return
@@ -40,8 +40,8 @@ nodes:
     type: play
     label: 통과 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 통과입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 통과입니다.
+        bargein: false
     next: back
   fail:
     type: set
@@ -53,8 +53,8 @@ nodes:
     type: play
     label: 실패 안내
     prompts:
-    - tts: 시험 ${vars.it_id}, 실패입니다.
-      bargein: false
+      - tts: 시험 ${vars.it_id}, 실패입니다.
+        bargein: false
     next: back
   back:
     type: return
@@ -83,8 +83,8 @@ nodes:
     type: play
     label: '[J1] 안내'
     prompts:
-    - tts: 시험 J1. Java 스크립트. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 J1. Java 스크립트. 아무것도 누르지 마세요
+        bargein: false
     next: j1_set
   j1_set:
     type: set
@@ -108,8 +108,8 @@ nodes:
     type: branch
     label: 결과
     cases:
-    - when: not (vars.j_out == 'x-java')
-      next: fail
+      - when: not (vars.j_out == 'x-java')
+        next: fail
     default: pass
   j2:
     type: set
@@ -126,8 +126,8 @@ nodes:
     type: play
     label: '[J2] 안내'
     prompts:
-    - tts: 시험 J2. JavaScript 스크립트. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 J2. JavaScript 스크립트. 아무것도 누르지 마세요
+        bargein: false
     next: j2_set
   j2_set:
     type: set
@@ -149,8 +149,8 @@ nodes:
     type: branch
     label: 결과
     cases:
-    - when: not (vars.j_out == 'x-js')
-      next: fail
+      - when: not (vars.j_out == 'x-js')
+        next: fail
     default: pass
   j3:
     type: set
@@ -167,8 +167,8 @@ nodes:
     type: play
     label: '[J3] 안내'
     prompts:
-    - tts: 시험 J3. 스크립트 반환 없음. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 J3. 스크립트 반환 없음. 아무것도 누르지 마세요
+        bargein: false
     next: j3_run
   j3_run:
     type: script
@@ -182,8 +182,8 @@ nodes:
     type: branch
     label: 결과
     cases:
-    - when: not (vars.j3 == 'done')
-      next: fail
+      - when: not (vars.j3 == 'done')
+        next: fail
     default: pass
   j4:
     type: set
@@ -200,8 +200,8 @@ nodes:
     type: play
     label: '[J4] 안내'
     prompts:
-    - tts: 시험 J4. 스크립트에서 커넥터. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 J4. 스크립트에서 커넥터. 아무것도 누르지 마세요
+        bargein: false
     next: j4_run
   j4_run:
     type: script
@@ -222,8 +222,8 @@ nodes:
     type: branch
     label: 받은 이름
     cases:
-    - when: not (vars.j4 == '홍길동')
-      next: fail
+      - when: not (vars.j4 == '홍길동')
+        next: fail
     default: pass
   j5:
     type: set
@@ -240,8 +240,8 @@ nodes:
     type: play
     label: '[J5] 안내'
     prompts:
-    - tts: 시험 J5. 스크립트 log. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 J5. 스크립트 log. 아무것도 누르지 마세요
+        bargein: false
     next: j5_run
   j5_run:
     type: script
@@ -268,8 +268,8 @@ nodes:
     type: play
     label: '[J6] 안내'
     prompts:
-    - tts: 시험 J6. 스크립트 시간 초과. 아무것도 누르지 마세요
-      bargein: false
+      - tts: 시험 J6. 스크립트 시간 초과. 아무것도 누르지 마세요
+        bargein: false
     next: j6_run
   j6_run:
     type: script
@@ -286,66 +286,96 @@ sections:
     title: 공통 틀
     note: 시험 번호로 나누고, 통과·실패를 말한 뒤 시험 번호 입력으로 돌아간다
     nodes:
-    - entry
-    - unknown
-    - pass
-    - pass_say
-    - fail
-    - fail_say
-    - back
-    - dflt_retry
-    - dflt_error
+      - entry
+      - unknown
+      - pass
+      - pass_say
+      - fail
+      - fail_say
+      - back
+      - dflt_retry
+      - dflt_error
   t_j1:
     title: '[J1] Java 스크립트'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - j1
-    - j1_code
-    - j1_say
-    - j1_set
-    - j1_run
-    - j1_chk
+      - j1
+      - j1_code
+      - j1_say
+      - j1_set
+      - j1_run
+      - j1_chk
   t_j2:
     title: '[J2] JavaScript 스크립트'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - j2
-    - j2_code
-    - j2_say
-    - j2_set
-    - j2_run
-    - j2_chk
+      - j2
+      - j2_code
+      - j2_say
+      - j2_set
+      - j2_run
+      - j2_chk
   t_j3:
     title: '[J3] 스크립트 반환 없음'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - j3
-    - j3_code
-    - j3_say
-    - j3_run
-    - j3_chk
+      - j3
+      - j3_code
+      - j3_say
+      - j3_run
+      - j3_chk
   t_j4:
     title: '[J4] 스크립트에서 커넥터'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과'
     nodes:
-    - j4
-    - j4_code
-    - j4_say
-    - j4_run
-    - j4_chk
+      - j4
+      - j4_code
+      - j4_say
+      - j4_run
+      - j4_chk
   t_j5:
     title: '[J5] 스크립트 log'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 통과(추적에 로그)'
     nodes:
-    - j5
-    - j5_code
-    - j5_say
-    - j5_run
+      - j5
+      - j5_code
+      - j5_say
+      - j5_run
   t_j6:
     title: '[J6] 스크립트 시간 초과'
     note: '누를 것: 아무것도 누르지 않음 / 들려야 할 것: 오류 경로로 "통과"'
     nodes:
-    - j6
-    - j6_code
-    - j6_say
-    - j6_run
+      - j6
+      - j6_code
+      - j6_say
+      - j6_run
+layout:
+  nodes:
+    entry:
+      x: -440
+      y: -100
+    unknown:
+      x: 600
+      y: 180
+    pass:
+      x: 1080
+      y: 200
+    pass_say:
+      x: 1080
+      y: 420
+    fail:
+      x: 1440
+      y: 200
+    fail_say:
+      x: 1440
+      y: 420
+    back:
+      x: 1300
+      y: 700
+    dflt_retry:
+      x: 1300
+      y: 0
+    dflt_error:
+      x: 1560
+      y: 0
+  dir: TB
