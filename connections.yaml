@@ -24,10 +24,10 @@ connections:
     type: "I"
   verified:
     ok: true
-    at: "2026-11-23T04:25:24.796107696Z"
+    at: "2026-11-23T23:16:14.868986117Z"
     by: "admin"
-    build: "0.1.0-20261123.5"
-    detail: "nio-shell.war · http://127.0.0.1:7002"
+    build: "0.1.0-20261123.9"
+    detail: "셸 2대 검증됨"
 - id: "bp"
   vendor: "bright-pattern"
   name: "Bright Pattern (lab 245)"
