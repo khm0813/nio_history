@@ -82,7 +82,7 @@ connections:
     HelloWorld: "queue:wait"
   verified:
     ok: true
-    at: "2026-11-22T23:19:47.830094999Z"
+    at: "2026-11-23T00:41:15.628113920Z"
     by: "admin"
-    build: "0.1.0-20261123.1"
+    build: "0.1.0-20261123.2"
     detail: "CVP.war · http://127.0.0.1:7002"
