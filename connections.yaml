@@ -24,9 +24,9 @@ connections:
     type: "I"
   verified:
     ok: true
-    at: "2026-11-23T23:16:14.868986117Z"
+    at: "2026-11-24T00:59:15.256178714Z"
     by: "admin"
-    build: "0.1.0-20261123.9"
+    build: "0.1.0-20261124.2"
     detail: "셸 2대 검증됨"
 - id: "bp"
   vendor: "bright-pattern"
