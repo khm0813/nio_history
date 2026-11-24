@@ -24,7 +24,7 @@ connections:
     type: "I"
   verified:
     ok: true
-    at: "2026-11-24T08:13:52.889256342Z"
+    at: "2026-11-24T08:14:06.093853972Z"
     by: "admin"
     build: "0.2.0-20261124.7"
     detail: "셸 2대 검증됨"
