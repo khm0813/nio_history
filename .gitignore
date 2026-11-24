@@ -5,6 +5,7 @@
 !/services.yaml
 !/entry.yaml
 !/common.yaml
+!/tts.yaml
 !/connections.yaml
 !/calendar.yaml
 !/servicecodes.yaml
