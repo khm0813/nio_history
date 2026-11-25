@@ -83,7 +83,7 @@ connections:
     HelloWorld: "queue:wait"
   verified:
     ok: true
-    at: "2026-11-24T23:59:57.938250544Z"
+    at: "2026-11-25T01:00:37.544233452Z"
     by: "admin"
-    build: "0.2.0-20261124.7"
+    build: "0.2.0-20261125.1"
     detail: "셸 2대 검증됨"
