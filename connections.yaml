@@ -53,11 +53,12 @@ connections:
     dnis: "15449900"
     type: "G"
   verified:
-    ok: true
-    at: "2026-11-09T04:51:31.070805065Z"
+    ok: false
+    at: "2026-11-25T00:04:11.011054812Z"
     by: "admin"
     build: "0.1.0-SNAPSHOT+2026-11-09T03:11:54Z"
-    detail: "package app_nio-shell.zip"
+    detail: "셸 2대 가운데 1대의 설치·검증이 필요합니다 (엔진 B (102): 마지막 검증이 실패했습니다). \"설치·검증\"을 하세\
+      요"
 - id: "cvp"
   vendor: "cisco-cvp"
   name: "Cisco CVP"
