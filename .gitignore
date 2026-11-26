@@ -13,6 +13,7 @@
 !/alerts.yaml
 !/queues.yaml
 !/review.yaml
+!/access.yaml
 !/logdefs/
 !/scenarios/
 !/connectors/
