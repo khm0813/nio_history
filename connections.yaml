@@ -24,9 +24,9 @@ connections:
     type: "I"
   verified:
     ok: true
-    at: "2026-11-25T00:53:04.306194722Z"
+    at: "2026-11-25T07:53:25.136599745Z"
     by: "admin"
-    build: "0.2.0-20261125.1"
+    build: "0.2.0-20261125.7"
     detail: "셸 2대 검증됨"
 - id: "bp"
   vendor: "bright-pattern"
@@ -53,11 +53,12 @@ connections:
     dnis: "15449900"
     type: "G"
   verified:
-    ok: true
-    at: "2026-11-25T01:25:25.250169985Z"
+    ok: false
+    at: "2026-11-25T07:54:05.691487256Z"
     by: "admin"
-    build: "0.2.0-20261125.1"
-    detail: "셸 2대 검증됨"
+    build: ""
+    detail: "셸 2대 가운데 1대의 설치·검증이 필요합니다 (엔진 A (101): 마지막 검증이 실패했습니다). \"설치·검증\"을 하세\
+      요"
 - id: "cvp"
   vendor: "cisco-cvp"
   name: "Cisco CVP"
@@ -82,7 +83,7 @@ connections:
     HelloWorld: "queue:wait"
   verified:
     ok: true
-    at: "2026-11-25T01:00:37.544233452Z"
+    at: "2026-11-25T07:54:05.959047490Z"
     by: "admin"
-    build: "0.2.0-20261125.1"
+    build: "0.2.0-20261125.7"
     detail: "셸 2대 검증됨"
